@@ -1,4 +1,3 @@
-import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:equatable/equatable.dart';
 
@@ -7,7 +6,6 @@ class MovieDetailResponse extends Equatable {
     required this.adult,
     required this.backdropPath,
     required this.budget,
-    required this.genres,
     required this.homepage,
     required this.id,
     required this.imdbId,
@@ -30,7 +28,6 @@ class MovieDetailResponse extends Equatable {
   final bool adult;
   final String? backdropPath;
   final int budget;
-  final List<GenreModel> genres;
   final String homepage;
   final int id;
   final String? imdbId;
@@ -54,8 +51,6 @@ class MovieDetailResponse extends Equatable {
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
         budget: json["budget"],
-        genres: List<GenreModel>.from(
-            json["genres"].map((x) => GenreModel.fromJson(x))),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],
@@ -79,7 +74,6 @@ class MovieDetailResponse extends Equatable {
         "adult": adult,
         "backdrop_path": backdropPath,
         "budget": budget,
-        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
         "homepage": homepage,
         "id": id,
         "imdb_id": imdbId,
@@ -103,7 +97,6 @@ class MovieDetailResponse extends Equatable {
     return MovieDetail(
       adult: this.adult,
       backdropPath: this.backdropPath,
-      genres: this.genres.map((genre) => genre.toEntity()).toList(),
       id: this.id,
       originalTitle: this.originalTitle,
       overview: this.overview,
@@ -122,7 +115,6 @@ class MovieDetailResponse extends Equatable {
         adult,
         backdropPath,
         budget,
-        genres,
         homepage,
         id,
         imdbId,

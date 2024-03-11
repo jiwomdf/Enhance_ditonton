@@ -153,9 +153,6 @@ class DetailContent extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              _showGenres(movie.genres),
-                            ),
-                            Text(
                               _showDuration(movie.runtime),
                             ),
                             Row(

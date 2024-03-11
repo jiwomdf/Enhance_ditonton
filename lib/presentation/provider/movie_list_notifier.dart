@@ -1,8 +1,10 @@
 import 'package:ditonton/domain/entities/movie.dart';
+import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/usecases/get_now_playing_movies.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/usecases/get_popular_movies.dart';
 import 'package:ditonton/domain/usecases/get_top_rated_movies.dart';
+import 'package:ditonton/domain/usecases/get_tv_list.dart';
 import 'package:flutter/material.dart';
 
 class MovieListNotifier extends ChangeNotifier {
@@ -24,6 +26,12 @@ class MovieListNotifier extends ChangeNotifier {
   RequestState _topRatedMoviesState = RequestState.Empty;
   RequestState get topRatedMoviesState => _topRatedMoviesState;
 
+  var _tvList = <TV>[];
+  List<TV> get tvList => _tvList;
+
+  RequestState _tvListState = RequestState.Empty;
+  RequestState get tvListState => _tvListState;
+
   String _message = '';
   String get message => _message;
 
@@ -31,11 +39,13 @@ class MovieListNotifier extends ChangeNotifier {
     required this.getNowPlayingMovies,
     required this.getPopularMovies,
     required this.getTopRatedMovies,
+    required this.getTvList
   });
 
   final GetNowPlayingMovies getNowPlayingMovies;
   final GetPopularMovies getPopularMovies;
   final GetTopRatedMovies getTopRatedMovies;
+  final GetTvList getTvList;
 
   Future<void> fetchNowPlayingMovies() async {
     _nowPlayingState = RequestState.Loading;
@@ -93,4 +103,25 @@ class MovieListNotifier extends ChangeNotifier {
       },
     );
   }
+
+  Future<void> fetchTvList() async {
+    _tvListState = RequestState.Loading;
+    notifyListeners();
+
+    final result = await getTvList.execute();
+    result.fold(
+      (failure) {
+        _tvListState = RequestState.Error;
+        _message = failure.message;
+        notifyListeners();
+      },
+      (moviesData) {
+        _tvListState = RequestState.Loaded;
+        _tvList = moviesData;
+        notifyListeners();
+      },
+    );
+  }
+
+
 }
