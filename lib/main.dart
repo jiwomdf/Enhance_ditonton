@@ -6,9 +6,9 @@ import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/router.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
@@ -23,24 +23,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => di.locator<MovieListNotifier>()),
         ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
-        ),
+            create: (_) => di.locator<MovieDetailNotifier>()),
         ChangeNotifierProvider(
-          create: (_) => di.locator<MovieDetailNotifier>(),
-        ),
+            create: (_) => di.locator<MovieSearchNotifier>()),
         ChangeNotifierProvider(
-          create: (_) => di.locator<MovieSearchNotifier>(),
-        ),
+            create: (_) => di.locator<TopRatedMoviesNotifier>()),
         ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedMoviesNotifier>(),
-        ),
+            create: (_) => di.locator<PopularMoviesNotifier>()),
         ChangeNotifierProvider(
-          create: (_) => di.locator<PopularMoviesNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistMovieNotifier>(),
-        ),
+            create: (_) => di.locator<WatchlistMovieNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TvDetailNotifier>())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

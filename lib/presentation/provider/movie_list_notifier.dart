@@ -1,10 +1,10 @@
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/tv.dart';
-import 'package:ditonton/domain/usecases/get_now_playing_movies.dart';
+import 'package:ditonton/domain/usecases/movie/get_now_playing_movies.dart';
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/usecases/get_popular_movies.dart';
-import 'package:ditonton/domain/usecases/get_top_rated_movies.dart';
-import 'package:ditonton/domain/usecases/get_tv_list.dart';
+import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart';
+import 'package:ditonton/domain/usecases/movie/get_top_rated_movies.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_list.dart';
 import 'package:flutter/material.dart';
 
 class MovieListNotifier extends ChangeNotifier {
@@ -35,12 +35,11 @@ class MovieListNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  MovieListNotifier({
-    required this.getNowPlayingMovies,
-    required this.getPopularMovies,
-    required this.getTopRatedMovies,
-    required this.getTvList
-  });
+  MovieListNotifier(
+      {required this.getNowPlayingMovies,
+      required this.getPopularMovies,
+      required this.getTopRatedMovies,
+      required this.getTvList});
 
   final GetNowPlayingMovies getNowPlayingMovies;
   final GetPopularMovies getPopularMovies;
@@ -122,6 +121,4 @@ class MovieListNotifier extends ChangeNotifier {
       },
     );
   }
-
-
 }

@@ -1,72 +1,93 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/state_enum.dart';
+import 'package:ditonton/constans.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class TvDetailPage extends StatelessWidget {
+class TvDetailPage extends StatefulWidget {
   static const ROUTE_NAME = '/detail_tv';
 
   final int id;
-  final bool isAddedWatchlist;
 
-  TvDetailPage({required this.id, required this.isAddedWatchlist});
+  TvDetailPage({required this.id});
+
+  @override
+  State<TvDetailPage> createState() => _TvDetailPageState();
+}
+
+class _TvDetailPageState extends State<TvDetailPage> {
+  final bool _isAddedWatchlist = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(
+      () => Provider.of<TvDetailNotifier>(context, listen: false)
+        ..fetchTvDetail(widget.id),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Consumer<TvDetailNotifier>(
-        builder: (context, provider, child) {
-          final tvDetail = provider.tvDetail;
-          final state = provider.state;
-          if (state == RequestState.Loading) {
-            return Center(child: CircularProgressIndicator());
-          } else if (state == RequestState.Error) {
-            return Text(provider.message);
-          } else if (state == RequestState.Loaded) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      CachedNetworkImage(
-                        height: 350,
-                        width: MediaQuery.of(context).size.width,
-                        fit: BoxFit.cover,
-                        alignment: Alignment.topCenter,
-                        imageUrl:
-                            'https://image.tmdb.org/t/p/w500${tvDetail?.posterPath ?? ''}',
-                        placeholder: (context, url) =>
-                            Center(child: CircularProgressIndicator()),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          foregroundColor: Colors.deepPurple,
-                          child: IconButton(
-                            icon: Icon(Icons.arrow_back),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
+    return SafeArea(
+      child: Scaffold(
+        body: Consumer<TvDetailNotifier>(
+          builder: (context, provider, child) {
+            final tvDetail = provider.tvDetail;
+            final state = provider.state;
+            if (state == RequestState.Loading) {
+              return Center(child: CircularProgressIndicator());
+            } else if (state == RequestState.Error) {
+              return Text(provider.message);
+            } else if (state == RequestState.Error) {
+              return Center(child: Text('Empty'));
+            } else if (state == RequestState.Loaded) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        CachedNetworkImage(
+                          height: 350,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter,
+                          imageUrl:
+                              'https://image.tmdb.org/t/p/w500${tvDetail?.posterPath ?? ''}',
+                          placeholder: (context, url) =>
+                              Center(child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
-                      )
-                    ],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: dataDetail(context, tvDetail!),
-                  )
-                ],
-              ),
-            );
-          } else {
-            return Container();
-          }
-        },
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            foregroundColor: Colors.deepPurple,
+                            child: IconButton(
+                              icon: Icon(Icons.arrow_back),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      child: dataDetail(context, tvDetail!),
+                    )
+                  ],
+                ),
+              );
+            } else {
+              return Container();
+            }
+          },
+        ),
       ),
     );
   }
@@ -80,12 +101,15 @@ class TvDetailPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Flexible(child: Text(tvDetail.title)),
+                Flexible(child: Text(tvDetail.title, style: headlineSmall)),
                 ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll(Colors.deepPurple)),
                   onPressed: () async {
                     final notifier = Provider.of<MovieDetailNotifier>(context,
                         listen: false);
-                    if (!isAddedWatchlist) {
+                    if (!_isAddedWatchlist) {
                       await notifier
                           .addWatchlist(tvDetail.convertToMovieDetail());
                     } else {
@@ -111,7 +135,7 @@ class TvDetailPage extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      isAddedWatchlist ? Icon(Icons.check) : Icon(Icons.add),
+                      _isAddedWatchlist ? Icon(Icons.check) : Icon(Icons.add),
                       Text('Watchlist'),
                     ],
                   ),
@@ -119,18 +143,13 @@ class TvDetailPage extends StatelessWidget {
               ]),
               Text(_showDuration(tvDetail.runtime)),
               SizedBox(height: 16),
-              Text('Overview'),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Text('Overview', style: titleLarge),
+              ),
               Text(tvDetail.overview),
               SizedBox(height: 16)
             ],
-          ),
-        ),
-        Align(
-          alignment: Alignment.topCenter,
-          child: Container(
-            color: Colors.white,
-            height: 4,
-            width: 48,
           ),
         ),
       ],

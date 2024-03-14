@@ -3,17 +3,19 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/common/failure.dart';
+import 'package:ditonton/data/datasources/tv_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
+import 'package:ditonton/data/models/tv_table.dart';
 import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
 import 'package:ditonton/domain/repositories/tv_repository.dart';
 
 class TvRepositoryImpl extends TvRepository {
   final TvRemoteDataSource remoteDataSource;
+  final TvLocalDataSource localDataSource;
 
-  TvRepositoryImpl({
-    required this.remoteDataSource,
-  });
+  TvRepositoryImpl(
+      {required this.remoteDataSource, required this.localDataSource});
 
   @override
   Future<Either<Failure, List<TV>>> getTvList() async {
@@ -36,6 +38,19 @@ class TvRepositoryImpl extends TvRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> saveTvWatchlist(TvDetail tv) async {
+    try {
+      final result =
+          await localDataSource.insertWatchlistTv(TvTable.fromEntity(tv));
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    } catch (e) {
+      throw e;
     }
   }
 }

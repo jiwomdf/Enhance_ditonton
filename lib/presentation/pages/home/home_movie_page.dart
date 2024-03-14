@@ -1,9 +1,9 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home/tv_list_widget.dart';
-import 'package:ditonton/presentation/pages/detail_page/popular_movies_page.dart';
+import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
-import 'package:ditonton/presentation/pages/detail_page/top_rated_movies_page.dart';
+import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
