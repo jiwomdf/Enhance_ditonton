@@ -1,14 +1,26 @@
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
 import 'package:ditonton/domain/usecases/tv/get_tv_detail.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_watchlist.dart';
+import 'package:ditonton/domain/usecases/tv/is_tv_in_watchlist.dart';
+import 'package:ditonton/domain/usecases/tv/remove_tv_watchlist.dart';
 import 'package:ditonton/domain/usecases/tv/save_tv_watchlist.dart';
 import 'package:flutter/material.dart';
 
 class TvDetailNotifier extends ChangeNotifier {
   final GetTvDetail getTvDetail;
   final SaveTvWatchlist saveTvWatchlist;
+  final RemoveTvWatchlist removeTvWatchlist;
+  final GetWatchListTv getTvWatchList;
+  final IsTvInWatchlist isTvInWatchlist;
 
-  TvDetailNotifier({required this.getTvDetail, required this.saveTvWatchlist});
+  TvDetailNotifier({
+    required this.getTvDetail,
+    required this.saveTvWatchlist,
+    required this.removeTvWatchlist,
+    required this.getTvWatchList,
+    required this.isTvInWatchlist,
+  });
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;
@@ -16,8 +28,14 @@ class TvDetailNotifier extends ChangeNotifier {
   TvDetail? _tvDetail = null;
   TvDetail? get tvDetail => _tvDetail;
 
-  String _message = '';
-  String get message => _message;
+  String _messageTvDetail = '';
+  String get messageTvDetail => _messageTvDetail;
+
+  String _watchlistMessage = '';
+  String get watchlistMessage => _watchlistMessage;
+
+  bool _isAddedtoWatchlist = false;
+  bool get isAddedToWatchlist => _isAddedtoWatchlist;
 
   Future<void> fetchTvDetail(int id) async {
     _state = RequestState.Loading;
@@ -26,7 +44,7 @@ class TvDetailNotifier extends ChangeNotifier {
     final result = await getTvDetail.execute(id);
     result.fold(
       (failure) {
-        _message = failure.message;
+        _messageTvDetail = failure.message;
         _state = RequestState.Error;
         notifyListeners();
       },
@@ -40,36 +58,40 @@ class TvDetailNotifier extends ChangeNotifier {
 
   Future<void> addWatchlist(TvDetail movie) async {
     final result = await saveTvWatchlist.execute(movie);
-
-    // await result.fold(
-    //   (failure) async {
-    //     _watchlistMessage = failure.message;
-    //   },
-    //   (successMessage) async {
-    //     _watchlistMessage = successMessage;
-    //   },
-    // );
-    // await loadWatchlistStatus(movie.id);
+    await result.fold(
+      (failure) async {
+        _watchlistMessage = failure.message;
+      },
+      (successMessage) async {
+        _watchlistMessage = successMessage;
+      },
+    );
+    await loadWatchlistStatus(movie.id);
   }
 
-  // Future<void> removeFromWatchlist(MovieDetail movie) async {
-  //   final result = await removeWatchlist.execute(movie);
+  Future<void> removeFromWatchlist(TvDetail tv) async {
+    final result = await removeTvWatchlist.execute(tv.id);
+    await result.fold(
+      (failure) async {
+        _watchlistMessage = failure.message;
+      },
+      (successMessage) async {
+        _watchlistMessage = successMessage;
+      },
+    );
+    await loadWatchlistStatus(tv.id);
+  }
 
-  //   await result.fold(
-  //     (failure) async {
-  //       _watchlistMessage = failure.message;
-  //     },
-  //     (successMessage) async {
-  //       _watchlistMessage = successMessage;
-  //     },
-  //   );
-
-  //   await loadWatchlistStatus(movie.id);
-  // }
-
-  // Future<void> loadWatchlistStatus(int id) async {
-  //   final result = await getWatchListStatus.execute(id);
-  //   _isAddedtoWatchlist = result;
-  //   notifyListeners();
-  // }
+  Future<void> loadWatchlistStatus(int id) async {
+    final result = await isTvInWatchlist.execute(id);
+    await result.fold(
+      (failure) async {
+        _watchlistMessage = failure.message;
+      },
+      (result) async {
+        _isAddedtoWatchlist = result;
+      },
+    );
+    notifyListeners();
+  }
 }

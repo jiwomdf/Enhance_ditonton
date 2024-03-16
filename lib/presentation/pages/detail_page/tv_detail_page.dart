@@ -41,7 +41,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
             if (state == RequestState.Loading) {
               return Center(child: CircularProgressIndicator());
             } else if (state == RequestState.Error) {
-              return Text(provider.message);
+              return Text(provider.messageTvDetail);
             } else if (state == RequestState.Error) {
               return Center(child: Text('Empty'));
             } else if (state == RequestState.Loaded) {
