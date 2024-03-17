@@ -5,6 +5,7 @@ import 'package:ditonton/presentation/pages/home/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
+import 'package:ditonton/presentation/pages/sublist_page/tv_sublist_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_tv_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,6 +36,8 @@ PageRoute router(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => TvDetailPage(id: id));
     case WatchlistTvPage.ROUTE_NAME:
       return MaterialPageRoute(builder: (_) => WatchlistTvPage());
+    case TvSublistPage.ROUTE_NAME:
+      return MaterialPageRoute(builder: (_) => TvSublistPage());
     default:
       return MaterialPageRoute(builder: (_) {
         return Scaffold(body: Center(child: Text('Page not found :(')));

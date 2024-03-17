@@ -5,6 +5,7 @@ import 'package:ditonton/presentation/pages/home/tv_list_widget.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
+import 'package:ditonton/presentation/pages/sublist_page/tv_sublist_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_tv_page.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
@@ -135,7 +136,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               _buildSubHeading(
                 title: 'TV Series',
                 onTap: () =>
-                    Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.tvListState;

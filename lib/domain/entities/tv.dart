@@ -1,3 +1,4 @@
+import 'package:ditonton/data/models/tv_table.dart';
 import 'package:equatable/equatable.dart';
 
 class TV extends Equatable {
@@ -39,6 +40,15 @@ class TV extends Equatable {
     required this.posterPath,
     required this.name,
   });
+
+  TvTable mapToTvTable() {
+    return TvTable(
+      id: id ?? 0,
+      title: name,
+      posterPath: posterPath,
+      overview: overview,
+    );
+  }
 
   @override
   List<Object?> get props => [
