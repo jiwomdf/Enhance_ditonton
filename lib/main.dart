@@ -9,6 +9,7 @@ import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_search_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:ditonton/router.dart';
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => di.locator<TvDetailNotifier>()),
         ChangeNotifierProvider(
             create: (_) => di.locator<WatchlistTvNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<TvNotifier>())
+        ChangeNotifierProvider(create: (_) => di.locator<TvNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
