@@ -19,14 +19,13 @@ class TvDetailPage extends StatefulWidget {
 }
 
 class _TvDetailPageState extends State<TvDetailPage> {
-  final bool _isAddedWatchlist = false;
-
   @override
   void initState() {
     super.initState();
     Future.microtask(
       () => Provider.of<TvDetailNotifier>(context, listen: false)
-        ..fetchTvDetail(widget.id),
+        ..fetchTvDetail(widget.id)
+        ..loadWatchlistStatus(widget.id),
     );
   }
 
@@ -78,7 +77,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
                     ),
                     Container(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: dataDetail(context, tvDetail!),
+                      child: dataDetail(context, provider, tvDetail!),
                     )
                   ],
                 ),
@@ -92,7 +91,8 @@ class _TvDetailPageState extends State<TvDetailPage> {
     );
   }
 
-  Widget dataDetail(BuildContext context, TvDetail tvDetail) {
+  Widget dataDetail(
+      BuildContext context, TvDetailNotifier provider, TvDetail tvDetail) {
     return Stack(
       children: [
         Container(
@@ -107,14 +107,12 @@ class _TvDetailPageState extends State<TvDetailPage> {
                       backgroundColor:
                           MaterialStatePropertyAll(Colors.deepPurple)),
                   onPressed: () async {
-                    final notifier = Provider.of<MovieDetailNotifier>(context,
-                        listen: false);
-                    if (!_isAddedWatchlist) {
-                      await notifier
-                          .addWatchlist(tvDetail.convertToMovieDetail());
+                    final notifier =
+                        Provider.of<TvDetailNotifier>(context, listen: false);
+                    if (!provider.isAddedToWatchlist) {
+                      await notifier.addWatchlist(tvDetail);
                     } else {
-                      await notifier
-                          .removeFromWatchlist(tvDetail.convertToMovieDetail());
+                      await notifier.removeFromWatchlist(tvDetail);
                     }
 
                     final message = notifier.watchlistMessage;
@@ -135,7 +133,9 @@ class _TvDetailPageState extends State<TvDetailPage> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      _isAddedWatchlist ? Icon(Icons.check) : Icon(Icons.add),
+                      provider.isAddedToWatchlist
+                          ? Icon(Icons.check)
+                          : Icon(Icons.add),
                       Text('Watchlist'),
                     ],
                   ),

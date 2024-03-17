@@ -1,5 +1,3 @@
-import 'package:ditonton/domain/entities/movie_detail.dart';
-
 class TvDetail {
   bool adult;
   String backdropPath;
@@ -46,18 +44,4 @@ class TvDetail {
     required this.voteAverage,
     required this.voteCount,
   });
-
-  MovieDetail convertToMovieDetail() => MovieDetail(
-        adult: adult,
-        backdropPath: backdropPath,
-        id: id,
-        originalTitle: originalTitle,
-        overview: overview,
-        posterPath: posterPath,
-        releaseDate: releaseDate,
-        runtime: runtime,
-        title: title,
-        voteAverage: voteAverage,
-        voteCount: voteCount,
-      );
 }

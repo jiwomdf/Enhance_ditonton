@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/tv.dart';
+import 'package:ditonton/data/models/tv_table.dart';
 import 'package:ditonton/presentation/pages/detail_page/tv_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class TvCard extends StatelessWidget {
-  final TV tv;
+  final TvTable tv;
 
   TvCard(this.tv);
 
@@ -35,7 +35,7 @@ class TvCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      tv.name ?? '-',
+                      tv.title ?? '-',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: kHeading6,
