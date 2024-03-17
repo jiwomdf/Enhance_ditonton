@@ -6,6 +6,7 @@ import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/tv_sublist_page.dart';
+import 'package:ditonton/presentation/pages/tv_search_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_tv_page.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
@@ -184,7 +185,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               child: const Text('Tv Series'),
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+                Navigator.pushNamed(context, TvSearchPage.ROUTE_NAME);
               },
             ),
           ],
