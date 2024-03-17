@@ -77,14 +77,6 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
       ),
       appBar: AppBar(
         title: Text('Ditonton'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
-            },
-            icon: Icon(Icons.search),
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -152,6 +144,52 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        label: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 5),
+              child: Icon(Icons.search),
+            ),
+            Text('Search'),
+          ],
+        ),
+        onPressed: () {
+          _showMyDialog();
+        },
+      ),
+    );
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Search'),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[Text('Choose what you want to search')],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Movie'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+              },
+            ),
+            TextButton(
+              child: const Text('Tv Series'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
