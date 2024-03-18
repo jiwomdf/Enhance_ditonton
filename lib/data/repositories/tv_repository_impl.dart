@@ -94,7 +94,7 @@ class TvRepositoryImpl extends TvRepository {
   Future<Either<Failure, List<TV>>> searchTv(String query) async {
     try {
       final result = await remoteDataSource.searchTv(query);
-      return Right(result!.map((model) => model.toEntity()).toList());
+      return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {

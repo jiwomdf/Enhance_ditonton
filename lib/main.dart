@@ -48,8 +48,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.dark().copyWith(
           colorScheme: kColorScheme,
           primaryColor: kRichBlack,
-          scaffoldBackgroundColor: kRichBlack,
-          textTheme: kTextTheme,
+          scaffoldBackgroundColor: kRichBlack
         ),
         home: HomeMoviePage(),
         navigatorObservers: [routeObserver],
