@@ -60,8 +60,7 @@ void main() {
     expect(watchlistButtonIcon, findsOneWidget);
   });
 
-  /*TODO(jiwo): test
-   testWidgets(
+  testWidgets(
       'Watchlist button should display Snackbar when added to watchlist',
       (WidgetTester tester) async {
     when(mockNotifier.movieState).thenReturn(RequestState.Loaded);
@@ -82,7 +81,7 @@ void main() {
 
     expect(find.byType(SnackBar), findsOneWidget);
     expect(find.text('Added to Watchlist'), findsOneWidget);
-  }); */
+  });
 
   testWidgets(
       'Watchlist button should display AlertDialog when add to watchlist failed',

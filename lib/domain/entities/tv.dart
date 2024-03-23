@@ -1,5 +1,4 @@
 import 'package:ditonton/data/models/tv_table.dart';
-import 'package:equatable/equatable.dart';
 
 class TV {
   bool? adult;
