@@ -1,7 +1,7 @@
 import 'package:ditonton/data/models/tv_table.dart';
 import 'package:equatable/equatable.dart';
 
-class TV extends Equatable {
+class TV {
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
@@ -49,22 +49,4 @@ class TV extends Equatable {
       overview: overview,
     );
   }
-
-  @override
-  List<Object?> get props => [
-        adult,
-        backdropPath,
-        genreIds,
-        id,
-        originCountry,
-        originalLanguage,
-        originalName,
-        overview,
-        popularity,
-        posterPath,
-        firstAirDate,
-        name,
-        voteAverage,
-        voteCount,
-      ];
 }

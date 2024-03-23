@@ -83,7 +83,6 @@ void init() {
       getTvDetail: locator(),
       saveTvWatchlist: locator(),
       removeTvWatchlist: locator(),
-      getTvWatchList: locator(),
       isTvInWatchlist: locator(),
     ),
   );
