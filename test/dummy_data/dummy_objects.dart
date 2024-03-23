@@ -1,6 +1,9 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_table.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tv.dart';
+import 'package:ditonton/domain/entities/tv_detail.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -55,3 +58,51 @@ final testMovieMap = {
   'posterPath': 'posterPath',
   'title': 'title',
 };
+
+final testTv = TV(
+  adult: false,
+  backdropPath: "",
+  genreIds: [1],
+  id: 1,
+  originCountry: ["originCountry"],
+  originalLanguage: "originalLanguage",
+  originalName: "originalName",
+  overview: "overview",
+  popularity: 0.1,
+  posterPath: "posterPath",
+  firstAirDate: "firstAirDate",
+  name: "name",
+  voteAverage: 1.0,
+  voteCount: 1,
+);
+
+final testTvDetail = TvDetail(
+  adult: false,
+  backdropPath: "backdropPath",
+  belongsToCollection: "belongsToCollection",
+  budget: 1,
+  homepage: "homepage",
+  id: 1,
+  imdbId: "imdbId",
+  originalLanguage: "originalLanguage",
+  originalTitle: "originalTitle",
+  overview: "overview",
+  popularity: 1.0,
+  posterPath: "posterPath",
+  releaseDate: "releaseDate",
+  revenue: 1,
+  runtime: 1,
+  status: "status",
+  tagline: "tagline",
+  title: "title",
+  video: false,
+  voteAverage: 1.0,
+  voteCount: 1,
+);
+
+final testTvTable = TvTable(
+    id: 1,
+    title: "title",
+    posterPath: "posterPath",
+    overview: "overview",
+);

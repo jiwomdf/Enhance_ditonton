@@ -11,14 +11,12 @@ class TvDetailNotifier extends ChangeNotifier {
   final GetTvDetail getTvDetail;
   final SaveTvWatchlist saveTvWatchlist;
   final RemoveTvWatchlist removeTvWatchlist;
-  final GetWatchListTv getTvWatchList;
   final IsTvInWatchlist isTvInWatchlist;
 
   TvDetailNotifier({
     required this.getTvDetail,
     required this.saveTvWatchlist,
     required this.removeTvWatchlist,
-    required this.getTvWatchList,
     required this.isTvInWatchlist,
   });
 
