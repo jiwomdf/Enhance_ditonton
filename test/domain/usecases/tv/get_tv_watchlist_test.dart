@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ditonton/domain/usecases/tv/get_tv_watchlist.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+
 import '../../../dummy_data/dummy_objects.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
@@ -15,12 +16,12 @@ void main() {
   });
 
   test('should get WatchlistTv from the repository', () async {
-    var listTvTable = [testTvTable];
+    var listTestTv = [testTv];
 
     when(mockTvRepository.getWatchlistTv())
-        .thenAnswer((_) async => Right(listTvTable));
+        .thenAnswer((_) async => Right(listTestTv));
     final result = await usecase.execute();
 
-    expect(result, Right(listTvTable));
+    expect(result, Right(listTestTv));
   });
 }

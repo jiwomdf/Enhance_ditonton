@@ -101,8 +101,15 @@ final testTvDetail = TvDetail(
 );
 
 final testTvTable = TvTable(
-    id: 1,
-    title: "title",
-    posterPath: "posterPath",
-    overview: "overview",
+  id: 1,
+  title: "title",
+  posterPath: "posterPath",
+  overview: "overview",
 );
+
+final testTvMap = {
+  'id': 1,
+  'title': 'title',
+  'posterPath': 'posterPath',
+  'overview': 'overview',
+};

@@ -573,22 +573,21 @@ class MockTvRepository extends _i1.Mock implements _i18.TvRepository {
       ) as _i6.Future<_i2.Either<_i7.Failure, String>>);
 
   @override
-  _i6.Future<_i2.Either<_i7.Failure, List<_i17.TvTable>>> getWatchlistTv() =>
+  _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>> getWatchlistTv() =>
       (super.noSuchMethod(
         Invocation.method(
           #getWatchlistTv,
           [],
         ),
-        returnValue:
-            _i6.Future<_i2.Either<_i7.Failure, List<_i17.TvTable>>>.value(
-                _FakeEither_0<_i7.Failure, List<_i17.TvTable>>(
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>.value(
+            _FakeEither_0<_i7.Failure, List<_i19.TV>>(
           this,
           Invocation.method(
             #getWatchlistTv,
             [],
           ),
         )),
-      ) as _i6.Future<_i2.Either<_i7.Failure, List<_i17.TvTable>>>);
+      ) as _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>);
 
   @override
   _i6.Future<_i2.Either<_i7.Failure, bool>> isTvInWatchlist(int? id) =>
