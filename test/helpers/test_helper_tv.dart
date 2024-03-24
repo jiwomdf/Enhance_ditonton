@@ -11,7 +11,7 @@ import 'package:mockito/annotations.dart';
   GetTvDetail,
   SaveTvWatchlist,
   RemoveTvWatchlist,
-  GetWatchListTv,
+  GetTvWatchList,
   IsTvInWatchlist,
 ])
 void main() {}

@@ -55,10 +55,22 @@ class TvRepositoryImpl extends TvRepository {
   }
 
   @override
-  Future<Either<Failure, List<TvTable>>> getWatchlistTv() async {
+  Future<Either<Failure, List<TV>>> getWatchlistTv() async {
     try {
       final result = await localDataSource.getWatchlistTv();
-      return Right(result);
+      List<TV> resultMap = [];
+
+      result.forEach((e) {
+        final map = TV.watchlist(
+          id: e.id,
+          overview: e.overview ?? '',
+          posterPath: e.posterPath ?? '',
+          name: e.title ?? '',
+        );
+        resultMap.add(map);
+      });
+
+      return Right(resultMap);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {

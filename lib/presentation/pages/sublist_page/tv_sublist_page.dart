@@ -37,7 +37,7 @@ class _TvSublistPageState extends State<TvSublistPage> {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   final tv = data.tv[index];
-                  return TvCard(tv.mapToTvTable());
+                  return TvCard(tv);
                 },
                 itemCount: data.tv.length,
               );
