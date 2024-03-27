@@ -13,14 +13,14 @@ void main() {
   late MockGetTvDetail mockGetTvDetail;
   late MockSaveTvWatchlist mockSaveTvWatchlist;
   late MockRemoveTvWatchlist mockRemoveTvWatchlist;
-  late MockGetWatchListTv mockGetWatchListTv;
+  late MockGetTvWatchList mockGetTvWatchList;
   late MockIsTvInWatchlist mockIsTvInWatchlist;
 
   setUp(() {
     mockGetTvDetail = MockGetTvDetail();
     mockSaveTvWatchlist = MockSaveTvWatchlist();
     mockRemoveTvWatchlist = MockRemoveTvWatchlist();
-    mockGetWatchListTv = MockGetWatchListTv();
+    mockGetTvWatchList = MockGetTvWatchList();
     mockIsTvInWatchlist = MockIsTvInWatchlist();
     provider = TvDetailNotifier(
       getTvDetail: mockGetTvDetail,
@@ -37,8 +37,8 @@ void main() {
         .thenAnswer((_) async => Right("Success"));
     when(mockRemoveTvWatchlist.execute(1))
         .thenAnswer((_) async => Right("Success"));
-    when(mockGetWatchListTv.execute())
-        .thenAnswer((_) async => Right([testTvTable]));
+    when(mockGetTvWatchList.execute())
+        .thenAnswer((_) async => Right([testTv]));
     when(mockIsTvInWatchlist.execute(1))
         .thenAnswer((_) async => Right(true));
   }
