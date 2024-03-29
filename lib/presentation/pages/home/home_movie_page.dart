@@ -127,7 +127,37 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 }
               }),
               _buildSubHeading(
-                title: 'TV Series',
+                title: 'TV Series Popular',
+                onTap: () =>
+                    Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
+              ),
+              Consumer<MovieListNotifier>(builder: (context, data, child) {
+                final state = data.tvListState;
+                if (state == RequestState.Loading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state == RequestState.Loaded) {
+                  return TvListWidget(data.tvList);
+                } else {
+                  return Text('Failed');
+                }
+              }),
+              _buildSubHeading(
+                title: 'TV Series Top Rated',
+                onTap: () =>
+                    Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
+              ),
+              Consumer<MovieListNotifier>(builder: (context, data, child) {
+                final state = data.tvListState;
+                if (state == RequestState.Loading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state == RequestState.Loaded) {
+                  return TvListWidget(data.tvList);
+                } else {
+                  return Text('Failed');
+                }
+              }),
+              _buildSubHeading(
+                title: 'TV Airing Today',
                 onTap: () =>
                     Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
               ),

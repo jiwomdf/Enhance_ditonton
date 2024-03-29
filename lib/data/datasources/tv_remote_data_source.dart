@@ -14,7 +14,7 @@ abstract class TvRemoteDataSource {
   Future<List<TvModel>> getTvList();
   Future<TvDetailModel> getTvDetail(int id);
   Future<List<TvSearchResult>> searchTv(String query);
-  Future<List<TvSeriesPopularResult>> getPopularTv();
+  Future<List<TvSeriesPopularResult>> getTvPopular();
   Future<List<TvTopRatedModelResult>> getTvTopRated();
   Future<List<TvAiringTodayModelResult>> getTvAiringToday();
 }
@@ -65,7 +65,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
   }
 
   @override
-  Future<List<TvSeriesPopularResult>> getPopularTv() async {
+  Future<List<TvSeriesPopularResult>> getTvPopular() async {
     final response =
         await client.get(Uri.parse('$BASE_URL/search/tv/popular?$API_KEY'));
 

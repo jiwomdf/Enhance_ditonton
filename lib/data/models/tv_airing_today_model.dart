@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:ditonton/domain/entities/tv_airing_today.dart';
+
 class TvAiringTodayModel {
   final int? page;
   final List<TvAiringTodayModelResult>? tvAiringTodayModelResult;
@@ -51,7 +53,7 @@ class TvAiringTodayModelResult {
   final String? overview;
   final double? popularity;
   final String? posterPath;
-  final DateTime? firstAirDate;
+  final String? firstAirDate;
   final String? name;
   final double? voteAverage;
   final int? voteCount;
@@ -94,9 +96,7 @@ class TvAiringTodayModelResult {
         overview: json["overview"],
         popularity: json["popularity"]?.toDouble(),
         posterPath: json["poster_path"],
-        firstAirDate: json["first_air_date"] == null
-            ? null
-            : DateTime.parse(json["first_air_date"]),
+        firstAirDate: json["first_air_date"],
         name: json["name"],
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
@@ -116,10 +116,28 @@ class TvAiringTodayModelResult {
         "overview": overview,
         "popularity": popularity,
         "poster_path": posterPath,
-        "first_air_date":
-            "${firstAirDate!.year.toString().padLeft(4, '0')}-${firstAirDate!.month.toString().padLeft(2, '0')}-${firstAirDate!.day.toString().padLeft(2, '0')}",
+        "first_air_date": firstAirDate,
         "name": name,
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
+
+  TvAiringToday toEntity() {
+    return TvAiringToday(
+      adult: adult ?? false,
+      backdropPath: backdropPath ?? "",
+      genreIds: genreIds ?? [],
+      id: id ?? 0,
+      originCountry: originCountry ?? [],
+      originalLanguage: originalLanguage ?? "",
+      originalName: originalName ?? "",
+      overview: overview ?? "",
+      popularity: popularity ?? 0,
+      posterPath: posterPath ?? "",
+      firstAirDate: firstAirDate ?? "",
+      name: name ?? "",
+      voteAverage: voteAverage ?? 0.0,
+      voteCount: voteCount ?? 0,
+    );
+  }
 }

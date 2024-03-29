@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:ditonton/domain/entities/tv_top_rated.dart';
+
 class TvTopRatedModel {
   final int? page;
   final List<TvTopRatedModelResult>? tvTopRatedModelResult;
@@ -45,12 +47,12 @@ class TvTopRatedModelResult {
   final List<int>? genreIds;
   final int? id;
   final List<String>? originCountry;
-  final OriginalLanguage? originalLanguage;
+  final String? originalLanguage;
   final String? originalName;
   final String? overview;
   final double? popularity;
   final String? posterPath;
-  final DateTime? firstAirDate;
+  final String? firstAirDate;
   final String? name;
   final double? voteAverage;
   final int? voteCount;
@@ -88,15 +90,12 @@ class TvTopRatedModelResult {
         originCountry: json["origin_country"] == null
             ? []
             : List<String>.from(json["origin_country"]!.map((x) => x)),
-        originalLanguage:
-            originalLanguageValues.map[json["original_language"]]!,
+        originalLanguage: json["original_language"],
         originalName: json["original_name"],
         overview: json["overview"],
         popularity: json["popularity"]?.toDouble(),
         posterPath: json["poster_path"],
-        firstAirDate: json["first_air_date"] == null
-            ? null
-            : DateTime.parse(json["first_air_date"]),
+        firstAirDate: json["first_air_date"],
         name: json["name"],
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
@@ -111,26 +110,36 @@ class TvTopRatedModelResult {
         "origin_country": originCountry == null
             ? []
             : List<dynamic>.from(originCountry!.map((x) => x)),
-        "original_language": originalLanguageValues.reverse[originalLanguage],
+        "original_language": originalLanguage,
         "original_name": originalName,
         "overview": overview,
         "popularity": popularity,
         "poster_path": posterPath,
-        "first_air_date":
-            "${firstAirDate!.year.toString().padLeft(4, '0')}-${firstAirDate!.month.toString().padLeft(2, '0')}-${firstAirDate!.day.toString().padLeft(2, '0')}",
+        "first_air_date": firstAirDate,
         "name": name,
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
+
+  TvTopRated toEntity() {
+    return TvTopRated(
+      adult: adult ?? false,
+      backdropPath: backdropPath ?? "",
+      genreIds: genreIds ?? [],
+      id: id ?? 0,
+      originCountry: originCountry ?? [],
+      originalLanguage: originalLanguage ?? "",
+      originalName: originalName ?? "",
+      overview: overview ?? "",
+      popularity: popularity ?? 0,
+      posterPath: posterPath ?? "",
+      firstAirDate: firstAirDate ?? "",
+      name: name ?? "",
+      voteAverage: voteAverage ?? 0.0,
+      voteCount: voteCount ?? 0,
+    );
+  }
 }
-
-enum OriginalLanguage { EN, JA, KO }
-
-final originalLanguageValues = EnumValues({
-  "en": OriginalLanguage.EN,
-  "ja": OriginalLanguage.JA,
-  "ko": OriginalLanguage.KO
-});
 
 class EnumValues<T> {
   Map<String, T> map;

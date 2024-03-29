@@ -7,7 +7,10 @@ import 'package:ditonton/data/datasources/tv_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_table.dart';
 import 'package:ditonton/domain/entities/tv.dart';
+import 'package:ditonton/domain/entities/tv_airing_today.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
+import 'package:ditonton/domain/entities/tv_popular.dart';
+import 'package:ditonton/domain/entities/tv_top_rated.dart';
 import 'package:ditonton/domain/repositories/tv_repository.dart';
 
 class TvRepositoryImpl extends TvRepository {
@@ -107,6 +110,45 @@ class TvRepositoryImpl extends TvRepository {
     try {
       final result = await remoteDataSource.searchTv(query);
       return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TvPopular>>> getTvListPopular() async {
+    try {
+      final result = await remoteDataSource.getTvPopular();
+      List<TvPopular> listModel = [];
+      result.map((model) => listModel.add(model.toEntity()));
+      return Right(listModel);
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TvTopRated>>> getTvListTopRated() async {
+    try {
+      final result = await remoteDataSource.getTvTopRated();
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TvAiringToday>>> getTvListAiringToday() async {
+    try {
+      final result = await remoteDataSource.getTvAiringToday();
+      final listResult = result.map((model) => model.toEntity()).toList();
+      return Right(listResult);
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
