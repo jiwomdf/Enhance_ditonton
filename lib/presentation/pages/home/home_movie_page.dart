@@ -1,7 +1,7 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
-import 'package:ditonton/presentation/pages/home/tv_list_widget.dart';
+import 'package:ditonton/presentation/pages/home/tv_list_popular_widget.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
@@ -129,6 +129,17 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   return Text('Failed');
                 }
               }),
+              Text('Now Playing on TV', style: kHeading6),
+              Consumer<MovieListNotifier>(builder: (context, data, child) {
+                final state = data.tvAiringTodayState;
+                if (state == RequestState.Loading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state == RequestState.Loaded) {
+                  return TVList(data.tvAiringToday);
+                } else {
+                  return Text('Failed');
+                }
+              }),
               _buildSubHeading(
                 title: 'TV Series Popular',
                 onTap: () =>
@@ -139,7 +150,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 if (state == RequestState.Loading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state == RequestState.Loaded) {
-                  return TvListWidget(data.tvPopular);
+                  return TVList(data.tvPopular);
                 } else {
                   return Text('Failed');
                 }
@@ -154,22 +165,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 if (state == RequestState.Loading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state == RequestState.Loaded) {
-                  return TvListWidget(data.tvTopRated);
-                } else {
-                  return Text('Failed');
-                }
-              }),
-              _buildSubHeading(
-                title: 'TV Airing Today',
-                onTap: () =>
-                    Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
-              ),
-              Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.tvAiringTodayState;
-                if (state == RequestState.Loading) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (state == RequestState.Loaded) {
-                  return TvListWidget(data.tvAiringToday);
+                  return TVList(data.tvTopRated);
                 } else {
                   return Text('Failed');
                 }
