@@ -4,8 +4,9 @@ import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home/tv_list_popular_widget.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
+import 'package:ditonton/presentation/pages/sublist_page/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
-import 'package:ditonton/presentation/pages/sublist_page/tv_sublist_page.dart';
+import 'package:ditonton/presentation/pages/sublist_page/top_rated_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv_search_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_tv_page.dart';
@@ -143,7 +144,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               _buildSubHeading(
                 title: 'TV Series Popular',
                 onTap: () =>
-                    Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, PopularTvPage.ROUTE_NAME),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.tvPopularState;
@@ -158,7 +159,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               _buildSubHeading(
                 title: 'TV Series Top Rated',
                 onTap: () =>
-                    Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, TopRatedTVPage.ROUTE_NAME),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.tvTopRatedState;

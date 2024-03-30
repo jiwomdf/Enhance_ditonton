@@ -6,7 +6,9 @@ import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/popular_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/top_rated_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_search_notifier.dart';
@@ -41,15 +43,16 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (_) => di.locator<WatchlistTvNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>())
+        ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<PopularTvNotifier>())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData.dark().copyWith(
-          colorScheme: kColorScheme,
-          primaryColor: kRichBlack,
-          scaffoldBackgroundColor: kRichBlack
-        ),
+            colorScheme: kColorScheme,
+            primaryColor: kRichBlack,
+            scaffoldBackgroundColor: kRichBlack),
         home: HomeMoviePage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
