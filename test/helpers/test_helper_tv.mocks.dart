@@ -363,7 +363,7 @@ class MockGetTvWatchList extends _i1.Mock implements _i12.GetTvWatchList {
       ) as _i5.Future<_i2.Either<_i6.Failure, List<_i7.TV>>>);
 }
 
-/// A class which mocks [IsTvInWatchlist].
+/// A class which mocks [isTvInWatchlist].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockIsTvInWatchlist extends _i1.Mock implements _i13.IsTvInWatchlist {
@@ -525,7 +525,7 @@ class MockTvLocalDataSource extends _i1.Mock implements _i20.TvLocalDataSource {
       ) as _i5.Future<List<_i21.TvTable>>);
 
   @override
-  _i5.Future<bool> IsTvInWatchlist(int? id) => (super.noSuchMethod(
+  _i5.Future<bool> isTvInWatchlist(int? id) => (super.noSuchMethod(
         Invocation.method(
           #IsTvInWatchlist,
           [id],

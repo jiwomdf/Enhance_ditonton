@@ -15,7 +15,7 @@ void main() {
     dataSource = TvLocalDataSourceImpl(databaseHelper: mockDatabaseHelper);
   });
 
-  group('save watchlist', () {
+  group('save watchlist Tv', () {
     test('should return success message when insert to database is success',
         () async {
       when(mockDatabaseHelper.insertWatchlistTv(testTvTable))
@@ -33,7 +33,7 @@ void main() {
     });
   });
 
-  group('remove watchlist', () {
+  group('remove watchlist Tv', () {
     test('should return success message when remove from database is success',
         () async {
       when(mockDatabaseHelper.removeWatchlistTv(1)).thenAnswer((_) async => 1);
@@ -49,9 +49,9 @@ void main() {
     });
   });
 
-  group('Get Movie Detail By Id', () {
+  group('Get Tv Detail By Id', () {
     final tId = 1;
-    test('should return Movie Detail Table when data is found', () async {
+    test('should return Tv Detail Table when data is found', () async {
       when(mockDatabaseHelper.getWatchlistTvById(tId))
           .thenAnswer((_) async => testMovieMap);
       final result = await dataSource.getTvById(tId);
@@ -66,12 +66,21 @@ void main() {
     });
   });
 
-  group('get watchlist movies', () {
-    test('should return list of MovieTable from database', () async {
+  group('get getWatchlistTv', () {
+    test('should return list of TvTable from database', () async {
       when(mockDatabaseHelper.getWatchlistTv())
           .thenAnswer((_) async => [testTvMap]);
       final result = await dataSource.getWatchlistTv();
       expect(result, [testTvTable]);
+    });
+  });
+
+  group('get IsTvInWatchlist', () {
+    test('should return list of MovieTable from database', () async {
+      when(mockDatabaseHelper.getWatchlistTvById(1))
+          .thenAnswer((_) async => testTvMap);
+      final result = await dataSource.isTvInWatchlist(1);
+      expect(result, true);
     });
   });
 }

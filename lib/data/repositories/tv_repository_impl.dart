@@ -93,7 +93,7 @@ class TvRepositoryImpl extends TvRepository {
   @override
   Future<Either<Failure, bool>> isTvInWatchlist(int id) async {
     try {
-      final result = await localDataSource.IsTvInWatchlist(id);
+      final result = await localDataSource.isTvInWatchlist(id);
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));

@@ -7,7 +7,7 @@ abstract class TvLocalDataSource {
   Future<String> removeWatchlistTv(int id);
   Future<TvTable?> getTvById(int id);
   Future<List<TvTable>> getWatchlistTv();
-  Future<bool> IsTvInWatchlist(int id);
+  Future<bool> isTvInWatchlist(int id);
 }
 
 class TvLocalDataSourceImpl implements TvLocalDataSource {
@@ -52,7 +52,7 @@ class TvLocalDataSourceImpl implements TvLocalDataSource {
   }
 
   @override
-  Future<bool> IsTvInWatchlist(int id) async {
+  Future<bool> isTvInWatchlist(int id) async {
     final result = await databaseHelper.getWatchlistTvById(id);
     return result?.isNotEmpty == true;
   }
