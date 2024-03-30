@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ditonton/domain/entities/tv_popular.dart';
+import 'package:ditonton/domain/entities/tv.dart';
 
 class TvSeriesPopularModel {
   final int? page;
@@ -121,8 +121,8 @@ class TvSeriesPopularResult {
         "vote_count": voteCount,
       };
 
-  TvPopular toEntity() {
-    return TvPopular(
+  TV toEntity() {
+    return TV(
       adult: adult ?? false,
       backdropPath: backdropPath ?? "",
       genreIds: genreIds ?? [],

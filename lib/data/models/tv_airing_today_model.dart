@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ditonton/domain/entities/tv_airing_today.dart';
+import 'package:ditonton/domain/entities/tv.dart';
 
 class TvAiringTodayModel {
   final int? page;
@@ -122,8 +122,8 @@ class TvAiringTodayModelResult {
         "vote_count": voteCount,
       };
 
-  TvAiringToday toEntity() {
-    return TvAiringToday(
+  TV toEntity() {
+    return TV(
       adult: adult ?? false,
       backdropPath: backdropPath ?? "",
       genreIds: genreIds ?? [],

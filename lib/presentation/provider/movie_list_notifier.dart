@@ -1,9 +1,6 @@
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/tv.dart';
-import 'package:ditonton/domain/entities/tv_airing_today.dart';
-import 'package:ditonton/domain/entities/tv_popular.dart';
-import 'package:ditonton/domain/entities/tv_top_rated.dart';
 import 'package:ditonton/domain/usecases/movie/get_now_playing_movies.dart';
 import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart';
 import 'package:ditonton/domain/usecases/movie/get_top_rated_movies.dart';
@@ -37,20 +34,20 @@ class MovieListNotifier extends ChangeNotifier {
   RequestState _tvListState = RequestState.Empty;
   RequestState get tvListState => _tvListState;
 
-  var _tvPopular = <TvPopular>[];
-  List<TvPopular> get tvPopular => _tvPopular;
+  var _tvPopular = <TV>[];
+  List<TV> get tvPopular => _tvPopular;
 
   RequestState _tvPopularState = RequestState.Empty;
   RequestState get tvPopularState => _tvPopularState;
 
-  var _tvTopRated = <TvTopRated>[];
-  List<TvTopRated> get tvTopRated => _tvTopRated;
+  var _tvTopRated = <TV>[];
+  List<TV> get tvTopRated => _tvTopRated;
 
   RequestState _tvTopRatedState = RequestState.Empty;
   RequestState get tvTopRatedState => _tvTopRatedState;
 
-  var _tvAiringToday = <TvAiringToday>[];
-  List<TvAiringToday> get tvAiringToday => _tvAiringToday;
+  var _tvAiringToday = <TV>[];
+  List<TV> get tvAiringToday => _tvAiringToday;
 
   RequestState _tvAiringTodayState = RequestState.Empty;
   RequestState get tvAiringTodayState => _tvAiringTodayState;

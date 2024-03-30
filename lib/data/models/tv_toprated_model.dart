@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ditonton/domain/entities/tv_top_rated.dart';
+import 'package:ditonton/domain/entities/tv.dart';
 
 class TvTopRatedModel {
   final int? page;
@@ -121,8 +121,8 @@ class TvTopRatedModelResult {
         "vote_count": voteCount,
       };
 
-  TvTopRated toEntity() {
-    return TvTopRated(
+  TV toEntity() {
+    return TV(
       adult: adult ?? false,
       backdropPath: backdropPath ?? "",
       genreIds: genreIds ?? [],
