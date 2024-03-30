@@ -622,6 +622,57 @@ class MockTvRepository extends _i1.Mock implements _i18.TvRepository {
           ),
         )),
       ) as _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>> getTvListPopular() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getTvListPopular,
+          [],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>.value(
+            _FakeEither_0<_i7.Failure, List<_i19.TV>>(
+          this,
+          Invocation.method(
+            #getTvListPopular,
+            [],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>> getTvListTopRated() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getTvListTopRated,
+          [],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>.value(
+            _FakeEither_0<_i7.Failure, List<_i19.TV>>(
+          this,
+          Invocation.method(
+            #getTvListTopRated,
+            [],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>> getTvListAiringToday() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getTvListAiringToday,
+          [],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>.value(
+            _FakeEither_0<_i7.Failure, List<_i19.TV>>(
+          this,
+          Invocation.method(
+            #getTvListAiringToday,
+            [],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, List<_i19.TV>>>);
 }
 
 /// A class which mocks [Client].

@@ -1,26 +1,36 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/usecases/movie/get_now_playing_movies.dart';
 import 'package:ditonton/common/failure.dart';
+import 'package:ditonton/common/state_enum.dart';
+import 'package:ditonton/domain/usecases/movie/get_now_playing_movies.dart';
 import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart';
 import 'package:ditonton/domain/usecases/movie/get_top_rated_movies.dart';
-import 'package:ditonton/domain/usecases/tv/get_tv_list.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_airing_today.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_popular.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_toprated.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
-import 'package:ditonton/common/state_enum.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import '../../dummy_data/dummy_objects.dart';
 import 'movie_list_notifier_test.mocks.dart';
 
-@GenerateMocks(
-    [GetNowPlayingMovies, GetPopularMovies, GetTopRatedMovies, GetTvList])
+@GenerateMocks([
+  GetNowPlayingMovies,
+  GetPopularMovies,
+  GetTopRatedMovies,
+  GetTvPopular,
+  GetTvTopRated,
+  GetTvAiringToday
+])
 void main() {
   late MovieListNotifier provider;
   late MockGetNowPlayingMovies mockGetNowPlayingMovies;
   late MockGetPopularMovies mockGetPopularMovies;
   late MockGetTopRatedMovies mockGetTopRatedMovies;
-  late MockGetTvList mockGetTvList;
+  late MockGetTvPopular mockGetTvPopular;
+  late MockGetTvTopRated mockGetTvTopRated;
+  late MockGetTvAiringToday mockGetTvAiringToday;
   late int listenerCallCount;
 
   setUp(() {
@@ -28,33 +38,21 @@ void main() {
     mockGetNowPlayingMovies = MockGetNowPlayingMovies();
     mockGetPopularMovies = MockGetPopularMovies();
     mockGetTopRatedMovies = MockGetTopRatedMovies();
-    mockGetTvList = MockGetTvList();
+    mockGetTvPopular = MockGetTvPopular();
+    mockGetTvTopRated = MockGetTvTopRated();
+    mockGetTvAiringToday = MockGetTvAiringToday();
+
     provider = MovieListNotifier(
-      getNowPlayingMovies: mockGetNowPlayingMovies,
-      getPopularMovies: mockGetPopularMovies,
-      getTopRatedMovies: mockGetTopRatedMovies,
-      getTvPopular: mockGetTvList,
-    )..addListener(() {
+        getNowPlayingMovies: mockGetNowPlayingMovies,
+        getPopularMovies: mockGetPopularMovies,
+        getTopRatedMovies: mockGetTopRatedMovies,
+        getTvPopular: mockGetTvPopular,
+        getTvTopRated: mockGetTvTopRated,
+        getTvAiringToday: mockGetTvAiringToday)
+      ..addListener(() {
         listenerCallCount += 1;
       });
   });
-
-  final tMovie = Movie(
-    adult: false,
-    backdropPath: 'backdropPath',
-    genreIds: [1, 2, 3],
-    id: 1,
-    originalTitle: 'originalTitle',
-    overview: 'overview',
-    popularity: 1,
-    posterPath: 'posterPath',
-    releaseDate: 'releaseDate',
-    title: 'title',
-    video: false,
-    voteAverage: 1,
-    voteCount: 1,
-  );
-  final tMovieList = <Movie>[tMovie];
 
   group('now playing movies', () {
     test('initialState should be Empty', () {
@@ -64,7 +62,7 @@ void main() {
     test('should get data from the usecase', () async {
       // arrange
       when(mockGetNowPlayingMovies.execute())
-          .thenAnswer((_) async => Right(tMovieList));
+          .thenAnswer((_) async => Right(testMovieList));
       // act
       provider.fetchNowPlayingMovies();
       // assert
@@ -74,7 +72,7 @@ void main() {
     test('should change state to Loading when usecase is called', () {
       // arrange
       when(mockGetNowPlayingMovies.execute())
-          .thenAnswer((_) async => Right(tMovieList));
+          .thenAnswer((_) async => Right(testMovieList));
       // act
       provider.fetchNowPlayingMovies();
       // assert
@@ -84,12 +82,12 @@ void main() {
     test('should change movies when data is gotten successfully', () async {
       // arrange
       when(mockGetNowPlayingMovies.execute())
-          .thenAnswer((_) async => Right(tMovieList));
+          .thenAnswer((_) async => Right(testMovieList));
       // act
       await provider.fetchNowPlayingMovies();
       // assert
       expect(provider.nowPlayingState, RequestState.Loaded);
-      expect(provider.nowPlayingMovies, tMovieList);
+      expect(provider.nowPlayingMovies, testMovieList);
       expect(listenerCallCount, 2);
     });
 
@@ -110,7 +108,7 @@ void main() {
     test('should change state to loading when usecase is called', () async {
       // arrange
       when(mockGetPopularMovies.execute())
-          .thenAnswer((_) async => Right(tMovieList));
+          .thenAnswer((_) async => Right(testMovieList));
       // act
       provider.fetchPopularMovies();
       // assert
@@ -122,12 +120,12 @@ void main() {
         () async {
       // arrange
       when(mockGetPopularMovies.execute())
-          .thenAnswer((_) async => Right(tMovieList));
+          .thenAnswer((_) async => Right(testMovieList));
       // act
       await provider.fetchPopularMovies();
       // assert
       expect(provider.popularMoviesState, RequestState.Loaded);
-      expect(provider.popularMovies, tMovieList);
+      expect(provider.popularMovies, testMovieList);
       expect(listenerCallCount, 2);
     });
 
@@ -148,7 +146,7 @@ void main() {
     test('should change state to loading when usecase is called', () async {
       // arrange
       when(mockGetTopRatedMovies.execute())
-          .thenAnswer((_) async => Right(tMovieList));
+          .thenAnswer((_) async => Right(testMovieList));
       // act
       provider.fetchTopRatedMovies();
       // assert
@@ -159,12 +157,12 @@ void main() {
         () async {
       // arrange
       when(mockGetTopRatedMovies.execute())
-          .thenAnswer((_) async => Right(tMovieList));
+          .thenAnswer((_) async => Right(testMovieList));
       // act
       await provider.fetchTopRatedMovies();
       // assert
       expect(provider.topRatedMoviesState, RequestState.Loaded);
-      expect(provider.topRatedMovies, tMovieList);
+      expect(provider.topRatedMovies, testMovieList);
       expect(listenerCallCount, 2);
     });
 
