@@ -1,10 +1,15 @@
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/tv.dart';
+import 'package:ditonton/domain/entities/tv_airing_today.dart';
+import 'package:ditonton/domain/entities/tv_popular.dart';
+import 'package:ditonton/domain/entities/tv_top_rated.dart';
 import 'package:ditonton/domain/usecases/movie/get_now_playing_movies.dart';
 import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart';
 import 'package:ditonton/domain/usecases/movie/get_top_rated_movies.dart';
-import 'package:ditonton/domain/usecases/tv/get_tv_list.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_airing_today.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_popular.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_toprated.dart';
 import 'package:flutter/material.dart';
 
 class MovieListNotifier extends ChangeNotifier {
@@ -32,19 +37,42 @@ class MovieListNotifier extends ChangeNotifier {
   RequestState _tvListState = RequestState.Empty;
   RequestState get tvListState => _tvListState;
 
+  var _tvPopular = <TvPopular>[];
+  List<TvPopular> get tvPopular => _tvPopular;
+
+  RequestState _tvPopularState = RequestState.Empty;
+  RequestState get tvPopularState => _tvPopularState;
+
+  var _tvTopRated = <TvTopRated>[];
+  List<TvTopRated> get tvTopRated => _tvTopRated;
+
+  RequestState _tvTopRatedState = RequestState.Empty;
+  RequestState get tvTopRatedState => _tvTopRatedState;
+
+  var _tvAiringToday = <TvAiringToday>[];
+  List<TvAiringToday> get tvAiringToday => _tvAiringToday;
+
+  RequestState _tvAiringTodayState = RequestState.Empty;
+  RequestState get tvAiringTodayState => _tvAiringTodayState;
+
   String _message = '';
   String get message => _message;
 
-  MovieListNotifier(
-      {required this.getNowPlayingMovies,
-      required this.getPopularMovies,
-      required this.getTopRatedMovies,
-      required this.getTvList});
+  MovieListNotifier({
+    required this.getNowPlayingMovies,
+    required this.getPopularMovies,
+    required this.getTopRatedMovies,
+    required this.getTvPopular,
+    required this.getTvTopRated,
+    required this.getTvAiringToday,
+  });
 
   final GetNowPlayingMovies getNowPlayingMovies;
   final GetPopularMovies getPopularMovies;
   final GetTopRatedMovies getTopRatedMovies;
-  final GetTvList getTvList;
+  final GetTvPopular getTvPopular;
+  final GetTvTopRated getTvTopRated;
+  final GetTvAiringToday getTvAiringToday;
 
   Future<void> fetchNowPlayingMovies() async {
     _nowPlayingState = RequestState.Loading;
@@ -103,20 +131,58 @@ class MovieListNotifier extends ChangeNotifier {
     );
   }
 
-  Future<void> fetchTvList() async {
-    _tvListState = RequestState.Loading;
+  Future<void> fetchTvPopular() async {
+    _tvPopularState = RequestState.Loading;
     notifyListeners();
 
-    final result = await getTvList.execute();
+    final result = await getTvPopular.execute();
     result.fold(
       (failure) {
-        _tvListState = RequestState.Error;
+        _tvPopularState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-      (moviesData) {
-        _tvListState = RequestState.Loaded;
-        _tvList = moviesData;
+      (data) {
+        _tvPopularState = RequestState.Loaded;
+        _tvPopular = data;
+        notifyListeners();
+      },
+    );
+  }
+
+  Future<void> fetchTvTopRated() async {
+    _tvTopRatedState = RequestState.Loading;
+    notifyListeners();
+
+    final result = await getTvTopRated.execute();
+    result.fold(
+      (failure) {
+        _tvTopRatedState = RequestState.Error;
+        _message = failure.message;
+        notifyListeners();
+      },
+      (data) {
+        _tvTopRatedState = RequestState.Loaded;
+        _tvTopRated = data;
+        notifyListeners();
+      },
+    );
+  }
+
+  Future<void> fetchTvAiringToday() async {
+    _tvAiringTodayState = RequestState.Loading;
+    notifyListeners();
+
+    final result = await getTvAiringToday.execute();
+    result.fold(
+      (failure) {
+        _tvAiringTodayState = RequestState.Error;
+        _message = failure.message;
+        notifyListeners();
+      },
+      (data) {
+        _tvAiringTodayState = RequestState.Loaded;
+        _tvAiringToday = data;
         notifyListeners();
       },
     );

@@ -33,7 +33,7 @@ void main() {
       getNowPlayingMovies: mockGetNowPlayingMovies,
       getPopularMovies: mockGetPopularMovies,
       getTopRatedMovies: mockGetTopRatedMovies,
-      getTvList: mockGetTvList,
+      getTvPopular: mockGetTvList,
     )..addListener(() {
         listenerCallCount += 1;
       });

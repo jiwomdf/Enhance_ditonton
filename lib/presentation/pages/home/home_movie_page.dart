@@ -25,11 +25,14 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
   void initState() {
     super.initState();
     Future.microtask(
-        () => Provider.of<MovieListNotifier>(context, listen: false)
-          ..fetchNowPlayingMovies()
-          ..fetchPopularMovies()
-          ..fetchTopRatedMovies()
-          ..fetchTvList());
+      () => Provider.of<MovieListNotifier>(context, listen: false)
+        ..fetchNowPlayingMovies()
+        ..fetchPopularMovies()
+        ..fetchTopRatedMovies()
+        ..fetchTvPopular()
+        ..fetchTvTopRated()
+        ..fetchTvAiringToday(),
+    );
   }
 
   @override
@@ -132,11 +135,11 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                     Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.tvListState;
+                final state = data.tvPopularState;
                 if (state == RequestState.Loading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state == RequestState.Loaded) {
-                  return TvListWidget(data.tvList);
+                  return TvListWidget(data.tvPopular);
                 } else {
                   return Text('Failed');
                 }
@@ -147,11 +150,11 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                     Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.tvListState;
+                final state = data.tvTopRatedState;
                 if (state == RequestState.Loading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state == RequestState.Loaded) {
-                  return TvListWidget(data.tvList);
+                  return TvListWidget(data.tvTopRated);
                 } else {
                   return Text('Failed');
                 }
@@ -162,11 +165,11 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                     Navigator.pushNamed(context, TvSublistPage.ROUTE_NAME),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.tvListState;
+                final state = data.tvAiringTodayState;
                 if (state == RequestState.Loading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state == RequestState.Loaded) {
-                  return TvListWidget(data.tvList);
+                  return TvListWidget(data.tvAiringToday);
                 } else {
                   return Text('Failed');
                 }

@@ -1,18 +1,18 @@
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv.dart';
-import 'package:ditonton/domain/usecases/tv/get_tv_list.dart';
+import 'package:ditonton/domain/entities/tv_popular.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_popular.dart';
 import 'package:flutter/foundation.dart';
 
 class TvNotifier extends ChangeNotifier {
-  final GetTvList getTvList;
+  final GetTvPopular getTvPopular;
 
-  TvNotifier({required this.getTvList});
+  TvNotifier({required this.getTvPopular});
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;
 
-  List<TV> _tv = [];
-  List<TV> get tv => _tv;
+  List<TvPopular> _tv = [];
+  List<TvPopular> get tv => _tv;
 
   String _message = '';
   String get message => _message;
@@ -21,7 +21,7 @@ class TvNotifier extends ChangeNotifier {
     _state = RequestState.Loading;
     notifyListeners();
 
-    final result = await getTvList.execute();
+    final result = await getTvPopular.execute();
 
     result.fold(
       (failure) {

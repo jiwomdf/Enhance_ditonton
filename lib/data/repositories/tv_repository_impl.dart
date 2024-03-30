@@ -122,7 +122,7 @@ class TvRepositoryImpl extends TvRepository {
     try {
       final result = await remoteDataSource.getTvPopular();
       List<TvPopular> listModel = [];
-      result.map((model) => listModel.add(model.toEntity()));
+      result.forEach((model) => listModel.add(model.toEntity()));
       return Right(listModel);
     } on ServerException {
       return Left(ServerFailure(''));
