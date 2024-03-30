@@ -141,6 +141,17 @@ class _TvDetailPageState extends State<TvDetailPage> {
                   ),
                 ),
               ]),
+              SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Text('Rating', style: titleLarge),
+              ),
+              Text(tvDetail.voteAverage.toString()),
+              SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Text('Runtime', style: titleLarge),
+              ),
               Text(_showDuration(tvDetail.runtime)),
               SizedBox(height: 16),
               Padding(
@@ -148,7 +159,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
                 child: Text('Overview', style: titleLarge),
               ),
               Text(tvDetail.overview),
-              SizedBox(height: 16)
+              SizedBox(height: 16),
             ],
           ),
         ),
