@@ -178,4 +178,79 @@ void main() {
       expect(listenerCallCount, 2);
     });
   });
+
+  group('tvPopular', () {
+    test('should change state to loading when usecase is called', () async {
+      when(mockGetTvTopRated.execute()).thenAnswer((_) async => Right([testTv]));
+      provider.fetchTvTopRated();
+      expect(provider.tvTopRatedState, RequestState.Loading);
+    });
+
+    test('should change tv data when data is gotten successfully', () async {
+      when(mockGetTvPopular.execute()).thenAnswer((_) async => Right([testTv]));
+      await provider.fetchTvPopular();
+      expect(provider.tvPopularState, RequestState.Loaded);
+      expect(provider.tvPopular, [testTv]);
+      expect(listenerCallCount, 2);
+    });
+
+    test('should return error when data is unsuccessful', () async {
+      when(mockGetTvPopular.execute())
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+      await provider.fetchTvPopular();
+      expect(provider.tvPopularState, RequestState.Error);
+      expect(provider.message, 'Server Failure');
+      expect(listenerCallCount, 2);
+    });
+  });
+
+  group('tvTopRated', () {
+    test('should change state to loading when usecase is called', () async {
+      when(mockGetTvTopRated.execute()).thenAnswer((_) async => Right([testTv]));
+      provider.fetchTvTopRated();
+      expect(provider.tvTopRatedState, RequestState.Loading);
+    });
+
+    test('should change tv data when data is gotten successfully', () async {
+      when(mockGetTvTopRated.execute()).thenAnswer((_) async => Right([testTv]));
+      await provider.fetchTvTopRated();
+      expect(provider.tvTopRatedState, RequestState.Loaded);
+      expect(provider.tvTopRated, [testTv]);
+      expect(listenerCallCount, 2);
+    });
+
+    test('should return error when data is unsuccessful', () async {
+      when(mockGetTvTopRated.execute())
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+      await provider.fetchTvTopRated();
+      expect(provider.tvTopRatedState, RequestState.Error);
+      expect(provider.message, 'Server Failure');
+      expect(listenerCallCount, 2);
+    });
+  });
+
+  group('tvAiringToday', () {
+    test('should change state to loading when usecase is called', () async {
+      when(mockGetTvAiringToday.execute()).thenAnswer((_) async => Right([testTv]));
+      provider.fetchTvAiringToday();
+      expect(provider.tvAiringTodayState, RequestState.Loading);
+    });
+
+    test('should change tv data when data is gotten successfully', () async {
+      when(mockGetTvAiringToday.execute()).thenAnswer((_) async => Right([testTv]));
+      await provider.fetchTvAiringToday();
+      expect(provider.tvAiringTodayState, RequestState.Loaded);
+      expect(provider.tvAiringToday, [testTv]);
+      expect(listenerCallCount, 2);
+    });
+
+    test('should return error when data is unsuccessful', () async {
+      when(mockGetTvAiringToday.execute())
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+      await provider.fetchTvAiringToday();
+      expect(provider.tvAiringTodayState, RequestState.Error);
+      expect(provider.message, 'Server Failure');
+      expect(listenerCallCount, 2);
+    });
+  });
 }
