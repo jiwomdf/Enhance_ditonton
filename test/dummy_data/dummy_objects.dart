@@ -1,5 +1,9 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_airing_today_model.dart';
+import 'package:ditonton/data/models/tv_popular_model.dart';
+import 'package:ditonton/data/models/tv_search_model.dart';
 import 'package:ditonton/data/models/tv_table.dart';
+import 'package:ditonton/data/models/tv_toprated_model.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:ditonton/domain/entities/tv.dart';
@@ -76,6 +80,74 @@ final testTv = TV(
   voteCount: 1,
 );
 
+final testTvSearchResult = TvSearchResult(
+  adult: false,
+  backdropPath: "",
+  genreIds: [1],
+  id: 1,
+  originCountry: ["originCountry"],
+  originalLanguage: "originalLanguage",
+  originalName: "originalName",
+  overview: "overview",
+  popularity: 0.1,
+  posterPath: "posterPath",
+  firstAirDate: "firstAirDate",
+  name: "name",
+  voteAverage: 1.0,
+  voteCount: 1,
+);
+
+final testTvAiringTodayModelResult = TvAiringTodayModelResult(
+  adult: false,
+  backdropPath: "",
+  genreIds: [1],
+  id: 1,
+  originCountry: ["originCountry"],
+  originalLanguage: "originalLanguage",
+  originalName: "originalName",
+  overview: "overview",
+  popularity: 0.1,
+  posterPath: "posterPath",
+  firstAirDate: "firstAirDate",
+  name: "name",
+  voteAverage: 1.0,
+  voteCount: 1,
+);
+
+final testTvTopRatedModelResult = TvTopRatedModelResult(
+  adult: false,
+  backdropPath: "",
+  genreIds: [1],
+  id: 1,
+  originCountry: ["originCountry"],
+  originalLanguage: "originalLanguage",
+  originalName: "originalName",
+  overview: "overview",
+  popularity: 0.1,
+  posterPath: "posterPath",
+  firstAirDate: "firstAirDate",
+  name: "name",
+  voteAverage: 1.0,
+  voteCount: 1,
+);
+
+final testTvSeriesPopularResult = TvSeriesPopularResult(
+  adult: false,
+  backdropPath: "",
+  genreIds: [1],
+  id: 1,
+  originCountry: ["originCountry"],
+  originalLanguage: "originalLanguage",
+  originalName: "originalName",
+  overview: "overview",
+  popularity: 0.1,
+  posterPath: "posterPath",
+  firstAirDate: "firstAirDate",
+  name: "name",
+  voteAverage: 1.0,
+  voteCount: 1,
+);
+
 final testTvDetail = TvDetail(
   adult: false,
   backdropPath: "backdropPath",
@@ -105,6 +177,13 @@ final testTvTable = TvTable(
   title: "title",
   posterPath: "posterPath",
   overview: "overview",
+);
+
+final testTvWatchlist = TV.watchlist(
+  id: 1,
+  posterPath: "posterPath",
+  overview: "overview",
+  name: "title",
 );
 
 final testTvMap = {

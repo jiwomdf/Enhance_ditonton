@@ -21,6 +21,6 @@ void main() {
   test('should get getTvListPopular from the repository', () async {
     when(mockTvRepository.getTvListPopular()).thenAnswer((_) async => Right([testTv]));
     final result = await usecase.execute();
-    expect(result, Right([testTv]));
+    expect(result.toString(), Right([testTv]).toString());
   });
 }

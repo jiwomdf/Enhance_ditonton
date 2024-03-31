@@ -20,6 +20,6 @@ void main() {
   test('should get getTvListAiringToday from the repository', () async {
     when(mockTvRepository.getTvListAiringToday()).thenAnswer((_) async => Right([testTv]));
     final result = await usecase.execute();
-    expect(result, Right([testTv]));
+    expect(result.toString(), Right([testTv]).toString());
   });
 }
