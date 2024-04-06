@@ -3,6 +3,7 @@ import 'package:ditonton/presentation/pages/detail_page/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/detail_page/tv_detail_page.dart';
 import 'package:ditonton/presentation/pages/home/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
+import 'package:ditonton/presentation/pages/sublist_page/airing_today_tv_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
@@ -41,6 +42,8 @@ PageRoute router(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => TopRatedTVPage());
     case PopularTvPage.ROUTE_NAME:
       return MaterialPageRoute(builder: (_) => PopularTvPage());
+    case AiringTodayTVPage.ROUTE_NAME:
+      return MaterialPageRoute(builder: (_) => AiringTodayTVPage());
     default:
       return MaterialPageRoute(builder: (_) {
         return Scaffold(body: Center(child: Text('Page not found :(')));

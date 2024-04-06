@@ -3,6 +3,7 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home/tv_list_popular_widget.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
+import 'package:ditonton/presentation/pages/sublist_page/airing_today_tv_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
@@ -130,7 +131,11 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   return Text('Failed');
                 }
               }),
-              Text('Now Playing on TV', style: kHeading6),
+              _buildSubHeading(
+                title: 'Now Playing on TV',
+                onTap: () =>
+                    Navigator.pushNamed(context, AiringTodayTVPage.ROUTE_NAME),
+              ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.tvAiringTodayState;
                 if (state == RequestState.Loading) {

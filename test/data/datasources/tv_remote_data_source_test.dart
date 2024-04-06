@@ -58,11 +58,10 @@ void main() {
             json.decode(readJson('dummy_data/tv_popular.json')))
         .tvSeriesPopularResult;
 
-    test('should return list of tv when response is success (200)',
-        () async {
+    test('should return list of tv when response is success (200)', () async {
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv_popular.json'), 200, headers: {
+          .thenAnswer((_) async => http.Response(
+                  readJson('dummy_data/tv_popular.json'), 200, headers: {
                 HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
               }));
       final result = await dataSource.getTvPopular();
@@ -86,8 +85,8 @@ void main() {
 
     test('should return list of tv when response code is 200 ', () async {
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv_top_rated.json'), 200, headers: {
+          .thenAnswer((_) async => http.Response(
+                  readJson('dummy_data/tv_top_rated.json'), 200, headers: {
                 HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
               }));
       final result = await dataSource.getTvTopRated();
@@ -110,8 +109,8 @@ void main() {
 
     test('should return tv detail when the response code is 200', () async {
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/${id}?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv_detail.json'), 200, headers: {
+          .thenAnswer((_) async => http.Response(
+                  readJson('dummy_data/tv_detail.json'), 200, headers: {
                 HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
               }));
       final result = await dataSource.getTvDetail(id);
@@ -136,8 +135,8 @@ void main() {
     test('should return list of tv when response code is 200', () async {
       when(mockHttpClient
               .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$query')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv_search.json'), 200, headers: {
+          .thenAnswer((_) async => http.Response(
+                  readJson('dummy_data/tv_search.json'), 200, headers: {
                 HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
               }));
       final result = await dataSource.searchTv(query);
@@ -149,8 +148,8 @@ void main() {
       when(mockHttpClient
               .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$query')))
           .thenAnswer((_) async => http.Response('Not Found', 404, headers: {
-        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
-      }));
+                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+              }));
       final call = dataSource.searchTv(query);
       expect(() => call, throwsA(isA<ServerException>()));
     });
