@@ -7,6 +7,9 @@ import 'package:ditonton/domain/usecases/tv/save_tv_watchlist.dart';
 import 'package:flutter/material.dart';
 
 class TvDetailNotifier extends ChangeNotifier {
+  static const watchlistAddSuccessMessage = 'Added to WatchlistTv';
+  static const watchlistRemoveSuccessMessage = 'Removed from WatchlistTv';
+
   final GetTvDetail getTvDetail;
   final SaveTvWatchlist saveTvWatchlist;
   final RemoveTvWatchlist removeTvWatchlist;

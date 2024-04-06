@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/constans.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 class TvDetailPage extends StatefulWidget {
@@ -117,9 +118,9 @@ class _TvDetailPageState extends State<TvDetailPage> {
 
                     final message = notifier.watchlistMessage;
                     if (message ==
-                            MovieDetailNotifier.watchlistAddSuccessMessage ||
+                            TvDetailNotifier.watchlistAddSuccessMessage ||
                         message ==
-                            MovieDetailNotifier.watchlistRemoveSuccessMessage) {
+                            TvDetailNotifier.watchlistRemoveSuccessMessage) {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SnackBar(content: Text(message)));
                     } else {
@@ -136,7 +137,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
                       provider.isAddedToWatchlist
                           ? Icon(Icons.check)
                           : Icon(Icons.add),
-                      Text('Watchlist'),
+                      Text('Watchlist')
                     ],
                   ),
                 ),
@@ -144,9 +145,27 @@ class _TvDetailPageState extends State<TvDetailPage> {
               SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
-                child: Text('Rating', style: titleLarge),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Rating', style: titleLarge),
+                    Row(
+                      children: [
+                        RatingBarIndicator(
+                          rating: tvDetail.voteAverage / 2,
+                          itemCount: 5,
+                          itemBuilder: (context, index) => Icon(
+                            Icons.star,
+                            color: kMikadoYellow,
+                          ),
+                          itemSize: 24,
+                        ),
+                        Text(tvDetail.voteAverage.toString()),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              Text(tvDetail.voteAverage.toString()),
               SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
