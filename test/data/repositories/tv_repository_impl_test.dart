@@ -250,13 +250,53 @@ void main() {
     });
   });
 
-  group('get watchlist movies', () {
+  group('get watchlist tv', () {
     test('should return list of Movies', () async {
       when(mockLocalDataSource.getWatchlistTv())
           .thenAnswer((_) async => [testTvTable]);
       final result = await repository.getWatchlistTv();
       final resultList = result.getOrElse(() => []);
       expect(resultList.toString(), [testTvWatchlist].toString());
+    });
+  });
+
+  group('get Recomendation TV', () {
+    var id = 1;
+
+    test('should return movie list when call to data source is successful',
+        () async {
+      when(mockRemoteDataSource.getTvRecomendation(id))
+          .thenAnswer((_) async => [testTvRecommendationResult]);
+      final result = await repository.getTvRecomendation(id);
+      /* workaround to test List in Right. Issue: https://github.com/spebbe/dartz/issues/80 */
+      final resultList = result.getOrElse(() => []);
+      expect(resultList.toString(), [testTvRecommendation].toString());
+    });
+
+    test('should return movie list when call to data source is successful',
+        () async {
+      when(mockRemoteDataSource.getTvTopRated())
+          .thenAnswer((_) async => [testTvTopRatedModelResult]);
+      final result = await repository.getTvListTopRated();
+      final resultList = result.getOrElse(() => []);
+      expect(resultList.toString(), [testTv].toString());
+    });
+
+    test('should return ServerFailure when call to data source is unsuccessful',
+        () async {
+      when(mockRemoteDataSource.getTvRecomendation(id))
+          .thenThrow(ServerException());
+      final result = await repository.getTvRecomendation(id);
+      expect(result, Left(ServerFailure('')));
+    });
+
+    test(
+        'should return ConnectionFailure when device is not connected to the internet',
+        () async {
+      when(mockRemoteDataSource.getTvRecomendation(id))
+          .thenThrow(SocketException('Failed to connect to the network'));
+      final result = await repository.getTvRecomendation(id);
+      expect(result, Left(ConnectionFailure('Failed to connect to the network')));
     });
   });
 }

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/usecases/tv/get_tv_popular.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_recommendation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -7,18 +7,19 @@ import '../../../dummy_data/dummy_objects.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
-  late GetTvPopular usecase;
+  late GetTvRecomendation usecase;
   late MockTvRepository mockTvRepository;
 
   setUp(() {
     mockTvRepository = MockTvRepository();
-    usecase = GetTvPopular(mockTvRepository);
+    usecase = GetTvRecomendation(mockTvRepository);
   });
 
   test('should get getTvListPopular from the repository', () async {
-    when(mockTvRepository.getTvListPopular())
-        .thenAnswer((_) async => Right([testTv]));
-    final result = await usecase.execute();
-    expect(result.toString(), Right([testTv]).toString());
+    const id = 0;
+    when(mockTvRepository.getTvRecomendation(id))
+        .thenAnswer((_) async => Right([testTvRecommendation]));
+    final result = await usecase.execute(id);
+    expect(result.toString(), Right([testTvRecommendation]).toString());
   });
 }

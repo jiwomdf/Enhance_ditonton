@@ -1,6 +1,7 @@
 import 'package:ditonton/data/models/movie_table.dart';
 import 'package:ditonton/data/models/tv_airing_today_model.dart';
 import 'package:ditonton/data/models/tv_popular_model.dart';
+import 'package:ditonton/data/models/tv_recommendation_dart.dart';
 import 'package:ditonton/data/models/tv_search_model.dart';
 import 'package:ditonton/data/models/tv_table.dart';
 import 'package:ditonton/data/models/tv_toprated_model.dart';
@@ -8,6 +9,7 @@ import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
+import 'package:ditonton/domain/entities/tv_recommendation.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -177,6 +179,40 @@ final testTvTable = TvTable(
   title: "title",
   posterPath: "posterPath",
   overview: "overview",
+);
+
+final testTvRecommendationResult = TvRecommendationResult(
+  adult: true,
+  backdropPath: "",
+  id: 123,
+  name: "",
+  originalLanguage: "",
+  originalName: "",
+  overview: "",
+  posterPath: "",
+  genreIds: [123],
+  popularity: 123,
+  firstAirDate: "",
+  voteAverage: 123,
+  voteCount: 123,
+  originCountry: ["US"],
+);
+
+final testTvRecommendation = TvRecomemendation(
+  adult: true,
+  backdropPath: "",
+  id: 123,
+  name: "",
+  originalLanguage: "",
+  originalName: "",
+  overview: "",
+  posterPath: "",
+  genreIds: [123],
+  popularity: 123,
+  firstAirDate: "",
+  voteAverage: 123,
+  voteCount: 123,
+  originCountry: ["US"],
 );
 
 final testTvWatchlist = TV.watchlist(

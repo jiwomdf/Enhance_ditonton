@@ -6,12 +6,12 @@ import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_airing_today_model.dart';
 import 'package:ditonton/data/models/tv_detail_model.dart';
 import 'package:ditonton/data/models/tv_popular_model.dart';
+import 'package:ditonton/data/models/tv_recommendation_dart.dart';
 import 'package:ditonton/data/models/tv_search_model.dart';
 import 'package:ditonton/data/models/tv_toprated_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
-
 import '../../helpers/test_helper.mocks.dart';
 import '../../json_reader.dart';
 
@@ -151,6 +151,36 @@ void main() {
                 HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
               }));
       final call = dataSource.searchTv(query);
+      expect(() => call, throwsA(isA<ServerException>()));
+    });
+  });
+
+  group('recommendation TV', () {
+    final testTvRecommendation = TvRecommendationModel.fromJson(
+            json.decode(readJson('dummy_data/tv_recommendation.json')))
+        .tvRecommendationResult;
+
+    test('should return list of recommendation tv when response code is 200', () async {
+      var id = 0;
+      when(mockHttpClient
+              .get(Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY')))
+          .thenAnswer((_) async => http.Response(
+                  readJson('dummy_data/tv_recommendation.json'), 200, headers: {
+                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+              }));
+      final result = await dataSource.getTvRecomendation(id);
+      expect(result.toString(), testTvRecommendation.toString());
+    });
+
+    test('should throw ServerException when response code is other than 200',
+        () async {
+      var id = 0;
+      when(mockHttpClient
+              .get(Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY')))
+          .thenAnswer((_) async => http.Response('Not Found', 404, headers: {
+                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+              }));
+      final call = dataSource.getTvRecomendation(id);
       expect(() => call, throwsA(isA<ServerException>()));
     });
   });

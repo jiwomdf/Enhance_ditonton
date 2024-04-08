@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:ditonton/data/datasources/tv_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/domain/repositories/tv_repository.dart';
@@ -8,6 +10,7 @@ import 'package:ditonton/domain/usecases/tv/is_tv_in_watchlist.dart';
 import 'package:ditonton/domain/usecases/tv/remove_tv_watchlist.dart';
 import 'package:ditonton/domain/usecases/tv/save_tv_watchlist.dart';
 import 'package:mockito/annotations.dart';
+import 'package:http/http.dart' as http;
 
 @GenerateMocks([
   TvRepository,
@@ -19,5 +22,7 @@ import 'package:mockito/annotations.dart';
   TvRemoteDataSource,
   TvLocalDataSource,
   GetTvRecomendation
+], customMocks: [
+  MockSpec<http.Client>(as: #MockHttpClient)
 ])
 void main() {}
