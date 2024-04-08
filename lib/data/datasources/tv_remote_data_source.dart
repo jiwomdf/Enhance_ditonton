@@ -4,6 +4,7 @@ import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/data/models/tv_airing_today_model.dart';
 import 'package:ditonton/data/models/tv_detail_model.dart';
 import 'package:ditonton/data/models/tv_popular_model.dart';
+import 'package:ditonton/data/models/tv_recommendation_dart.dart';
 import 'package:ditonton/data/models/tv_search_model.dart';
 import 'package:ditonton/data/models/tv_toprated_model.dart';
 import 'package:http/http.dart' as http;
@@ -17,6 +18,7 @@ abstract class TvRemoteDataSource {
   Future<List<TvSeriesPopularResult>> getTvPopular();
   Future<List<TvTopRatedModelResult>> getTvTopRated();
   Future<List<TvAiringTodayModelResult>> getTvAiringToday();
+  Future<List<TvRecommendationResult>> getTvRecomendation(int id);
 }
 
 class TvRemoteDataSourceImpl implements TvRemoteDataSource {
@@ -100,6 +102,20 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
     if (response.statusCode == 200) {
       return TvAiringTodayModel.fromJson(json.decode(response.body))
               .tvAiringTodayModelResult ??
+          [];
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<List<TvRecommendationResult>> getTvRecomendation(int id) async {
+    final response = await client
+        .get(Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY'));
+
+    if (response.statusCode == 200) {
+      return TvRecommendationModel.fromJson(json.decode(response.body))
+              .tvRecommendationResult ??
           [];
     } else {
       throw ServerException();

@@ -1,6 +1,8 @@
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
+import 'package:ditonton/domain/entities/tv_recommendation.dart';
 import 'package:ditonton/domain/usecases/tv/get_tv_detail.dart';
+import 'package:ditonton/domain/usecases/tv/get_tv_recommendation.dart';
 import 'package:ditonton/domain/usecases/tv/is_tv_in_watchlist.dart';
 import 'package:ditonton/domain/usecases/tv/remove_tv_watchlist.dart';
 import 'package:ditonton/domain/usecases/tv/save_tv_watchlist.dart';
@@ -14,12 +16,14 @@ class TvDetailNotifier extends ChangeNotifier {
   final SaveTvWatchlist saveTvWatchlist;
   final RemoveTvWatchlist removeTvWatchlist;
   final IsTvInWatchlist isTvInWatchlist;
+  final GetTvRecomendation getTvRecomendation;
 
   TvDetailNotifier({
     required this.getTvDetail,
     required this.saveTvWatchlist,
     required this.removeTvWatchlist,
     required this.isTvInWatchlist,
+    required this.getTvRecomendation,
   });
 
   RequestState _state = RequestState.Empty;
@@ -36,6 +40,12 @@ class TvDetailNotifier extends ChangeNotifier {
 
   bool _isAddedtoWatchlist = false;
   bool get isAddedToWatchlist => _isAddedtoWatchlist;
+
+  RequestState _recommendationState = RequestState.Empty;
+  RequestState get recommendationState => _recommendationState;
+
+  List<TvRecomemendation> _tvRecomemendation = [];
+  List<TvRecomemendation> get tvRecomemendation => _tvRecomemendation;
 
   Future<void> fetchTvDetail(int id) async {
     _state = RequestState.Loading;
@@ -90,6 +100,20 @@ class TvDetailNotifier extends ChangeNotifier {
       },
       (result) async {
         _isAddedtoWatchlist = result;
+      },
+    );
+    notifyListeners();
+  }
+
+  Future<void> loadRecommendation(int id) async {
+    final result = await getTvRecomendation.execute(123);
+    await result.fold(
+      (failure) async {
+        _recommendationState = RequestState.Error;
+      },
+      (result) async {
+        _tvRecomemendation = result;
+        _recommendationState = RequestState.Loaded;
       },
     );
     notifyListeners();

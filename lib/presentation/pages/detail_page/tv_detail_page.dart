@@ -23,11 +23,10 @@ class _TvDetailPageState extends State<TvDetailPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-      () => Provider.of<TvDetailNotifier>(context, listen: false)
-        ..fetchTvDetail(widget.id)
-        ..loadWatchlistStatus(widget.id),
-    );
+    Future.microtask(() => Provider.of<TvDetailNotifier>(context, listen: false)
+      ..fetchTvDetail(widget.id)
+      ..loadWatchlistStatus(widget.id)
+      ..loadRecommendation(widget.id));
   }
 
   @override
@@ -78,7 +77,12 @@ class _TvDetailPageState extends State<TvDetailPage> {
                     ),
                     Container(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: dataDetail(context, provider, tvDetail!),
+                      child: Column(
+                        children: [
+                          dataDetail(context, provider, tvDetail!),
+                          recommendation()
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -183,6 +187,58 @@ class _TvDetailPageState extends State<TvDetailPage> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget recommendation() {
+    return Consumer<TvDetailNotifier>(
+      builder: (context, data, child) {
+        if (data.recommendationState == RequestState.Loading) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (data.recommendationState == RequestState.Error) {
+          return Text("Something went wrong");
+        } else if (data.recommendationState == RequestState.Loaded) {
+          return Container(
+            height: 150,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                final movie = data.tvRecomemendation[index];
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        TvDetailPage.ROUTE_NAME,
+                        arguments: movie.id,
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                        placeholder: (context, url) => Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
+                    ),
+                  ),
+                );
+              },
+              itemCount: data.tvRecomemendation.length,
+            ),
+          );
+        } else {
+          return Container();
+        }
+      },
     );
   }
 

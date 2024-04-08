@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/entities/tv_detail.dart';
+import 'package:ditonton/domain/entities/tv_recommendation.dart';
 
 abstract class TvRepository {
   Future<Either<Failure, List<TV>>> getTvList();
@@ -14,4 +15,5 @@ abstract class TvRepository {
   Future<Either<Failure, List<TV>>> getTvListPopular();
   Future<Either<Failure, List<TV>>> getTvListTopRated();
   Future<Either<Failure, List<TV>>> getTvListAiringToday();
+  Future<Either<Failure, List<TvRecomemendation>>> getTvRecomendation(int id);
 }
