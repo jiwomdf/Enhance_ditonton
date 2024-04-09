@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:ditonton/common/exception.dart';
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_airing_today_model.dart';
 import 'package:ditonton/data/models/tv_detail_model.dart';
@@ -12,6 +11,8 @@ import 'package:ditonton/data/models/tv_toprated_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
+
+import '../../../core/lib/utils/exception.dart';
 import '../../helpers/test_helper.mocks.dart';
 import '../../json_reader.dart';
 
@@ -160,7 +161,8 @@ void main() {
             json.decode(readJson('dummy_data/tv_recommendation.json')))
         .tvRecommendationResult;
 
-    test('should return list of recommendation tv when response code is 200', () async {
+    test('should return list of recommendation tv when response code is 200',
+        () async {
       var id = 0;
       when(mockHttpClient
               .get(Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY')))

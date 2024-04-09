@@ -1,9 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:core/core.dart';
 import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/presentation/pages/detail_page/tv_detail_page.dart';
 import 'package:flutter/material.dart';
-
-import '../../../common/constants.dart';
 
 class TVList extends StatelessWidget {
   final List<TV> tvs;

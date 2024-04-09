@@ -1,5 +1,5 @@
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/common/state_enum.dart';
+import 'package:core/styles/text_styles.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home/tv_list_popular_widget.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';

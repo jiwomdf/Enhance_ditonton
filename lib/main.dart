@@ -1,4 +1,4 @@
-import 'package:ditonton/common/constants.dart';
+import 'package:core/styles/colors.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:ditonton/presentation/pages/home/home_movie_page.dart';
