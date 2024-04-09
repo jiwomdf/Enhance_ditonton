@@ -1,9 +1,9 @@
+import 'package:core/domain/entities/movie.dart';
+import 'package:core/domain/usecases/movie/get_popular_movies.dart';
+import 'package:core/presentation/provider/popular_movies_notifier.dart';
 import 'package:core/utils/failure.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart';
-import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -50,7 +50,7 @@ void main() {
     // act
     notifier.fetchPopularMovies();
     // assert
-    expect(notifier.state, RequestState.Loading);
+    expect(notifier.state, RequestState.loading);
     expect(listenerCallCount, 1);
   });
 
@@ -61,7 +61,7 @@ void main() {
     // act
     await notifier.fetchPopularMovies();
     // assert
-    expect(notifier.state, RequestState.Loaded);
+    expect(notifier.state, RequestState.loaded);
     expect(notifier.movies, tMovieList);
     expect(listenerCallCount, 2);
   });
@@ -73,7 +73,7 @@ void main() {
     // act
     await notifier.fetchPopularMovies();
     // assert
-    expect(notifier.state, RequestState.Error);
+    expect(notifier.state, RequestState.error);
     expect(notifier.message, 'Server Failure');
     expect(listenerCallCount, 2);
   });

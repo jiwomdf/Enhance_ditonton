@@ -24,9 +24,9 @@ class TvRepositoryImpl extends TvRepository {
       final result = await remoteDataSource.getTvList();
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -36,9 +36,9 @@ class TvRepositoryImpl extends TvRepository {
       final result = await remoteDataSource.getTvDetail(id);
       return Right(result.toEntity());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -51,7 +51,7 @@ class TvRepositoryImpl extends TvRepository {
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -61,7 +61,7 @@ class TvRepositoryImpl extends TvRepository {
       final result = await localDataSource.getWatchlistTv();
       List<TV> resultMap = [];
 
-      result.forEach((e) {
+      for (var e in result) {
         final map = TV.watchlist(
           id: e.id,
           overview: e.overview ?? '',
@@ -69,13 +69,13 @@ class TvRepositoryImpl extends TvRepository {
           name: e.title ?? '',
         );
         resultMap.add(map);
-      });
+      }
 
       return Right(resultMap);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -87,7 +87,7 @@ class TvRepositoryImpl extends TvRepository {
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -99,7 +99,7 @@ class TvRepositoryImpl extends TvRepository {
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -109,9 +109,9 @@ class TvRepositoryImpl extends TvRepository {
       final result = await remoteDataSource.searchTv(query);
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -120,12 +120,14 @@ class TvRepositoryImpl extends TvRepository {
     try {
       final result = await remoteDataSource.getTvPopular();
       List<TV> listModel = [];
-      result.forEach((model) => listModel.add(model.toEntity()));
+      for (var model in result) {
+        listModel.add(model.toEntity());
+      }
       return Right(listModel);
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -135,9 +137,9 @@ class TvRepositoryImpl extends TvRepository {
       final result = await remoteDataSource.getTvTopRated();
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -148,9 +150,9 @@ class TvRepositoryImpl extends TvRepository {
       final listResult = result.map((model) => model.toEntity()).toList();
       return Right(listResult);
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -162,9 +164,9 @@ class TvRepositoryImpl extends TvRepository {
       final listResult = result.map((model) => model.toEntity()).toList();
       return Right(listResult);
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 }

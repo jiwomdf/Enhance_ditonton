@@ -28,7 +28,6 @@ import 'package:core/domain/usecases/tv/save_tv_watchlist.dart';
 import 'package:core/domain/usecases/tv/search_tv.dart';
 import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/presentation/provider/movie_list_notifier.dart';
-import 'package:core/presentation/provider/movie_search_notifier.dart';
 import 'package:core/presentation/provider/popular_movies_notifier.dart';
 import 'package:core/presentation/provider/popular_tv_notifier.dart';
 import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
@@ -41,6 +40,7 @@ import 'package:core/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:search/domain/usecases/search_movies.dart';
+import 'package:search/presentation/provider/movie_search_notifier.dart';
 
 final locator = GetIt.instance;
 

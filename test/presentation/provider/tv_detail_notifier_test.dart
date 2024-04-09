@@ -56,7 +56,7 @@ void main() {
       when(mockGetTvDetail.execute(1))
           .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       await provider.fetchTvDetail(1);
-      expect(provider.state, RequestState.Error);
+      expect(provider.state, RequestState.error);
       expect(provider.messageTvDetail, 'Server Failure');
     });
   });

@@ -1,4 +1,3 @@
-import 'package:core/utils/state_enum.dart';
 import 'package:core/domain/entities/tv_detail.dart';
 import 'package:core/domain/entities/tv_recommendation.dart';
 import 'package:core/domain/usecases/tv/get_tv_detail.dart';
@@ -6,6 +5,7 @@ import 'package:core/domain/usecases/tv/get_tv_recommendation.dart';
 import 'package:core/domain/usecases/tv/is_tv_in_watchlist.dart';
 import 'package:core/domain/usecases/tv/remove_tv_watchlist.dart';
 import 'package:core/domain/usecases/tv/save_tv_watchlist.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 
 class TvDetailNotifier extends ChangeNotifier {
@@ -26,10 +26,10 @@ class TvDetailNotifier extends ChangeNotifier {
     required this.getTvRecomendation,
   });
 
-  RequestState _state = RequestState.Empty;
+  RequestState _state = RequestState.empty;
   RequestState get state => _state;
 
-  TvDetail? _tvDetail = null;
+  TvDetail? _tvDetail;
   TvDetail? get tvDetail => _tvDetail;
 
   String _messageTvDetail = '';
@@ -41,26 +41,26 @@ class TvDetailNotifier extends ChangeNotifier {
   bool _isAddedtoWatchlist = false;
   bool get isAddedToWatchlist => _isAddedtoWatchlist;
 
-  RequestState _recommendationState = RequestState.Empty;
+  RequestState _recommendationState = RequestState.empty;
   RequestState get recommendationState => _recommendationState;
 
   List<TvRecomemendation> _tvRecomemendation = [];
   List<TvRecomemendation> get tvRecomemendation => _tvRecomemendation;
 
   Future<void> fetchTvDetail(int id) async {
-    _state = RequestState.Loading;
+    _state = RequestState.loading;
     notifyListeners();
 
     final result = await getTvDetail.execute(id);
     result.fold(
       (failure) {
         _messageTvDetail = failure.message;
-        _state = RequestState.Error;
+        _state = RequestState.error;
         notifyListeners();
       },
       (data) {
         _tvDetail = data;
-        _state = RequestState.Loaded;
+        _state = RequestState.loaded;
         notifyListeners();
       },
     );
@@ -109,11 +109,11 @@ class TvDetailNotifier extends ChangeNotifier {
     final result = await getTvRecomendation.execute(123);
     await result.fold(
       (failure) async {
-        _recommendationState = RequestState.Error;
+        _recommendationState = RequestState.error;
       },
       (result) async {
         _tvRecomemendation = result;
-        _recommendationState = RequestState.Loaded;
+        _recommendationState = RequestState.loaded;
       },
     );
     notifyListeners();

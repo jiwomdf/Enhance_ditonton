@@ -1,15 +1,15 @@
-import 'package:ditonton/data/models/movie_table.dart';
-import 'package:ditonton/data/models/tv_airing_today_model.dart';
-import 'package:ditonton/data/models/tv_popular_model.dart';
-import 'package:ditonton/data/models/tv_recommendation_dart.dart';
-import 'package:ditonton/data/models/tv_search_model.dart';
-import 'package:ditonton/data/models/tv_table.dart';
-import 'package:ditonton/data/models/tv_toprated_model.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/entities/movie_detail.dart';
-import 'package:ditonton/domain/entities/tv.dart';
-import 'package:ditonton/domain/entities/tv_detail.dart';
-import 'package:ditonton/domain/entities/tv_recommendation.dart';
+import 'package:core/data/models/movie_table.dart';
+import 'package:core/data/models/tv_airing_today_model.dart';
+import 'package:core/data/models/tv_popular_model.dart';
+import 'package:core/data/models/tv_recommendation_dart.dart';
+import 'package:core/data/models/tv_search_model.dart';
+import 'package:core/data/models/tv_table.dart';
+import 'package:core/data/models/tv_toprated_model.dart';
+import 'package:core/domain/entities/movie.dart';
+import 'package:core/domain/entities/movie_detail.dart';
+import 'package:core/domain/entities/tv.dart';
+import 'package:core/domain/entities/tv_detail.dart';
+import 'package:core/domain/entities/tv_recommendation.dart';
 
 final testMovie = Movie(
   adult: false,

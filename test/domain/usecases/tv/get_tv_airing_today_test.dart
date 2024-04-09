@@ -1,5 +1,5 @@
+import 'package:core/domain/usecases/tv/get_tv_airing_today.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/usecases/tv/get_tv_airing_today.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

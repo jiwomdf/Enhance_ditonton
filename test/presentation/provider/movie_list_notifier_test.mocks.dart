@@ -5,19 +5,17 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i5;
 
+import 'package:core/domain/entities/movie.dart' as _i7;
+import 'package:core/domain/entities/tv.dart' as _i11;
+import 'package:core/domain/repositories/movie_repository.dart' as _i2;
+import 'package:core/domain/usecases/movie/get_now_playing_movies.dart' as _i4;
+import 'package:core/domain/usecases/movie/get_popular_movies.dart' as _i8;
+import 'package:core/domain/usecases/movie/get_top_rated_movies.dart' as _i9;
+import 'package:core/domain/usecases/tv/get_tv_airing_today.dart' as _i13;
+import 'package:core/domain/usecases/tv/get_tv_popular.dart' as _i10;
+import 'package:core/domain/usecases/tv/get_tv_toprated.dart' as _i12;
 import 'package:core/utils/failure.dart' as _i6;
 import 'package:dartz/dartz.dart' as _i3;
-import 'package:ditonton/domain/entities/movie.dart' as _i7;
-import 'package:ditonton/domain/entities/tv.dart' as _i11;
-import 'package:ditonton/domain/repositories/movie_repository.dart' as _i2;
-import 'package:ditonton/domain/usecases/movie/get_now_playing_movies.dart'
-    as _i4;
-import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart' as _i8;
-import 'package:ditonton/domain/usecases/movie/get_top_rated_movies.dart'
-    as _i9;
-import 'package:ditonton/domain/usecases/tv/get_tv_airing_today.dart' as _i13;
-import 'package:ditonton/domain/usecases/tv/get_tv_popular.dart' as _i10;
-import 'package:ditonton/domain/usecases/tv/get_tv_toprated.dart' as _i12;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint

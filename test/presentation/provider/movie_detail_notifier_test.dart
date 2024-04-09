@@ -1,11 +1,11 @@
+import 'package:core/domain/entities/movie.dart';
+import 'package:core/domain/usecases/movie/get_movie_detail.dart';
+import 'package:core/domain/usecases/movie/get_movie_recommendations.dart';
+import 'package:core/domain/usecases/movie/get_watchlist_status.dart';
+import 'package:core/domain/usecases/movie/remove_watchlist.dart';
+import 'package:core/domain/usecases/movie/save_watchlist.dart';
+import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/usecases/movie/get_movie_detail.dart';
-import 'package:ditonton/domain/usecases/movie/get_movie_recommendations.dart';
-import 'package:ditonton/domain/usecases/movie/get_watchlist_status.dart';
-import 'package:ditonton/domain/usecases/movie/remove_watchlist.dart';
-import 'package:ditonton/domain/usecases/movie/save_watchlist.dart';
-import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -92,7 +92,7 @@ void main() {
       // act
       provider.fetchMovieDetail(tId);
       // assert
-      expect(provider.movieState, RequestState.Loading);
+      expect(provider.movieState, RequestState.loading);
       expect(listenerCallCount, 1);
     });
 
@@ -102,7 +102,7 @@ void main() {
       // act
       await provider.fetchMovieDetail(tId);
       // assert
-      expect(provider.movieState, RequestState.Loaded);
+      expect(provider.movieState, RequestState.loaded);
       expect(provider.movie, testMovieDetail);
       expect(listenerCallCount, 3);
     });
@@ -114,7 +114,7 @@ void main() {
       // act
       await provider.fetchMovieDetail(tId);
       // assert
-      expect(provider.movieState, RequestState.Loaded);
+      expect(provider.movieState, RequestState.loaded);
       expect(provider.movieRecommendations, tMovies);
     });
   });
@@ -137,7 +137,7 @@ void main() {
       // act
       await provider.fetchMovieDetail(tId);
       // assert
-      expect(provider.recommendationState, RequestState.Loaded);
+      expect(provider.recommendationState, RequestState.loaded);
       expect(provider.movieRecommendations, tMovies);
     });
 
@@ -150,7 +150,7 @@ void main() {
       // act
       await provider.fetchMovieDetail(tId);
       // assert
-      expect(provider.recommendationState, RequestState.Error);
+      expect(provider.recommendationState, RequestState.error);
       expect(provider.message, 'Failed');
     });
   });
@@ -228,7 +228,7 @@ void main() {
       // act
       await provider.fetchMovieDetail(tId);
       // assert
-      expect(provider.movieState, RequestState.Error);
+      expect(provider.movieState, RequestState.error);
       expect(provider.message, 'Server Failure');
       expect(listenerCallCount, 2);
     });

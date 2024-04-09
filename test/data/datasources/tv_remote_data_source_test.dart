@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:ditonton/data/datasources/tv_remote_data_source.dart';
-import 'package:ditonton/data/models/tv_airing_today_model.dart';
-import 'package:ditonton/data/models/tv_detail_model.dart';
-import 'package:ditonton/data/models/tv_popular_model.dart';
-import 'package:ditonton/data/models/tv_recommendation_dart.dart';
-import 'package:ditonton/data/models/tv_search_model.dart';
-import 'package:ditonton/data/models/tv_toprated_model.dart';
+import 'package:core/data/datasources/tv_remote_data_source.dart';
+import 'package:core/data/models/tv_airing_today_model.dart';
+import 'package:core/data/models/tv_detail_model.dart';
+import 'package:core/data/models/tv_popular_model.dart';
+import 'package:core/data/models/tv_recommendation_dart.dart';
+import 'package:core/data/models/tv_search_model.dart';
+import 'package:core/data/models/tv_toprated_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';

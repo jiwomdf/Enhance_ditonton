@@ -8,7 +8,7 @@ class AiringTodayTvNotifier extends ChangeNotifier {
 
   AiringTodayTvNotifier({required this.getTvAiringToday});
 
-  RequestState _state = RequestState.Empty;
+  RequestState _state = RequestState.empty;
   RequestState get state => _state;
 
   List<TV> _tv = [];
@@ -18,7 +18,7 @@ class AiringTodayTvNotifier extends ChangeNotifier {
   String get message => _message;
 
   Future<void> fetchAiringTodayTv() async {
-    _state = RequestState.Loading;
+    _state = RequestState.loading;
     notifyListeners();
 
     final result = await getTvAiringToday.execute();
@@ -26,12 +26,12 @@ class AiringTodayTvNotifier extends ChangeNotifier {
     result.fold(
       (failure) {
         _message = failure.message;
-        _state = RequestState.Error;
+        _state = RequestState.error;
         notifyListeners();
       },
       (data) {
         _tv = data;
-        _state = RequestState.Loaded;
+        _state = RequestState.loaded;
         notifyListeners();
       },
     );

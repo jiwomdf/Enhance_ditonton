@@ -1,12 +1,12 @@
+import 'package:core/domain/entities/movie.dart';
 import 'package:core/utils/failure.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/usecases/movie/search_movies.dart';
-import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:search/domain/usecases/search_movies.dart';
+import 'package:search/presentation/provider/movie_search_notifier.dart';
 
 import 'movie_search_notifier_test.mocks.dart';
 
@@ -52,7 +52,7 @@ void main() {
       // act
       provider.fetchMovieSearch(tQuery);
       // assert
-      expect(provider.state, RequestState.Loading);
+      expect(provider.state, RequestState.loading);
     });
 
     test('should change search result data when data is gotten successfully',
@@ -63,7 +63,7 @@ void main() {
       // act
       await provider.fetchMovieSearch(tQuery);
       // assert
-      expect(provider.state, RequestState.Loaded);
+      expect(provider.state, RequestState.loaded);
       expect(provider.searchResult, tMovieList);
       expect(listenerCallCount, 2);
     });
@@ -75,7 +75,7 @@ void main() {
       // act
       await provider.fetchMovieSearch(tQuery);
       // assert
-      expect(provider.state, RequestState.Error);
+      expect(provider.state, RequestState.error);
       expect(provider.message, 'Server Failure');
       expect(listenerCallCount, 2);
     });

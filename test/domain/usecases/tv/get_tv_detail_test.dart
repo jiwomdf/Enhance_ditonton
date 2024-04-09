@@ -1,5 +1,5 @@
+import 'package:core/domain/usecases/tv/get_tv_detail.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/usecases/tv/get_tv_detail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -19,7 +19,8 @@ void main() {
 
   test('should get TvDetail from the repository', () async {
     // arrange
-    when(mockTvRepository.getTvDetail(1)).thenAnswer((_) async => Right(testTvDetail));
+    when(mockTvRepository.getTvDetail(1))
+        .thenAnswer((_) async => Right(testTvDetail));
     // act
     final result = await usecase.execute(tId);
     // assert

@@ -1,12 +1,14 @@
-import 'package:core/utils/state_enum.dart';
 import 'package:core/presentation/provider/airing_today_tv_notifier.dart';
 import 'package:core/presentation/provider/top_rated_tv_notifier.dart';
 import 'package:core/presentation/widgets/tv_card.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AiringTodayTVPage extends StatefulWidget {
-  static const ROUTE_NAME = '/airing-today-tv';
+  static const routeName = '/airing-today-tv';
+
+  const AiringTodayTVPage({super.key});
 
   @override
   _AiringTodayTVPageState createState() => _AiringTodayTVPageState();
@@ -25,17 +27,17 @@ class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Airing Today TV'),
+        title: const Text('Airing Today TV'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Consumer<TopRatedTvNotifier>(
           builder: (context, data, child) {
-            if (data.state == RequestState.Loading) {
-              return Center(
+            if (data.state == RequestState.loading) {
+              return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.state == RequestState.Loaded) {
+            } else if (data.state == RequestState.loaded) {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   final tv = data.tv[index];
@@ -45,7 +47,7 @@ class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
               );
             } else {
               return Center(
-                key: Key('error_message'),
+                key: const Key('error_message'),
                 child: Text(data.message),
               );
             }

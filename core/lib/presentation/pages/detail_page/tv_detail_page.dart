@@ -1,19 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:core/domain/entities/tv_detail.dart';
+import 'package:core/presentation/provider/tv_detail_notifier.dart';
 import 'package:core/styles/colors.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/state_enum.dart';
-import 'package:core/domain/entities/tv_detail.dart';
-import 'package:core/presentation/provider/tv_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 class TvDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail_tv';
+  static const routeName = '/detail_tv';
 
   final int id;
 
-  TvDetailPage({required this.id});
+  const TvDetailPage({super.key, required this.id});
 
   @override
   State<TvDetailPage> createState() => _TvDetailPageState();
@@ -37,13 +37,13 @@ class _TvDetailPageState extends State<TvDetailPage> {
           builder: (context, provider, child) {
             final tvDetail = provider.tvDetail;
             final state = provider.state;
-            if (state == RequestState.Loading) {
-              return Center(child: CircularProgressIndicator());
-            } else if (state == RequestState.Error) {
+            if (state == RequestState.loading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state == RequestState.error) {
               return Text(provider.messageTvDetail);
-            } else if (state == RequestState.Error) {
-              return Center(child: Text('Empty'));
-            } else if (state == RequestState.Loaded) {
+            } else if (state == RequestState.error) {
+              return const Center(child: Text('Empty'));
+            } else if (state == RequestState.loaded) {
               return SingleChildScrollView(
                 child: Column(
                   children: [
@@ -57,16 +57,16 @@ class _TvDetailPageState extends State<TvDetailPage> {
                           imageUrl:
                               'https://image.tmdb.org/t/p/w500${tvDetail?.posterPath ?? ''}',
                           placeholder: (context, url) =>
-                              Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                              const Icon(Icons.error),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CircleAvatar(
                             foregroundColor: Colors.deepPurple,
                             child: IconButton(
-                              icon: Icon(Icons.arrow_back),
+                              icon: const Icon(Icons.arrow_back),
                               onPressed: () {
                                 Navigator.pop(context);
                               },
@@ -108,7 +108,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Flexible(child: Text(tvDetail.title, style: headlineSmall)),
                 ElevatedButton(
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                       backgroundColor:
                           MaterialStatePropertyAll(Colors.deepPurple)),
                   onPressed: () async {
@@ -120,6 +120,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
                       await notifier.removeFromWatchlist(tvDetail);
                     }
 
+                    if (!context.mounted) return;
                     final message = notifier.watchlistMessage;
                     if (message ==
                             TvDetailNotifier.watchlistAddSuccessMessage ||
@@ -139,14 +140,14 @@ class _TvDetailPageState extends State<TvDetailPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       provider.isAddedToWatchlist
-                          ? Icon(Icons.check)
-                          : Icon(Icons.add),
-                      Text('Watchlist')
+                          ? const Icon(Icons.check)
+                          : const Icon(Icons.add),
+                      const Text('Watchlist')
                     ],
                   ),
                 ),
               ]),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Column(
@@ -158,7 +159,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
                         RatingBarIndicator(
                           rating: tvDetail.voteAverage / 2,
                           itemCount: 5,
-                          itemBuilder: (context, index) => Icon(
+                          itemBuilder: (context, index) => const Icon(
                             Icons.star,
                             color: kMikadoYellow,
                           ),
@@ -170,19 +171,19 @@ class _TvDetailPageState extends State<TvDetailPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Text('Runtime', style: titleLarge),
               ),
               Text(_showDuration(tvDetail.runtime)),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Text('Overview', style: titleLarge),
               ),
               Text(tvDetail.overview),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
             ],
           ),
         ),
@@ -193,14 +194,14 @@ class _TvDetailPageState extends State<TvDetailPage> {
   Widget recommendation() {
     return Consumer<TvDetailNotifier>(
       builder: (context, data, child) {
-        if (data.recommendationState == RequestState.Loading) {
-          return Center(
+        if (data.recommendationState == RequestState.loading) {
+          return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (data.recommendationState == RequestState.Error) {
-          return Text("Something went wrong");
-        } else if (data.recommendationState == RequestState.Loaded) {
-          return Container(
+        } else if (data.recommendationState == RequestState.error) {
+          return const Text("Something went wrong");
+        } else if (data.recommendationState == RequestState.loaded) {
+          return SizedBox(
             height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -212,21 +213,22 @@ class _TvDetailPageState extends State<TvDetailPage> {
                     onTap: () {
                       Navigator.pushReplacementNamed(
                         context,
-                        TvDetailPage.ROUTE_NAME,
+                        TvDetailPage.routeName,
                         arguments: movie.id,
                       );
                     },
                     child: ClipRRect(
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(8),
                       ),
                       child: CachedNetworkImage(
                         imageUrl:
                             'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                        placeholder: (context, url) => Center(
+                        placeholder: (context, url) => const Center(
                           child: CircularProgressIndicator(),
                         ),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),

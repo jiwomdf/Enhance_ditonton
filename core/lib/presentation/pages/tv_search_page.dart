@@ -6,13 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TvSearchPage extends StatelessWidget {
-  static const ROUTE_NAME = '/tv-search';
+  static const routeName = '/tv-search';
+
+  const TvSearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tv Search'),
+        title: const Text('Tv Search'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -34,9 +36,9 @@ class TvSearchPage extends StatelessWidget {
             Text('Search Result', style: kHeading6),
             Consumer<TvSearchNotifier>(
               builder: (context, data, child) {
-                if (data.state == RequestState.Loading) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (data.state == RequestState.Loaded) {
+                if (data.state == RequestState.loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (data.state == RequestState.loaded) {
                   final result = data.searchResult;
                   return Expanded(
                     child: ListView.builder(

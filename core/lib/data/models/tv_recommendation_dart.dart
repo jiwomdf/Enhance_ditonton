@@ -128,27 +128,27 @@ class TvRecommendationResult {
 
   TvRecomemendation toEntity() {
     return TvRecomemendation(
-      adult: this.adult ?? false,
-      backdropPath: this.backdropPath ?? "",
-      id: this.id ?? 0,
-      name: this.name ?? "",
-      originalLanguage: this.originalLanguage ?? "",
-      originalName: this.originalName ?? "",
-      overview: this.overview ?? "",
-      posterPath: this.posterPath ?? "",
-      genreIds: this.genreIds,
-      popularity: this.popularity ?? 0.0,
-      firstAirDate: this.firstAirDate ?? "",
-      voteAverage: this.voteAverage ?? 0.0,
-      voteCount: this.voteCount ?? 0,
-      originCountry: this.originCountry,
+      adult: adult ?? false,
+      backdropPath: backdropPath ?? "",
+      id: id ?? 0,
+      name: name ?? "",
+      originalLanguage: originalLanguage ?? "",
+      originalName: originalName ?? "",
+      overview: overview ?? "",
+      posterPath: posterPath ?? "",
+      genreIds: genreIds,
+      popularity: popularity ?? 0.0,
+      firstAirDate: firstAirDate ?? "",
+      voteAverage: voteAverage ?? 0.0,
+      voteCount: voteCount ?? 0,
+      originCountry: originCountry,
     );
   }
 }
 
-enum MediaType { TV }
+enum MediaType { tv }
 
-final mediaTypeValues = EnumValues({"tv": MediaType.TV});
+final mediaTypeValues = EnumValues({"tv": MediaType.tv});
 
 class EnumValues<T> {
   Map<String, T> map;
