@@ -29,8 +29,8 @@ final TextStyle titleLarge = GoogleFonts.roboto(
 
 // text theme
 final kTextTheme = TextTheme(
-  headline5: kHeading5,
-  headline6: kHeading6,
-  subtitle1: kSubtitle,
-  bodyText2: kBodyText,
+  headlineLarge: kHeading5,
+  headlineMedium: kHeading6,
+  titleLarge: kSubtitle,
+  titleMedium: kBodyText,
 );
