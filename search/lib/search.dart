@@ -1,7 +1,5 @@
 library search;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'domain/usecases/search_movies.dart';
+export 'presentation/pages/search_page.dart';
+export 'presentation/provider/movie_search_notifier.dart';

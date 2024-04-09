@@ -11,8 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  core:
+    path: core
+
   equatable: ^2.0.2
   google_fonts: ^5.1.0
+  dartz: ^0.10.0-nullsafety.2
 
 dev_dependencies:
   flutter_test:
