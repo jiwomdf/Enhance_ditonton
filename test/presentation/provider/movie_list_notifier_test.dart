@@ -1,6 +1,6 @@
+import 'package:core/utils/failure.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/usecases/movie/get_now_playing_movies.dart';
 import 'package:ditonton/domain/usecases/movie/get_popular_movies.dart';
 import 'package:ditonton/domain/usecases/movie/get_top_rated_movies.dart';
@@ -181,7 +181,8 @@ void main() {
 
   group('tvPopular', () {
     test('should change state to loading when usecase is called', () async {
-      when(mockGetTvTopRated.execute()).thenAnswer((_) async => Right([testTv]));
+      when(mockGetTvTopRated.execute())
+          .thenAnswer((_) async => Right([testTv]));
       provider.fetchTvTopRated();
       expect(provider.tvTopRatedState, RequestState.Loading);
     });
@@ -206,13 +207,15 @@ void main() {
 
   group('tvTopRated', () {
     test('should change state to loading when usecase is called', () async {
-      when(mockGetTvTopRated.execute()).thenAnswer((_) async => Right([testTv]));
+      when(mockGetTvTopRated.execute())
+          .thenAnswer((_) async => Right([testTv]));
       provider.fetchTvTopRated();
       expect(provider.tvTopRatedState, RequestState.Loading);
     });
 
     test('should change tv data when data is gotten successfully', () async {
-      when(mockGetTvTopRated.execute()).thenAnswer((_) async => Right([testTv]));
+      when(mockGetTvTopRated.execute())
+          .thenAnswer((_) async => Right([testTv]));
       await provider.fetchTvTopRated();
       expect(provider.tvTopRatedState, RequestState.Loaded);
       expect(provider.tvTopRated, [testTv]);
@@ -231,13 +234,15 @@ void main() {
 
   group('tvAiringToday', () {
     test('should change state to loading when usecase is called', () async {
-      when(mockGetTvAiringToday.execute()).thenAnswer((_) async => Right([testTv]));
+      when(mockGetTvAiringToday.execute())
+          .thenAnswer((_) async => Right([testTv]));
       provider.fetchTvAiringToday();
       expect(provider.tvAiringTodayState, RequestState.Loading);
     });
 
     test('should change tv data when data is gotten successfully', () async {
-      when(mockGetTvAiringToday.execute()).thenAnswer((_) async => Right([testTv]));
+      when(mockGetTvAiringToday.execute())
+          .thenAnswer((_) async => Right([testTv]));
       await provider.fetchTvAiringToday();
       expect(provider.tvAiringTodayState, RequestState.Loaded);
       expect(provider.tvAiringToday, [testTv]);

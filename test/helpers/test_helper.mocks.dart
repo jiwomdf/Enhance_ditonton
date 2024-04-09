@@ -7,8 +7,8 @@ import 'dart:async' as _i6;
 import 'dart:convert' as _i22;
 import 'dart:typed_data' as _i23;
 
+import 'package:core/utils/failure.dart' as _i7;
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:ditonton/common/failure.dart' as _i7;
 import 'package:ditonton/data/datasources/db/database_helper.dart' as _i15;
 import 'package:ditonton/data/datasources/movie_local_data_source.dart' as _i12;
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart'

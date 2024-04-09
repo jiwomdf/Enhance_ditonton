@@ -7,8 +7,8 @@ import 'dart:async' as _i6;
 import 'dart:convert' as _i27;
 import 'dart:typed_data' as _i28;
 
+import 'package:core/utils/failure.dart' as _i7;
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:ditonton/common/failure.dart' as _i7;
 import 'package:ditonton/data/datasources/tv_local_data_source.dart' as _i23;
 import 'package:ditonton/data/datasources/tv_remote_data_source.dart' as _i16;
 import 'package:ditonton/data/models/tv_airing_today_model.dart' as _i21;
