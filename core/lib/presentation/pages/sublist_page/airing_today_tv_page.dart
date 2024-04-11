@@ -1,5 +1,4 @@
-import 'package:core/presentation/provider/airing_today_tv_notifier.dart';
-import 'package:core/presentation/provider/top_rated_tv_notifier.dart';
+import 'package:core/presentation/provider/airing_today_notifier.dart';
 import 'package:core/presentation/widgets/tv_card.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +30,7 @@ class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<TopRatedTvNotifier>(
+        child: Consumer<AiringTodayTvNotifier>(
           builder: (context, data, child) {
             if (data.state == RequestState.loading) {
               return const Center(

@@ -1,4 +1,5 @@
 import 'package:core/presentation/pages/home/home_movie_page.dart';
+import 'package:core/presentation/provider/airing_today_notifier.dart';
 import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/presentation/provider/movie_list_notifier.dart';
 import 'package:core/presentation/provider/popular_movies_notifier.dart';
@@ -45,7 +46,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => di.locator<TvNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<PopularTvNotifier>())
+        ChangeNotifierProvider(create: (_) => di.locator<PopularTvNotifier>()),
+        ChangeNotifierProvider(
+            create: (_) => di.locator<AiringTodayTvNotifier>())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

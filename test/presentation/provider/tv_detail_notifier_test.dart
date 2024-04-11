@@ -43,6 +43,8 @@ void main() {
         .thenAnswer((_) async => Right("Success"));
     when(mockGetTvWatchList.execute()).thenAnswer((_) async => Right([testTv]));
     when(mockIsTvInWatchlist.execute(1)).thenAnswer((_) async => Right(true));
+    when(mockGetTvRecomendation.execute(1))
+        .thenAnswer((_) async => Right([testTvRecommendation]));
   }
 
   group('Get Movie Detail', () {
@@ -50,6 +52,7 @@ void main() {
       _arrangeUsecase();
       await provider.fetchTvDetail(1);
       verify(mockGetTvDetail.execute(1));
+      expect(provider.tvDetail, testTvDetail);
     });
 
     test('should return error when data is unsuccessful', () async {
@@ -93,6 +96,22 @@ void main() {
       when(mockIsTvInWatchlist.execute(1)).thenAnswer((_) async => Right(true));
       await provider.addWatchlist(testTvDetail);
       expect(provider.watchlistMessage, 'Failed');
+    });
+  });
+
+  group("loadRecommendation", () {
+    test('should loadRecommendation from the usecase', () async {
+      _arrangeUsecase();
+      await provider.loadRecommendation(1);
+      verify(mockGetTvRecomendation.execute(1));
+    });
+
+    test('should return error when data is unsuccessful', () async {
+      when(mockGetTvRecomendation.execute(1))
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+      await provider.loadRecommendation(1);
+      expect(provider.recommendationState, RequestState.Error);
+      expect(provider.tvRecomemendation, []);
     });
   });
 }
