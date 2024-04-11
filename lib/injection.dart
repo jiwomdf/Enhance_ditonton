@@ -40,6 +40,7 @@ import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:core/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:search/bloc/searchbloc/bloc/search_bloc.dart';
 import 'package:search/domain/usecases/search_movies.dart';
 import 'package:search/presentation/provider/movie_search_notifier.dart';
 
@@ -108,6 +109,9 @@ void init() {
   locator.registerLazySingleton(() => GetTvTopRated(locator()));
   locator.registerLazySingleton(() => GetTvAiringToday(locator()));
   locator.registerLazySingleton(() => GetTvRecomendation(locator()));
+
+  // bloc
+  locator.registerFactory(() => SearchBloc(locator()));
 
   // repository
   locator.registerLazySingleton<MovieRepository>(

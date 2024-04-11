@@ -16,7 +16,9 @@ import 'package:core/utils/utils.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:ditonton/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:search/bloc/searchbloc/bloc/search_bloc.dart';
 import 'package:search/presentation/provider/movie_search_notifier.dart';
 
 void main() {
@@ -48,7 +50,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<PopularTvNotifier>()),
         ChangeNotifierProvider(
-            create: (_) => di.locator<AiringTodayTvNotifier>())
+            create: (_) => di.locator<AiringTodayTvNotifier>()),
+        BlocProvider(create: (_) => di.locator<SearchBloc>()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
