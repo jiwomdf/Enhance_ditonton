@@ -106,7 +106,7 @@ class TvDetailNotifier extends ChangeNotifier {
   }
 
   Future<void> loadRecommendation(int id) async {
-    final result = await getTvRecomendation.execute(123);
+    final result = await getTvRecomendation.execute(id);
     await result.fold(
       (failure) async {
         _recommendationState = RequestState.Error;
