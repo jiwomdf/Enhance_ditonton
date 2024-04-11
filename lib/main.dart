@@ -2,6 +2,7 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:ditonton/presentation/pages/home/home_movie_page.dart';
+import 'package:ditonton/presentation/provider/airing_today_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
@@ -45,7 +46,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => di.locator<TvNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<PopularTvNotifier>())
+        ChangeNotifierProvider(create: (_) => di.locator<PopularTvNotifier>()),
+        ChangeNotifierProvider(
+            create: (_) => di.locator<AiringTodayTvNotifier>())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
