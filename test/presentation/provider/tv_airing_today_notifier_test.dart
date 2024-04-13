@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/provider/airing_today_tv_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_airing_today_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -9,13 +9,12 @@ import '../../dummy_data/dummy_objects.dart';
 import 'movie_list_notifier_test.mocks.dart';
 
 void main() {
-  late AiringTodayTvNotifier provider;
+  late TvAiringTodayNotifier provider;
   late MockGetTvAiringToday mockGetTvAiringToday;
-  var query = "query";
 
   setUp(() {
     mockGetTvAiringToday = MockGetTvAiringToday();
-    provider = AiringTodayTvNotifier(getTvAiringToday: mockGetTvAiringToday);
+    provider = TvAiringTodayNotifier(getTvAiringToday: mockGetTvAiringToday);
   });
 
   void _arrangeUsecase() {

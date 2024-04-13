@@ -3,10 +3,10 @@ import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/usecases/tv/get_tv_airing_today.dart';
 import 'package:flutter/foundation.dart';
 
-class AiringTodayTvNotifier extends ChangeNotifier {
+class TvAiringTodayNotifier extends ChangeNotifier {
   final GetTvAiringToday getTvAiringToday;
 
-  AiringTodayTvNotifier({required this.getTvAiringToday});
+  TvAiringTodayNotifier({required this.getTvAiringToday});
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;

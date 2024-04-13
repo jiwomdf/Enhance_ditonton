@@ -2,19 +2,19 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:ditonton/presentation/pages/home/home_movie_page.dart';
-import 'package:ditonton/presentation/provider/airing_today_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/popular_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/top_rated_tv_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_top_rated_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_airing_today_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_popular_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_search_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_tv_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_watchlist_notifier.dart';
 import 'package:ditonton/router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -42,13 +42,13 @@ class MyApp extends StatelessWidget {
             create: (_) => di.locator<WatchlistMovieNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvDetailNotifier>()),
         ChangeNotifierProvider(
-            create: (_) => di.locator<WatchlistTvNotifier>()),
+            create: (_) => di.locator<TvWatchlistNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<PopularTvNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TvPopularNotifier>()),
         ChangeNotifierProvider(
-            create: (_) => di.locator<AiringTodayTvNotifier>())
+            create: (_) => di.locator<TvAiringTodayNotifier>())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

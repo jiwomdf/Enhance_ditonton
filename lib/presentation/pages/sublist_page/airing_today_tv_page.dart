@@ -1,5 +1,5 @@
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/provider/airing_today_tv_notifier.dart';
+import 'package:ditonton/presentation/provider/tv_airing_today_notifier.dart';
 import 'package:ditonton/presentation/widgets/tv_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +16,7 @@ class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<AiringTodayTvNotifier>(context, listen: false)
+        Provider.of<TvAiringTodayNotifier>(context, listen: false)
             .fetchAiringTodayTv());
   }
 
@@ -28,7 +28,7 @@ class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<AiringTodayTvNotifier>(
+        child: Consumer<TvAiringTodayNotifier>(
           builder: (context, data, child) {
             if (data.state == RequestState.Loading) {
               return Center(
