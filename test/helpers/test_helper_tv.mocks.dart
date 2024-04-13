@@ -4,8 +4,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i6;
-import 'dart:convert' as _i27;
-import 'dart:typed_data' as _i28;
+import 'dart:convert' as _i31;
+import 'dart:typed_data' as _i32;
 
 import 'package:core/data/datasources/tv_local_data_source.dart' as _i23;
 import 'package:core/data/datasources/tv_remote_data_source.dart' as _i16;
@@ -21,38 +21,18 @@ import 'package:core/domain/entities/tv.dart' as _i8;
 import 'package:core/domain/entities/tv_detail.dart' as _i9;
 import 'package:core/domain/entities/tv_recommendation.dart' as _i10;
 import 'package:core/domain/repositories/tv_repository.dart' as _i3;
+import 'package:core/domain/usecases/tv/get_tv_airing_today.dart' as _i28;
 import 'package:core/domain/usecases/tv/get_tv_detail.dart' as _i11;
+import 'package:core/domain/usecases/tv/get_tv_popular.dart' as _i29;
 import 'package:core/domain/usecases/tv/get_tv_recommendation.dart' as _i26;
+import 'package:core/domain/usecases/tv/get_tv_toprated.dart' as _i30;
 import 'package:core/domain/usecases/tv/get_tv_watchlist.dart' as _i14;
 import 'package:core/domain/usecases/tv/is_tv_in_watchlist.dart' as _i15;
 import 'package:core/domain/usecases/tv/remove_tv_watchlist.dart' as _i13;
 import 'package:core/domain/usecases/tv/save_tv_watchlist.dart' as _i12;
+import 'package:core/domain/usecases/tv/search_tv.dart' as _i27;
 import 'package:core/utils/failure.dart' as _i7;
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:ditonton/common/failure.dart' as _i7;
-import 'package:ditonton/data/datasources/tv_local_data_source.dart' as _i23;
-import 'package:ditonton/data/datasources/tv_remote_data_source.dart' as _i16;
-import 'package:ditonton/data/models/tv_airing_today_model.dart' as _i21;
-import 'package:ditonton/data/models/tv_detail_model.dart' as _i4;
-import 'package:ditonton/data/models/tv_list_model.dart' as _i17;
-import 'package:ditonton/data/models/tv_popular_model.dart' as _i19;
-import 'package:ditonton/data/models/tv_recommendation_dart.dart' as _i22;
-import 'package:ditonton/data/models/tv_search_model.dart' as _i18;
-import 'package:ditonton/data/models/tv_table.dart' as _i24;
-import 'package:ditonton/data/models/tv_toprated_model.dart' as _i20;
-import 'package:ditonton/domain/entities/tv.dart' as _i8;
-import 'package:ditonton/domain/entities/tv_detail.dart' as _i9;
-import 'package:ditonton/domain/entities/tv_recommendation.dart' as _i10;
-import 'package:ditonton/domain/repositories/tv_repository.dart' as _i3;
-import 'package:ditonton/domain/usecases/tv/get_tv_airing_today.dart' as _i28;
-import 'package:ditonton/domain/usecases/tv/get_tv_detail.dart' as _i11;
-import 'package:ditonton/domain/usecases/tv/get_tv_popular.dart' as _i29;
-import 'package:ditonton/domain/usecases/tv/get_tv_recommendation.dart' as _i26;
-import 'package:ditonton/domain/usecases/tv/get_tv_watchlist.dart' as _i14;
-import 'package:ditonton/domain/usecases/tv/is_tv_in_watchlist.dart' as _i15;
-import 'package:ditonton/domain/usecases/tv/remove_tv_watchlist.dart' as _i13;
-import 'package:ditonton/domain/usecases/tv/save_tv_watchlist.dart' as _i12;
-import 'package:ditonton/domain/usecases/tv/search_tv.dart' as _i27;
 import 'package:http/http.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i25;
@@ -732,6 +712,32 @@ class MockGetTvPopular extends _i1.Mock implements _i29.GetTvPopular {
       ) as _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>>);
 }
 
+/// A class which mocks [GetTvTopRated].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetTvTopRated extends _i1.Mock implements _i30.GetTvTopRated {
+  MockGetTvTopRated() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>> execute() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>>.value(
+            _FakeEither_0<_i7.Failure, List<_i8.TV>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>>);
+}
+
 /// A class which mocks [Client].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -787,7 +793,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i30.Encoding? encoding,
+    _i31.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -818,7 +824,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i30.Encoding? encoding,
+    _i31.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -849,7 +855,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i30.Encoding? encoding,
+    _i31.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -880,7 +886,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i30.Encoding? encoding,
+    _i31.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -928,7 +934,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
       ) as _i6.Future<String>);
 
   @override
-  _i6.Future<_i31.Uint8List> readBytes(
+  _i6.Future<_i32.Uint8List> readBytes(
     Uri? url, {
     Map<String, String>? headers,
   }) =>
@@ -938,8 +944,8 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i6.Future<_i31.Uint8List>.value(_i31.Uint8List(0)),
-      ) as _i6.Future<_i31.Uint8List>);
+        returnValue: _i6.Future<_i32.Uint8List>.value(_i32.Uint8List(0)),
+      ) as _i6.Future<_i32.Uint8List>);
 
   @override
   _i6.Future<_i5.StreamedResponse> send(_i5.BaseRequest? request) =>

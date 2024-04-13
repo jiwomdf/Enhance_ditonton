@@ -1,7 +1,7 @@
+import 'package:core/presentation/provider/popular_tv_notifier.dart';
+import 'package:core/utils/failure.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/provider/tv_popular_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -29,7 +29,7 @@ void main() {
     // act
     notifier.fetchPopulartv();
     // assert
-    expect(notifier.state, RequestState.Loading);
+    expect(notifier.state, RequestState.loading);
     expect(listenerCallCount, 1);
   });
 
@@ -40,7 +40,7 @@ void main() {
     // act
     await notifier.fetchPopulartv();
     // assert
-    expect(notifier.state, RequestState.Loaded);
+    expect(notifier.state, RequestState.loaded);
     expect(notifier.tv, [testTv]);
     expect(listenerCallCount, 2);
   });
@@ -52,7 +52,7 @@ void main() {
     // act
     await notifier.fetchPopulartv();
     // assert
-    expect(notifier.state, RequestState.Error);
+    expect(notifier.state, RequestState.error);
     expect(notifier.message, 'Server Failure');
     expect(listenerCallCount, 2);
   });

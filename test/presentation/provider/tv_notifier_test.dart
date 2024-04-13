@@ -1,7 +1,7 @@
+import 'package:core/presentation/provider/tv_notifier.dart';
+import 'package:core/utils/failure.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/provider/tv_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -27,7 +27,7 @@ void main() {
       _arrangeUsecase();
       await provider.fetchPopularMovies();
       verify(mockGetTvPopular.execute());
-      expect(provider.state, RequestState.Loaded);
+      expect(provider.state, RequestState.loaded);
       expect(provider.tv, [testTv]);
     });
 
@@ -35,7 +35,7 @@ void main() {
       when(mockGetTvPopular.execute())
           .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       await provider.fetchPopularMovies();
-      expect(provider.state, RequestState.Error);
+      expect(provider.state, RequestState.error);
       expect(provider.message, 'Server Failure');
     });
   });

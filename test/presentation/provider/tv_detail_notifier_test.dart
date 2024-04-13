@@ -110,7 +110,7 @@ void main() {
       when(mockGetTvRecomendation.execute(1))
           .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
       await provider.loadRecommendation(1);
-      expect(provider.recommendationState, RequestState.Error);
+      expect(provider.recommendationState, RequestState.error);
       expect(provider.tvRecomemendation, []);
     });
   });
