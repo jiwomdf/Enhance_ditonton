@@ -27,6 +27,8 @@ dependencies:
     path: search
   core:
     path: core
+  movie:
+    path: movie
   tvs:
     path: tvs
 

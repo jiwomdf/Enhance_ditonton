@@ -1,11 +1,11 @@
 import 'package:core/presentation/provider/airing_today_notifier.dart';
-import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/presentation/provider/movie_list_notifier.dart';
 import 'package:core/presentation/provider/popular_movies_notifier.dart';
 import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/presentation/bloc/movie_detail_notifier.dart';
+import 'package:movie/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:search/presentation/bloc/movie/searchbloc/search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_notifier.dart';

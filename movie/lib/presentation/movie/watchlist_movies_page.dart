@@ -1,13 +1,12 @@
-import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:core/presentation/widgets/movie_card.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class WatchlistMoviesPage extends StatefulWidget {
-  static const routeName = '/watchlist-movie';
+import '../bloc/watchlist_movie_notifier.dart';
 
+class WatchlistMoviesPage extends StatefulWidget {
   const WatchlistMoviesPage({super.key});
 
   @override
