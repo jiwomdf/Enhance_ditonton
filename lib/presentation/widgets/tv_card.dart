@@ -50,23 +50,29 @@ class TvCard extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(
-                left: 16,
-                bottom: 16,
-              ),
-              child: ClipRRect(
-                child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${tv.posterPath}',
-                  width: 80,
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
+            Builder(builder: (context) {
+              if (tv.posterPath != null && tv.posterPath!.isNotEmpty) {
+                return Container(
+                  margin: const EdgeInsets.only(
+                    left: 16,
+                    bottom: 16,
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-              ),
-            ),
+                  child: ClipRRect(
+                    child: CachedNetworkImage(
+                      imageUrl: '$BASE_IMAGE_URL${tv.posterPath}',
+                      width: 80,
+                      placeholder: (context, url) => Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                );
+              } else {
+                return Text("Image Empty");
+              }
+            }),
           ],
         ),
       ),
