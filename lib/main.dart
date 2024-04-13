@@ -1,25 +1,11 @@
 import 'package:core/presentation/pages/home/home_movie_page.dart';
-import 'package:core/presentation/provider/airing_today_notifier.dart';
-import 'package:core/presentation/provider/movie_detail_notifier.dart';
-import 'package:core/presentation/provider/movie_list_notifier.dart';
-import 'package:core/presentation/provider/popular_movies_notifier.dart';
-import 'package:core/presentation/provider/popular_tv_notifier.dart';
-import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:core/presentation/provider/top_rated_tv_notifier.dart';
-import 'package:core/presentation/provider/tv_detail_notifier.dart';
-import 'package:core/presentation/provider/tv_notifier.dart';
-import 'package:core/presentation/provider/tv_search_notifier.dart';
-import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:core/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:core/styles/colors.dart';
 import 'package:core/utils/utils.dart';
 import 'package:ditonton/injection.dart' as di;
+import 'package:ditonton/providers.dart';
 import 'package:ditonton/router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:search/bloc/searchbloc/bloc/search_bloc.dart';
-import 'package:search/presentation/provider/movie_search_notifier.dart';
 
 void main() {
   di.init();
@@ -30,29 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => di.locator<MovieListNotifier>()),
-        ChangeNotifierProvider(
-            create: (_) => di.locator<MovieDetailNotifier>()),
-        ChangeNotifierProvider(
-            create: (_) => di.locator<MovieSearchNotifier>()),
-        ChangeNotifierProvider(
-            create: (_) => di.locator<TopRatedMoviesNotifier>()),
-        ChangeNotifierProvider(
-            create: (_) => di.locator<PopularMoviesNotifier>()),
-        ChangeNotifierProvider(
-            create: (_) => di.locator<WatchlistMovieNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<TvDetailNotifier>()),
-        ChangeNotifierProvider(
-            create: (_) => di.locator<TvWatchlistNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<TvNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<TvPopularNotifier>()),
-        ChangeNotifierProvider(
-            create: (_) => di.locator<TvAiringTodayNotifier>()),
-        BlocProvider(create: (_) => di.locator<SearchBloc>()),
-      ],
+      providers: listPovider,
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData.dark().copyWith(
@@ -61,9 +25,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: kRichBlack),
         home: HomeMoviePage(),
         navigatorObservers: [routeObserver],
-        onGenerateRoute: (RouteSettings settings) {
-          return router(settings);
-        },
+        onGenerateRoute: (RouteSettings settings) => router(settings),
       ),
     );
   }
