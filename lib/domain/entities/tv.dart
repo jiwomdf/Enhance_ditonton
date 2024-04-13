@@ -1,5 +1,3 @@
-import 'package:ditonton/data/models/tv_table.dart';
-
 class TV {
   bool? adult;
   String? backdropPath;
@@ -39,13 +37,4 @@ class TV {
     required this.posterPath,
     required this.name,
   });
-
-  TvTable mapToTvTable() {
-    return TvTable(
-      id: id ?? 0,
-      title: name,
-      posterPath: posterPath,
-      overview: overview,
-    );
-  }
 }

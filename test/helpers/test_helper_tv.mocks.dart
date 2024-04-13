@@ -4,8 +4,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i6;
-import 'dart:convert' as _i27;
-import 'dart:typed_data' as _i28;
+import 'dart:convert' as _i29;
+import 'dart:typed_data' as _i30;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:ditonton/common/failure.dart' as _i7;
@@ -23,12 +23,14 @@ import 'package:ditonton/domain/entities/tv.dart' as _i8;
 import 'package:ditonton/domain/entities/tv_detail.dart' as _i9;
 import 'package:ditonton/domain/entities/tv_recommendation.dart' as _i10;
 import 'package:ditonton/domain/repositories/tv_repository.dart' as _i3;
+import 'package:ditonton/domain/usecases/tv/get_tv_airing_today.dart' as _i28;
 import 'package:ditonton/domain/usecases/tv/get_tv_detail.dart' as _i11;
 import 'package:ditonton/domain/usecases/tv/get_tv_recommendation.dart' as _i26;
 import 'package:ditonton/domain/usecases/tv/get_tv_watchlist.dart' as _i14;
 import 'package:ditonton/domain/usecases/tv/is_tv_in_watchlist.dart' as _i15;
 import 'package:ditonton/domain/usecases/tv/remove_tv_watchlist.dart' as _i13;
 import 'package:ditonton/domain/usecases/tv/save_tv_watchlist.dart' as _i12;
+import 'package:ditonton/domain/usecases/tv/search_tv.dart' as _i27;
 import 'package:http/http.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i25;
@@ -621,6 +623,67 @@ class MockGetTvRecomendation extends _i1.Mock
       ) as _i6.Future<_i2.Either<_i7.Failure, List<_i10.TvRecomemendation>>>);
 }
 
+/// A class which mocks [SearchTv].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSearchTv extends _i1.Mock implements _i27.SearchTv {
+  MockSearchTv() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.TvRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeTvRepository_1(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i3.TvRepository);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>> execute(String? query) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [query],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>>.value(
+            _FakeEither_0<_i7.Failure, List<_i8.TV>>(
+          this,
+          Invocation.method(
+            #execute,
+            [query],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>>);
+}
+
+/// A class which mocks [GetTvAiringToday].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetTvAiringToday extends _i1.Mock implements _i28.GetTvAiringToday {
+  MockGetTvAiringToday() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>> execute() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>>.value(
+            _FakeEither_0<_i7.Failure, List<_i8.TV>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, List<_i8.TV>>>);
+}
+
 /// A class which mocks [Client].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -676,7 +739,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i27.Encoding? encoding,
+    _i29.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -707,7 +770,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i27.Encoding? encoding,
+    _i29.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -738,7 +801,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i27.Encoding? encoding,
+    _i29.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -769,7 +832,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i27.Encoding? encoding,
+    _i29.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -817,7 +880,7 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
       ) as _i6.Future<String>);
 
   @override
-  _i6.Future<_i28.Uint8List> readBytes(
+  _i6.Future<_i30.Uint8List> readBytes(
     Uri? url, {
     Map<String, String>? headers,
   }) =>
@@ -827,8 +890,8 @@ class MockHttpClient extends _i1.Mock implements _i5.Client {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i6.Future<_i28.Uint8List>.value(_i28.Uint8List(0)),
-      ) as _i6.Future<_i28.Uint8List>);
+        returnValue: _i6.Future<_i30.Uint8List>.value(_i30.Uint8List(0)),
+      ) as _i6.Future<_i30.Uint8List>);
 
   @override
   _i6.Future<_i5.StreamedResponse> send(_i5.BaseRequest? request) =>

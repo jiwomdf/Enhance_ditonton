@@ -43,6 +43,15 @@ class TvTable extends Equatable {
         name: title ?? '',
       );
 
+  TvTable mapToTvTable() {
+    return TvTable(
+      id: id,
+      title: title,
+      posterPath: posterPath,
+      overview: overview,
+    );
+  }
+
   @override
   List<Object?> get props => [id, title, posterPath, overview];
 }
