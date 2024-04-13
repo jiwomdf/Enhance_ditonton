@@ -3,7 +3,7 @@ import 'package:core/domain/usecases/tv/get_tv_watchlist.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/foundation.dart';
 
-class WatchlistTvNotifier extends ChangeNotifier {
+class TvWatchlistNotifier extends ChangeNotifier {
   var _watchlistTv = <TV>[];
   List<TV> get watchlistTv => _watchlistTv;
 
@@ -13,7 +13,7 @@ class WatchlistTvNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  WatchlistTvNotifier({required this.getWatchlistTv});
+  TvWatchlistNotifier({required this.getWatchlistTv});
 
   final GetTvWatchList getWatchlistTv;
 

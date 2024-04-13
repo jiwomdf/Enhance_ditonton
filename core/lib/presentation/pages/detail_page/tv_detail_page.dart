@@ -47,34 +47,41 @@ class _TvDetailPageState extends State<TvDetailPage> {
               return SingleChildScrollView(
                 child: Column(
                   children: [
-                    Stack(
-                      children: [
-                        CachedNetworkImage(
-                          height: 350,
-                          width: MediaQuery.of(context).size.width,
-                          fit: BoxFit.cover,
-                          alignment: Alignment.topCenter,
-                          imageUrl:
-                              'https://image.tmdb.org/t/p/w500${tvDetail?.posterPath ?? ''}',
-                          placeholder: (context, url) =>
-                              const Center(child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CircleAvatar(
-                            foregroundColor: Colors.deepPurple,
-                            child: IconButton(
-                              icon: const Icon(Icons.arrow_back),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
+                    Builder(builder: (context) {
+                      if (provider.tvDetail?.posterPath != null &&
+                          provider.tvDetail?.posterPath.isNotEmpty == true) {
+                        return Stack(
+                          children: [
+                            CachedNetworkImage(
+                              height: 350,
+                              width: MediaQuery.of(context).size.width,
+                              fit: BoxFit.cover,
+                              alignment: Alignment.topCenter,
+                              imageUrl:
+                                  'https://image.tmdb.org/t/p/w500${tvDetail?.posterPath ?? ''}',
+                              placeholder: (context, url) =>
+                                  Center(child: CircularProgressIndicator()),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CircleAvatar(
+                                foregroundColor: Colors.deepPurple,
+                                child: IconButton(
+                                  icon: Icon(Icons.arrow_back),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      } else {
+                        return Text("Image Empty");
+                      }
+                    }),
                     Container(
                       padding: const EdgeInsets.only(left: 16, right: 16),
                       child: Column(
@@ -206,31 +213,37 @@ class _TvDetailPageState extends State<TvDetailPage> {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                final movie = data.tvRecomemendation[index];
+                final tv = data.tvRecomemendation[index];
                 return Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: InkWell(
                     onTap: () {
                       Navigator.pushReplacementNamed(
                         context,
-                        TvDetailPage.routeName,
-                        arguments: movie.id,
+                        "TvDetailPage.ROUTE_NAME //TODO: jiwo",
+                        arguments: tv.id,
                       );
                     },
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(8),
-                      ),
-                      child: CachedNetworkImage(
-                        imageUrl:
-                            'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                        placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                    ),
+                    child: Builder(builder: (context) {
+                      if (tv.posterPath.isNotEmpty) {
+                        return ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8),
+                          ),
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                'https://image.tmdb.org/t/p/w500${tv.posterPath}',
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        );
+                      } else {
+                        return Text("Image Empty");
+                      }
+                    }),
                   ),
                 );
               },

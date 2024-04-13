@@ -44,13 +44,13 @@ class MyApp extends StatelessWidget {
             create: (_) => di.locator<WatchlistMovieNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvDetailNotifier>()),
         ChangeNotifierProvider(
-            create: (_) => di.locator<WatchlistTvNotifier>()),
+            create: (_) => di.locator<TvWatchlistNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>()),
         ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
-        ChangeNotifierProvider(create: (_) => di.locator<PopularTvNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TvPopularNotifier>()),
         ChangeNotifierProvider(
-            create: (_) => di.locator<AiringTodayTvNotifier>()),
+            create: (_) => di.locator<TvAiringTodayNotifier>()),
         BlocProvider(create: (_) => di.locator<SearchBloc>()),
       ],
       child: MaterialApp(

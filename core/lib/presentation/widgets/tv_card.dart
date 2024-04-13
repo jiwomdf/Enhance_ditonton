@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/tv.dart';
 import 'package:core/presentation/pages/detail_page/tv_detail_page.dart';
 import 'package:core/styles/text_styles.dart';
-import 'package:core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class TvCard extends StatelessWidget {
@@ -51,23 +50,29 @@ class TvCard extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(
-                left: 16,
-                bottom: 16,
-              ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
-                child: CachedNetworkImage(
-                  imageUrl: '$baseImageUrl${tv.posterPath}',
-                  width: 80,
-                  placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(),
+            Builder(builder: (context) {
+              if (tv.posterPath != null && tv.posterPath!.isNotEmpty) {
+                return Container(
+                  margin: const EdgeInsets.only(
+                    left: 16,
+                    bottom: 16,
                   ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-              ),
-            ),
+                  child: ClipRRect(
+                    child: CachedNetworkImage(
+                      imageUrl: '//TODO: jiwo BASE_IMAGE_URL${tv.posterPath}',
+                      width: 80,
+                      placeholder: (context, url) => Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                );
+              } else {
+                return Text("Image Empty");
+              }
+            }),
           ],
         ),
       ),

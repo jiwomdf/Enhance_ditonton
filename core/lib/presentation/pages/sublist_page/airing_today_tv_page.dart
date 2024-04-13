@@ -18,7 +18,7 @@ class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<AiringTodayTvNotifier>(context, listen: false)
+        Provider.of<TvAiringTodayNotifier>(context, listen: false)
             .fetchAiringTodayTv());
   }
 
@@ -30,7 +30,7 @@ class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<AiringTodayTvNotifier>(
+        child: Consumer<TvAiringTodayNotifier>(
           builder: (context, data, child) {
             if (data.state == RequestState.loading) {
               return const Center(

@@ -3,10 +3,10 @@ import 'package:core/domain/usecases/tv/get_tv_airing_today.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/foundation.dart';
 
-class AiringTodayTvNotifier extends ChangeNotifier {
+class TvAiringTodayNotifier extends ChangeNotifier {
   final GetTvAiringToday getTvAiringToday;
 
-  AiringTodayTvNotifier({required this.getTvAiringToday});
+  TvAiringTodayNotifier({required this.getTvAiringToday});
 
   RequestState _state = RequestState.empty;
   RequestState get state => _state;

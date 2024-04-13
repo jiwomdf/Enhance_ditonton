@@ -18,7 +18,7 @@ class _PopularTvPageState extends State<PopularTvPage> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<PopularTvNotifier>(context, listen: false)
+        Provider.of<TvPopularNotifier>(context, listen: false)
             .fetchPopulartv());
   }
 
@@ -30,7 +30,7 @@ class _PopularTvPageState extends State<PopularTvPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<PopularTvNotifier>(
+        child: Consumer<TvPopularNotifier>(
           builder: (context, data, child) {
             if (data.state == RequestState.loading) {
               return const Center(

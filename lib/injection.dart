@@ -80,13 +80,13 @@ void init() {
         isTvInWatchlist: locator(),
         getTvRecomendation: locator()),
   );
-  locator.registerFactory(() => WatchlistTvNotifier(getWatchlistTv: locator()));
+  locator.registerFactory(() => TvWatchlistNotifier(getWatchlistTv: locator()));
   locator.registerFactory(() => TvNotifier(getTvPopular: locator()));
   locator.registerFactory(() => TvSearchNotifier(searchTv: locator()));
   locator.registerFactory(() => TopRatedTvNotifier(getTopRatedTv: locator()));
-  locator.registerFactory(() => PopularTvNotifier(getTvPopular: locator()));
+  locator.registerFactory(() => TvPopularNotifier(getTvPopular: locator()));
   locator.registerFactory(
-      () => AiringTodayTvNotifier(getTvAiringToday: locator()));
+      () => TvAiringTodayNotifier(getTvAiringToday: locator()));
 
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));

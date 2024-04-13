@@ -19,7 +19,7 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> with RouteAware {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<WatchlistTvNotifier>(context, listen: false)
+        Provider.of<TvWatchlistNotifier>(context, listen: false)
             .fetchWatchlistTv());
   }
 
@@ -31,7 +31,7 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> with RouteAware {
 
   @override
   void didPopNext() {
-    Provider.of<WatchlistTvNotifier>(context, listen: false).fetchWatchlistTv();
+    Provider.of<TvWatchlistNotifier>(context, listen: false).fetchWatchlistTv();
   }
 
   @override
@@ -42,7 +42,7 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> with RouteAware {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistTvNotifier>(
+        child: Consumer<TvWatchlistNotifier>(
           builder: (context, data, child) {
             if (data.watchlistTvState == RequestState.loading) {
               return const Center(
