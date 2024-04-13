@@ -27,6 +27,8 @@ dependencies:
     path: search
   core:
     path: core
+  tvs:
+    path: tvs
 
 
   # The following adds the Cupertino Icons font to your application.

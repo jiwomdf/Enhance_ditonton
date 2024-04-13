@@ -1,16 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/tv_detail.dart';
-import 'package:core/presentation/provider/tv_detail_notifier.dart';
 import 'package:core/styles/colors.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:tvs/presentation/bloc/tv_detail_notifier.dart';
 
 class TvDetailPage extends StatefulWidget {
-  static const routeName = '/detail_tv';
-
   final int id;
 
   const TvDetailPage({super.key, required this.id});
@@ -59,17 +57,17 @@ class _TvDetailPageState extends State<TvDetailPage> {
                               alignment: Alignment.topCenter,
                               imageUrl:
                                   'https://image.tmdb.org/t/p/w500${tvDetail?.posterPath ?? ''}',
-                              placeholder: (context, url) =>
-                                  Center(child: CircularProgressIndicator()),
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator()),
                               errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
+                                  const Icon(Icons.error),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: CircleAvatar(
                                 foregroundColor: Colors.deepPurple,
                                 child: IconButton(
-                                  icon: Icon(Icons.arrow_back),
+                                  icon: const Icon(Icons.arrow_back),
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
@@ -79,7 +77,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
                           ],
                         );
                       } else {
-                        return Text("Image Empty");
+                        return const Text("Image Empty");
                       }
                     }),
                     Container(
@@ -227,21 +225,21 @@ class _TvDetailPageState extends State<TvDetailPage> {
                     child: Builder(builder: (context) {
                       if (tv.posterPath.isNotEmpty) {
                         return ClipRRect(
-                          borderRadius: BorderRadius.all(
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(8),
                           ),
                           child: CachedNetworkImage(
                             imageUrl:
                                 'https://image.tmdb.org/t/p/w500${tv.posterPath}',
-                            placeholder: (context, url) => Center(
+                            placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                         );
                       } else {
-                        return Text("Image Empty");
+                        return const Text("Image Empty");
                       }
                     }),
                   ),

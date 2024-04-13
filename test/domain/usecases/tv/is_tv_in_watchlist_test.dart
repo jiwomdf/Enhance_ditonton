@@ -1,7 +1,7 @@
-import 'package:core/domain/usecases/tv/is_tv_in_watchlist.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tvs/domain/usecases/tv/is_tv_in_watchlist.dart';
 
 import '../../../helpers/test_helper.mocks.dart';
 

@@ -1,12 +1,10 @@
-import 'package:core/presentation/provider/tv_top_rated_notifier.dart';
 import 'package:core/presentation/widgets/tv_card.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tvs/presentation/bloc/tv_top_rated_notifier.dart';
 
 class TopRatedTVPage extends StatefulWidget {
-  static const routeName = '/top-rated-tv';
-
   const TopRatedTVPage({super.key});
 
   @override

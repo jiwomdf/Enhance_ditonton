@@ -1,12 +1,12 @@
-import 'package:core/utils/state_enum.dart';
 import 'package:core/domain/entities/tv.dart';
-import 'package:core/domain/usecases/tv/get_tv_popular.dart';
+import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:flutter/foundation.dart';
 
-class TvNotifier extends ChangeNotifier {
-  final GetTvPopular getTvPopular;
+class TopRatedTvNotifier extends ChangeNotifier {
+  final GetTvTopRated getTopRatedTv;
 
-  TvNotifier({required this.getTvPopular});
+  TopRatedTvNotifier({required this.getTopRatedTv});
 
   RequestState _state = RequestState.empty;
   RequestState get state => _state;
@@ -17,11 +17,11 @@ class TvNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  Future<void> fetchPopularMovies() async {
+  Future<void> fetchTopRatedTv() async {
     _state = RequestState.loading;
     notifyListeners();
 
-    final result = await getTvPopular.execute();
+    final result = await getTopRatedTv.execute();
 
     result.fold(
       (failure) {
@@ -29,8 +29,8 @@ class TvNotifier extends ChangeNotifier {
         _state = RequestState.error;
         notifyListeners();
       },
-      (tvData) {
-        _tv = tvData;
+      (data) {
+        _tv = data;
         _state = RequestState.loaded;
         notifyListeners();
       },

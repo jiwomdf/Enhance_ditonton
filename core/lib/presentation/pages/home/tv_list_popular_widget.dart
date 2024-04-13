@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:core/domain/entities/tv.dart';
-import 'package:core/presentation/pages/detail_page/tv_detail_page.dart';
+import 'package:core/routes.dart';
 import 'package:flutter/material.dart';
 
 class TVList extends StatelessWidget {
@@ -23,7 +23,7 @@ class TVList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  TvDetailPage.routeName,
+                  Routes.tvDetail,
                   arguments: tv.id,
                 );
               },

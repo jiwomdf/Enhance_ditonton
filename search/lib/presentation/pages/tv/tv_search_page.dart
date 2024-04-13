@@ -1,13 +1,11 @@
-import 'package:core/presentation/provider/tv_search_notifier.dart';
 import 'package:core/presentation/widgets/tv_card.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:search/presentation/bloc/tv/tv_search_notifier.dart';
 
 class TvSearchPage extends StatelessWidget {
-  static const routeName = '/tv-search';
-
   const TvSearchPage({super.key});
 
   @override

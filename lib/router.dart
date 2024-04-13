@@ -1,19 +1,19 @@
 import 'package:core/presentation/pages/about_page.dart';
 import 'package:core/presentation/pages/detail_page/movie_detail_page.dart';
-import 'package:core/presentation/pages/detail_page/tv_detail_page.dart';
 import 'package:core/presentation/pages/home/home_movie_page.dart';
-import 'package:core/presentation/pages/sublist_page/airing_today_tv_page.dart';
 import 'package:core/presentation/pages/sublist_page/popular_movies_page.dart';
-import 'package:core/presentation/pages/sublist_page/popular_tv_page.dart';
 import 'package:core/presentation/pages/sublist_page/top_rated_movies_page.dart';
-import 'package:core/presentation/pages/sublist_page/top_rated_tv_page.dart';
-import 'package:core/presentation/pages/tv_search_page.dart';
 import 'package:core/presentation/pages/watchlist_movies_page.dart';
-import 'package:core/presentation/pages/watchlist_tv_page.dart';
 import 'package:core/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:search/presentation/pages/search_page.dart';
+import 'package:search/presentation/pages/movie/search_page.dart';
+import 'package:search/presentation/pages/tv/tv_search_page.dart';
+import 'package:tvs/presentation/pages/detail_page/tv_detail_page.dart';
+import 'package:tvs/presentation/pages/sublist_page/airing_today_tv_page.dart';
+import 'package:tvs/presentation/pages/sublist_page/popular_tv_page.dart';
+import 'package:tvs/presentation/pages/sublist_page/top_rated_tv_page.dart';
+import 'package:tvs/presentation/pages/watchlist_tv_page.dart';
 
 PageRoute router(RouteSettings settings) {
   switch (settings.name) {
@@ -35,18 +35,18 @@ PageRoute router(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
     case AboutPage.routeName:
       return MaterialPageRoute(builder: (_) => AboutPage());
-    case TvDetailPage.routeName:
+    case Routes.tvDetail:
       final id = settings.arguments as int;
       return MaterialPageRoute(builder: (_) => TvDetailPage(id: id));
-    case WatchlistTvPage.routeName:
+    case Routes.tvWatchList:
       return MaterialPageRoute(builder: (_) => WatchlistTvPage());
-    case TopRatedTVPage.routeName:
+    case Routes.tvTopRated:
       return MaterialPageRoute(builder: (_) => TopRatedTVPage());
-    case PopularTvPage.routeName:
+    case Routes.tvPopular:
       return MaterialPageRoute(builder: (_) => PopularTvPage());
-    case AiringTodayTVPage.routeName:
+    case Routes.tvAiringToday:
       return MaterialPageRoute(builder: (_) => AiringTodayTVPage());
-    case TvSearchPage.routeName:
+    case Routes.tvSearch:
       return MaterialPageRoute(builder: (_) => TvSearchPage());
     default:
       return MaterialPageRoute(builder: (_) {

@@ -1,28 +1,27 @@
-import 'package:core/utils/state_enum.dart';
 import 'package:core/domain/entities/tv.dart';
-import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
+import 'package:core/utils/state_enum.dart';
 import 'package:flutter/foundation.dart';
+import 'package:search/domain/usecases/tv/search_tv.dart';
 
-class TopRatedTvNotifier extends ChangeNotifier {
-  final GetTvTopRated getTopRatedTv;
+class TvSearchNotifier extends ChangeNotifier {
+  final SearchTv searchTv;
 
-  TopRatedTvNotifier({required this.getTopRatedTv});
+  TvSearchNotifier({required this.searchTv});
 
   RequestState _state = RequestState.empty;
   RequestState get state => _state;
 
-  List<TV> _tv = [];
-  List<TV> get tv => _tv;
+  List<TV> _searchResult = [];
+  List<TV> get searchResult => _searchResult;
 
   String _message = '';
   String get message => _message;
 
-  Future<void> fetchTopRatedTv() async {
+  Future<void> fetchTvSearch(String query) async {
     _state = RequestState.loading;
     notifyListeners();
 
-    final result = await getTopRatedTv.execute();
-
+    final result = await searchTv.execute(query);
     result.fold(
       (failure) {
         _message = failure.message;
@@ -30,7 +29,7 @@ class TopRatedTvNotifier extends ChangeNotifier {
         notifyListeners();
       },
       (data) {
-        _tv = data;
+        _searchResult = data;
         _state = RequestState.loaded;
         notifyListeners();
       },

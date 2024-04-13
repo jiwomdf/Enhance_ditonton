@@ -1,36 +1,34 @@
-import 'package:core/presentation/provider/popular_tv_notifier.dart';
+import 'package:core/presentation/provider/airing_today_notifier.dart';
 import 'package:core/presentation/widgets/tv_card.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PopularTvPage extends StatefulWidget {
-  static const routeName = '/popular-tv';
-
-  const PopularTvPage({super.key});
+class AiringTodayTVPage extends StatefulWidget {
+  const AiringTodayTVPage({super.key});
 
   @override
-  _PopularTvPageState createState() => _PopularTvPageState();
+  _AiringTodayTVPageState createState() => _AiringTodayTVPageState();
 }
 
-class _PopularTvPageState extends State<PopularTvPage> {
+class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
   @override
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<TvPopularNotifier>(context, listen: false)
-            .fetchPopulartv());
+        Provider.of<TvAiringTodayNotifier>(context, listen: false)
+            .fetchAiringTodayTv());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Popular TV'),
+        title: const Text('Airing Today TV'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<TvPopularNotifier>(
+        child: Consumer<TvAiringTodayNotifier>(
           builder: (context, data, child) {
             if (data.state == RequestState.loading) {
               return const Center(

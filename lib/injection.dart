@@ -17,32 +17,31 @@ import 'package:core/domain/usecases/movie/get_watchlist_status.dart';
 import 'package:core/domain/usecases/movie/remove_watchlist.dart';
 import 'package:core/domain/usecases/movie/save_watchlist.dart';
 import 'package:core/domain/usecases/tv/get_tv_airing_today.dart';
-import 'package:core/domain/usecases/tv/get_tv_detail.dart';
 import 'package:core/domain/usecases/tv/get_tv_popular.dart';
-import 'package:core/domain/usecases/tv/get_tv_recommendation.dart';
 import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
-import 'package:core/domain/usecases/tv/get_tv_watchlist.dart';
-import 'package:core/domain/usecases/tv/is_tv_in_watchlist.dart';
-import 'package:core/domain/usecases/tv/remove_tv_watchlist.dart';
-import 'package:core/domain/usecases/tv/save_tv_watchlist.dart';
-import 'package:core/domain/usecases/tv/search_tv.dart';
 import 'package:core/presentation/provider/airing_today_notifier.dart';
 import 'package:core/presentation/provider/movie_detail_notifier.dart';
 import 'package:core/presentation/provider/movie_list_notifier.dart';
 import 'package:core/presentation/provider/popular_movies_notifier.dart';
-import 'package:core/presentation/provider/popular_tv_notifier.dart';
 import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:core/presentation/provider/top_rated_tv_notifier.dart';
-import 'package:core/presentation/provider/tv_detail_notifier.dart';
-import 'package:core/presentation/provider/tv_notifier.dart';
-import 'package:core/presentation/provider/tv_search_notifier.dart';
 import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:core/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-import 'package:search/bloc/searchbloc/bloc/search_bloc.dart';
-import 'package:search/domain/usecases/search_movies.dart';
-import 'package:search/presentation/provider/movie_search_notifier.dart';
+import 'package:search/domain/usecases/movie/search_movies.dart';
+import 'package:search/domain/usecases/tv/search_tv.dart';
+import 'package:search/presentation/bloc/movie/searchbloc/search_bloc.dart';
+import 'package:search/presentation/bloc/tv/tv_search_notifier.dart';
+import 'package:tvs/domain/usecases/tv/get_tv_detail.dart';
+import 'package:tvs/domain/usecases/tv/get_tv_recommendation.dart';
+import 'package:tvs/domain/usecases/tv/get_tv_watchlist.dart';
+import 'package:tvs/domain/usecases/tv/is_tv_in_watchlist.dart';
+import 'package:tvs/domain/usecases/tv/remove_tv_watchlist.dart';
+import 'package:tvs/domain/usecases/tv/save_tv_watchlist.dart';
+import 'package:tvs/presentation/bloc/tv_detail_notifier.dart';
+import 'package:tvs/presentation/bloc/tv_notifier.dart';
+import 'package:tvs/presentation/bloc/tv_popular_notifier.dart';
+import 'package:tvs/presentation/bloc/tv_top_rated_notifier.dart';
+import 'package:tvs/presentation/bloc/tv_watchlist_notifier.dart';
 
 final locator = GetIt.instance;
 
@@ -66,7 +65,6 @@ void init() {
       removeWatchlist: locator(),
     ),
   );
-  locator.registerFactory(() => MovieSearchNotifier(searchMovies: locator()));
   locator.registerFactory(() => PopularMoviesNotifier(locator()));
   locator.registerFactory(
       () => TopRatedMoviesNotifier(getTopRatedMovies: locator()));

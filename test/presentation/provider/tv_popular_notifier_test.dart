@@ -1,9 +1,9 @@
-import 'package:core/presentation/provider/popular_tv_notifier.dart';
 import 'package:core/utils/failure.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tvs/presentation/bloc/tv_popular_notifier.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper_tv.mocks.dart';

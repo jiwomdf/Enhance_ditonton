@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/tv.dart';
-import 'package:core/presentation/pages/detail_page/tv_detail_page.dart';
+import 'package:core/routes.dart';
 import 'package:core/styles/text_styles.dart';
+import 'package:core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class TvCard extends StatelessWidget {
@@ -17,7 +18,7 @@ class TvCard extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            TvDetailPage.routeName,
+            Routes.tvDetail,
             arguments: tv.id,
           );
         },
@@ -58,19 +59,20 @@ class TvCard extends StatelessWidget {
                     bottom: 16,
                   ),
                   child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
                     child: CachedNetworkImage(
-                      imageUrl: '//TODO: jiwo BASE_IMAGE_URL${tv.posterPath}',
+                      imageUrl: '$baseImageUrl${tv.posterPath}',
                       width: 80,
-                      placeholder: (context, url) => Center(
+                      placeholder: (context, url) => const Center(
                         child: CircularProgressIndicator(),
                       ),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
                   ),
                 );
               } else {
-                return Text("Image Empty");
+                return const Text("Image Empty");
               }
             }),
           ],

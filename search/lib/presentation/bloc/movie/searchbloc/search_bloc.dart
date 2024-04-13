@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/utils/eventtransformer.dart';
 import 'package:equatable/equatable.dart';
-import 'package:search/domain/usecases/search_movies.dart';
+import 'package:search/domain/usecases/movie/search_movies.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';

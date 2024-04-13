@@ -1,13 +1,11 @@
-import 'package:core/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:core/presentation/widgets/tv_card.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tvs/presentation/bloc/tv_watchlist_notifier.dart';
 
 class WatchlistTvPage extends StatefulWidget {
-  static const routeName = '/watchlist-tv';
-
   const WatchlistTvPage({super.key});
 
   @override

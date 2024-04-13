@@ -1,13 +1,8 @@
 import 'package:core/presentation/pages/about_page.dart';
 import 'package:core/presentation/pages/home/tv_list_popular_widget.dart';
-import 'package:core/presentation/pages/sublist_page/airing_today_tv_page.dart';
 import 'package:core/presentation/pages/sublist_page/popular_movies_page.dart';
-import 'package:core/presentation/pages/sublist_page/popular_tv_page.dart';
 import 'package:core/presentation/pages/sublist_page/top_rated_movies_page.dart';
-import 'package:core/presentation/pages/sublist_page/top_rated_tv_page.dart';
-import 'package:core/presentation/pages/tv_search_page.dart';
 import 'package:core/presentation/pages/watchlist_movies_page.dart';
-import 'package:core/presentation/pages/watchlist_tv_page.dart';
 import 'package:core/presentation/provider/movie_list_notifier.dart';
 import 'package:core/routes.dart';
 import 'package:core/styles/text_styles.dart';
@@ -70,7 +65,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               leading: const Icon(Icons.save_alt),
               title: const Text('Watchlist Tv'),
               onTap: () {
-                Navigator.pushNamed(context, WatchlistTvPage.routeName);
+                Navigator.pushNamed(context, Routes.tvWatchList);
               },
             ),
             ListTile(
@@ -135,8 +130,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               }),
               _buildSubHeading(
                 title: 'Now Playing on TV',
-                onTap: () =>
-                    Navigator.pushNamed(context, AiringTodayTVPage.routeName),
+                onTap: () => Navigator.pushNamed(context, Routes.tvAiringToday),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.tvAiringTodayState;
@@ -150,8 +144,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               }),
               _buildSubHeading(
                 title: 'TV Series Popular',
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularTvPage.routeName),
+                onTap: () => Navigator.pushNamed(context, Routes.tvPopular),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.tvPopularState;
@@ -165,8 +158,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               }),
               _buildSubHeading(
                 title: 'TV Series Top Rated',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedTVPage.routeName),
+                onTap: () => Navigator.pushNamed(context, Routes.tvTopRated),
               ),
               Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.tvTopRatedState;
@@ -222,7 +214,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               child: const Text('Tv Series'),
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.pushNamed(context, TvSearchPage.routeName);
+                Navigator.pushNamed(context, Routes.tvSearch);
               },
             ),
           ],
