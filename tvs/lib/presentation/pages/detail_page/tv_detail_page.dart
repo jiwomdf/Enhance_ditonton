@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/tv_detail.dart';
+import 'package:core/routes.dart';
 import 'package:core/styles/colors.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/state_enum.dart';
@@ -218,7 +219,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
                     onTap: () {
                       Navigator.pushReplacementNamed(
                         context,
-                        "TvDetailPage.ROUTE_NAME //TODO: jiwo",
+                        Routes.tvDetail,
                         arguments: tv.id,
                       );
                     },
