@@ -11,7 +11,7 @@ import 'package:mockito/mockito.dart';
 import '../../../core/lib/utils/exception.dart';
 import '../../../core/lib/utils/failure.dart';
 import '../../dummy_data/dummy_objects.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../helpers/test_helper_core_movie.mocks.dart';
 
 void main() {
   late MovieRepositoryImpl repository;

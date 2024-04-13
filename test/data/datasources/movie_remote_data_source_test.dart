@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 
 import '../../../core/lib/utils/exception.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../helpers/test_helper_core_movie.mocks.dart';
 import '../../json_reader.dart';
 
 void main() {

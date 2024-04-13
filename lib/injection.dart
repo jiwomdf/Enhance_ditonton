@@ -38,7 +38,6 @@ import 'package:tvs/domain/usecases/tv/is_tv_in_watchlist.dart';
 import 'package:tvs/domain/usecases/tv/remove_tv_watchlist.dart';
 import 'package:tvs/domain/usecases/tv/save_tv_watchlist.dart';
 import 'package:tvs/presentation/bloc/tv_detail_notifier.dart';
-import 'package:tvs/presentation/bloc/tv_notifier.dart';
 import 'package:tvs/presentation/bloc/tv_popular_notifier.dart';
 import 'package:tvs/presentation/bloc/tv_top_rated_notifier.dart';
 import 'package:tvs/presentation/bloc/tv_watchlist_notifier.dart';
@@ -79,7 +78,6 @@ void init() {
         getTvRecomendation: locator()),
   );
   locator.registerFactory(() => TvWatchlistNotifier(getWatchlistTv: locator()));
-  locator.registerFactory(() => TvNotifier(getTvPopular: locator()));
   locator.registerFactory(() => TvSearchNotifier(searchTv: locator()));
   locator.registerFactory(() => TopRatedTvNotifier(getTopRatedTv: locator()));
   locator.registerFactory(() => TvPopularNotifier(getTvPopular: locator()));
