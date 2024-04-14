@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tvs/presentation/bloc/tv_popular_notifier.dart';
 
+import '../../../../core/test/helper/test_helper_core_tv.mocks.dart';
 import '../../../dummy_data/dummy_objects.dart';
-import '../../../helpers/test_helper_core_tv.mocks.dart';
 
 void main() {
   late MockGetTvPopular mockGetPopularMovies;
