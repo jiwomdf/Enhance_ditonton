@@ -1,8 +1,8 @@
+import 'package:core/presentation/bloc/movie_list_notifier.dart';
 import 'package:core/presentation/pages/about_page.dart';
 import 'package:core/presentation/pages/home/tv_list_popular_widget.dart';
 import 'package:core/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:core/presentation/pages/sublist_page/top_rated_movies_page.dart';
-import 'package:core/presentation/provider/movie_list_notifier.dart';
 import 'package:core/routes.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/state_enum.dart';

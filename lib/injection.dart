@@ -13,10 +13,10 @@ import 'package:core/domain/usecases/movie/get_top_rated_movies.dart';
 import 'package:core/domain/usecases/tv/get_tv_airing_today.dart';
 import 'package:core/domain/usecases/tv/get_tv_popular.dart';
 import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
-import 'package:core/presentation/provider/airing_today_notifier.dart';
-import 'package:core/presentation/provider/movie_list_notifier.dart';
-import 'package:core/presentation/provider/popular_movies_notifier.dart';
-import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:core/presentation/bloc/airing_today/tv_airing_today_bloc.dart';
+import 'package:core/presentation/bloc/movie_list_notifier.dart';
+import 'package:core/presentation/bloc/popular_movies_notifier.dart';
+import 'package:core/presentation/bloc/top_rated_movies_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
@@ -29,7 +29,7 @@ import 'package:movie/presentation/bloc/movie_detail_notifier.dart';
 import 'package:movie/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:search/domain/usecases/movie/search_movies.dart';
 import 'package:search/domain/usecases/tv/search_tv.dart';
-import 'package:search/presentation/bloc/movie/searchbloc/search_bloc.dart';
+import 'package:search/presentation/bloc/movie/search/search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_notifier.dart';
 import 'package:tvs/domain/usecases/tv/get_tv_detail.dart';
 import 'package:tvs/domain/usecases/tv/get_tv_recommendation.dart';
@@ -81,8 +81,10 @@ void init() {
   locator.registerFactory(() => TvSearchNotifier(searchTv: locator()));
   locator.registerFactory(() => TopRatedTvNotifier(getTopRatedTv: locator()));
   locator.registerFactory(() => TvPopularNotifier(getTvPopular: locator()));
-  locator.registerFactory(
-      () => TvAiringTodayNotifier(getTvAiringToday: locator()));
+
+  // bloc
+  locator.registerFactory(() => SearchBloc(locator()));
+  locator.registerFactory(() => TvAiringTodayBloc(locator()));
 
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));
@@ -105,9 +107,6 @@ void init() {
   locator.registerLazySingleton(() => GetTvTopRated(locator()));
   locator.registerLazySingleton(() => GetTvAiringToday(locator()));
   locator.registerLazySingleton(() => GetTvRecomendation(locator()));
-
-  // bloc
-  locator.registerFactory(() => SearchBloc(locator()));
 
   // repository
   locator.registerLazySingleton<MovieRepository>(

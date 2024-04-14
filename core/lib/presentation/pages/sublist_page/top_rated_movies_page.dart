@@ -1,4 +1,4 @@
-import 'package:core/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:core/presentation/bloc/top_rated_movies_notifier.dart';
 import 'package:core/presentation/widgets/movie_card.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
