@@ -1,13 +1,17 @@
-import 'package:core/presentation/bloc/movie_list_notifier.dart';
+import 'package:core/presentation/bloc/movie_list/movie_list_bloc.dart';
+import 'package:core/presentation/bloc/movie_popular/movie_popular_bloc.dart';
+import 'package:core/presentation/bloc/movie_top_rated/movie_top_rated_bloc.dart';
+import 'package:core/presentation/bloc/tv_airing_today/tv_airing_today_bloc.dart';
+import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.dart';
+import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:core/presentation/pages/about_page.dart';
 import 'package:core/presentation/pages/home/tv_list_popular_widget.dart';
 import 'package:core/presentation/pages/sublist_page/popular_movies_page.dart';
 import 'package:core/presentation/pages/sublist_page/top_rated_movies_page.dart';
 import 'package:core/routes.dart';
 import 'package:core/styles/text_styles.dart';
-import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'movie_list_widget.dart';
 
@@ -22,15 +26,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-      () => Provider.of<MovieListNotifier>(context, listen: false)
-        ..fetchNowPlayingMovies()
-        ..fetchPopularMovies()
-        ..fetchTopRatedMovies()
-        ..fetchTvPopular()
-        ..fetchTvTopRated()
-        ..fetchTvAiringToday(),
-    );
+    context.read<MovieListBloc>().add(const GetMovieListEvent());
+    context.read<MoviePopularBloc>().add(const GetMoviePopularEvent());
+    context.read<MovieTopRatedBloc>().add(const GetMovieTopRatedEvent());
+    context.read<TvSeriesPopularBloc>().add(const GetTvSeriesPopularEvent());
+    context.read<TvTopRatedBloc>().add(const GetTvTopRatedEvent());
+    context.read<TvAiringTodayBloc>().add(const GetTvAiringTodayEvent());
   }
 
   @override
@@ -87,12 +88,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Now Playing', style: kHeading6),
-              Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.nowPlayingState;
-                if (state == RequestState.loading) {
+              BlocBuilder<MovieListBloc, MovieListState>(
+                  builder: (context, state) {
+                if (state is MovieListLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state == RequestState.loaded) {
-                  return MovieListWidget(data.nowPlayingMovies);
+                } else if (state is MovieListHasData) {
+                  return MovieListWidget(state.result);
                 } else {
                   return const Text('Failed');
                 }
@@ -102,12 +103,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 onTap: () =>
                     Navigator.pushNamed(context, PopularMoviesPage.routeName),
               ),
-              Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.popularMoviesState;
-                if (state == RequestState.loading) {
+              BlocBuilder<MoviePopularBloc, MoviePopularState>(
+                  builder: (context, state) {
+                if (state is MoviePopularLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state == RequestState.loaded) {
-                  return MovieListWidget(data.popularMovies);
+                } else if (state is MoviePopularHasData) {
+                  return MovieListWidget(state.result);
                 } else {
                   return const Text('Failed');
                 }
@@ -117,12 +118,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 onTap: () =>
                     Navigator.pushNamed(context, TopRatedMoviesPage.routeName),
               ),
-              Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.topRatedMoviesState;
-                if (state == RequestState.loading) {
+              BlocBuilder<MovieTopRatedBloc, MovieTopRatedState>(
+                  builder: (context, state) {
+                if (state is MovieTopRatedLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state == RequestState.loaded) {
-                  return MovieListWidget(data.topRatedMovies);
+                } else if (state is MovieTopRatedHasData) {
+                  return MovieListWidget(state.result);
                 } else {
                   return const Text('Failed');
                 }
@@ -131,12 +132,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 title: 'Now Playing on TV',
                 onTap: () => Navigator.pushNamed(context, Routes.tvAiringToday),
               ),
-              Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.tvAiringTodayState;
-                if (state == RequestState.loading) {
+              BlocBuilder<TvAiringTodayBloc, TvAiringTodayState>(
+                  builder: (context, state) {
+                if (state is TvAiringTodayLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state == RequestState.loaded) {
-                  return TVList(data.tvAiringToday);
+                } else if (state is TvAiringTodayHasData) {
+                  return TVList(state.result);
                 } else {
                   return const Text('Failed');
                 }
@@ -145,12 +146,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 title: 'TV Series Popular',
                 onTap: () => Navigator.pushNamed(context, Routes.tvPopular),
               ),
-              Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.tvPopularState;
-                if (state == RequestState.loading) {
+              BlocBuilder<TvTopRatedBloc, TvTopRatedState>(
+                  builder: (context, state) {
+                if (state is TvTopRatedLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state == RequestState.loaded) {
-                  return TVList(data.tvPopular);
+                } else if (state is TvTopRatedHasData) {
+                  return TVList(state.result);
                 } else {
                   return const Text('Failed');
                 }
@@ -159,12 +160,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 title: 'TV Series Top Rated',
                 onTap: () => Navigator.pushNamed(context, Routes.tvTopRated),
               ),
-              Consumer<MovieListNotifier>(builder: (context, data, child) {
-                final state = data.tvTopRatedState;
-                if (state == RequestState.loading) {
+              BlocBuilder<TvSeriesPopularBloc, TvSeriesPopularState>(
+                  builder: (context, state) {
+                if (state is TvSeriesPopularLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state == RequestState.loaded) {
-                  return TVList(data.tvTopRated);
+                } else if (state is TvSeriesPopularHasData) {
+                  return TVList(state.result);
                 } else {
                   return const Text('Failed');
                 }

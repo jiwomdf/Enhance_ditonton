@@ -45,7 +45,7 @@ PageRoute router(RouteSettings settings) {
     case Routes.tvPopular:
       return MaterialPageRoute(builder: (_) => PopularTvPage());
     case Routes.tvAiringToday:
-      return MaterialPageRoute(builder: (_) => AiringTodayTVPage());
+      return MaterialPageRoute(builder: (_) => TvAiringTodayPage());
     case Routes.tvSearch:
       return MaterialPageRoute(builder: (_) => TvSearchPage());
     default:

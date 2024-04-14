@@ -1,16 +1,16 @@
-import 'package:core/presentation/bloc/airing_today/tv_airing_today_bloc.dart';
+import 'package:core/presentation/bloc/tv_airing_today/tv_airing_today_bloc.dart';
 import 'package:core/presentation/widgets/tv_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AiringTodayTVPage extends StatefulWidget {
-  const AiringTodayTVPage({super.key});
+class TvAiringTodayPage extends StatefulWidget {
+  const TvAiringTodayPage({super.key});
 
   @override
-  _AiringTodayTVPageState createState() => _AiringTodayTVPageState();
+  _TvAiringTodayPageState createState() => _TvAiringTodayPageState();
 }
 
-class _AiringTodayTVPageState extends State<AiringTodayTVPage> {
+class _TvAiringTodayPageState extends State<TvAiringTodayPage> {
   @override
   void initState() {
     super.initState();

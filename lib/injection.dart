@@ -13,10 +13,14 @@ import 'package:core/domain/usecases/movie/get_top_rated_movies.dart';
 import 'package:core/domain/usecases/tv/get_tv_airing_today.dart';
 import 'package:core/domain/usecases/tv/get_tv_popular.dart';
 import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
-import 'package:core/presentation/bloc/airing_today/tv_airing_today_bloc.dart';
-import 'package:core/presentation/bloc/movie_list_notifier.dart';
+import 'package:core/presentation/bloc/movie_list/movie_list_bloc.dart';
+import 'package:core/presentation/bloc/movie_popular/movie_popular_bloc.dart';
+import 'package:core/presentation/bloc/movie_top_rated/movie_top_rated_bloc.dart';
 import 'package:core/presentation/bloc/popular_movies_notifier.dart';
 import 'package:core/presentation/bloc/top_rated_movies_notifier.dart';
+import 'package:core/presentation/bloc/tv_airing_today/tv_airing_today_bloc.dart';
+import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.dart';
+import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
@@ -47,15 +51,6 @@ final locator = GetIt.instance;
 void init() {
   // provider
   locator.registerFactory(
-    () => MovieListNotifier(
-        getNowPlayingMovies: locator(),
-        getPopularMovies: locator(),
-        getTopRatedMovies: locator(),
-        getTvPopular: locator(),
-        getTvAiringToday: locator(),
-        getTvTopRated: locator()),
-  );
-  locator.registerFactory(
     () => MovieDetailNotifier(
       getMovieDetail: locator(),
       getMovieRecommendations: locator(),
@@ -84,7 +79,12 @@ void init() {
 
   // bloc
   locator.registerFactory(() => SearchBloc(locator()));
+  locator.registerFactory(() => MovieListBloc(locator()));
+  locator.registerFactory(() => MoviePopularBloc(locator()));
+  locator.registerFactory(() => MovieTopRatedBloc(locator()));
   locator.registerFactory(() => TvAiringTodayBloc(locator()));
+  locator.registerFactory(() => TvSeriesPopularBloc(locator()));
+  locator.registerFactory(() => TvTopRatedBloc(locator()));
 
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));
