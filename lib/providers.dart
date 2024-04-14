@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail_notifier.dart';
 import 'package:movie/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:provider/provider.dart';
-import 'package:search/presentation/bloc/movie/search/search_bloc.dart';
+import 'package:search/presentation/bloc/movie/search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_notifier.dart';
 import 'package:tvs/presentation/bloc/tv_detail_notifier.dart';
 import 'package:tvs/presentation/bloc/tv_popular_notifier.dart';

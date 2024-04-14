@@ -3,8 +3,8 @@ import 'package:core/utils/exception.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../dummy_data/dummy_objects.dart';
-import '../../helpers/test_helper_core_movie.mocks.dart';
+import '../../../../test/helpers/test_helper_core_movie.mocks.dart';
+import '../../helper/dummy_objects.dart';
 
 void main() {
   late TvLocalDataSourceImpl dataSource;
@@ -50,7 +50,7 @@ void main() {
   });
 
   group('Get Tv Detail By Id', () {
-    final tId = 1;
+    const tId = 1;
     test('should return Tv Detail Table when data is found', () async {
       when(mockDatabaseHelper.getWatchlistTvById(tId))
           .thenAnswer((_) async => testMovieMap);

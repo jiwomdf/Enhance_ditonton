@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tvs/presentation/bloc/tv_top_rated_notifier.dart';
 
-import '../../../dummy_data/dummy_objects.dart';
+import '../../../../search/test/dummy_data/dummy_objects.dart';
 import '../movie/movie_list_notifier_test.mocks.dart';
 
 void main() {

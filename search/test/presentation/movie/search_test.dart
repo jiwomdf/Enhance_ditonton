@@ -3,14 +3,11 @@ import 'package:core/domain/entities/movie.dart';
 import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:search/domain/usecases/movie/search_movies.dart';
-import 'package:search/presentation/bloc/movie/search/search_bloc.dart';
+import 'package:search/presentation/bloc/movie/search_bloc.dart';
 
-import 'search_test.mocks.dart';
+import '../../test_helper.mocks.dart';
 
-@GenerateMocks([SearchMovies])
 void main() {
   late SearchBloc searchBloc;
   late MockSearchMovies mockSearchMovies;

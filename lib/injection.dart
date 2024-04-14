@@ -33,7 +33,7 @@ import 'package:movie/presentation/bloc/movie_detail_notifier.dart';
 import 'package:movie/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:search/domain/usecases/movie/search_movies.dart';
 import 'package:search/domain/usecases/tv/search_tv.dart';
-import 'package:search/presentation/bloc/movie/search/search_bloc.dart';
+import 'package:search/presentation/bloc/movie/search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_notifier.dart';
 import 'package:tvs/domain/usecases/tv/get_tv_detail.dart';
 import 'package:tvs/domain/usecases/tv/get_tv_recommendation.dart';

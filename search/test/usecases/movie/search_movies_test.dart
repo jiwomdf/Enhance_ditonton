@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:search/domain/usecases/movie/search_movies.dart';
 
-import '../../../helpers/test_helper_core_movie.mocks.dart';
+import '../../../../test/helpers/test_helper_core_movie.mocks.dart';
 
 void main() {
   late SearchMovies usecase;
