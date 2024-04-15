@@ -16,8 +16,6 @@ import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
 import 'package:core/presentation/bloc/movie_list/movie_list_bloc.dart';
 import 'package:core/presentation/bloc/movie_popular/movie_popular_bloc.dart';
 import 'package:core/presentation/bloc/movie_top_rated/movie_top_rated_bloc.dart';
-import 'package:core/presentation/bloc/popular_movies_notifier.dart';
-import 'package:core/presentation/bloc/top_rated_movies_notifier.dart';
 import 'package:core/presentation/bloc/tv_airing_today/tv_airing_today_bloc.dart';
 import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.dart';
 import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
@@ -59,9 +57,6 @@ void init() {
       removeWatchlist: locator(),
     ),
   );
-  locator.registerFactory(() => PopularMoviesNotifier(locator()));
-  locator.registerFactory(
-      () => TopRatedMoviesNotifier(getTopRatedMovies: locator()));
   locator.registerFactory(
       () => WatchlistMovieNotifier(getWatchlistMovies: locator()));
   locator.registerFactory(

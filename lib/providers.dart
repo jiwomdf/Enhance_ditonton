@@ -1,8 +1,6 @@
 import 'package:core/presentation/bloc/movie_list/movie_list_bloc.dart';
 import 'package:core/presentation/bloc/movie_popular/movie_popular_bloc.dart';
 import 'package:core/presentation/bloc/movie_top_rated/movie_top_rated_bloc.dart';
-import 'package:core/presentation/bloc/popular_movies_notifier.dart';
-import 'package:core/presentation/bloc/top_rated_movies_notifier.dart';
 import 'package:core/presentation/bloc/tv_airing_today/tv_airing_today_bloc.dart';
 import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.dart';
 import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
@@ -20,8 +18,6 @@ import 'package:tvs/presentation/bloc/tv_watchlist_notifier.dart';
 
 var listPovider = [
   ChangeNotifierProvider(create: (_) => di.locator<MovieDetailNotifier>()),
-  ChangeNotifierProvider(create: (_) => di.locator<TopRatedMoviesNotifier>()),
-  ChangeNotifierProvider(create: (_) => di.locator<PopularMoviesNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<WatchlistMovieNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TvDetailNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TvWatchlistNotifier>()),
