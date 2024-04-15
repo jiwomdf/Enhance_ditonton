@@ -8,7 +8,7 @@ import 'package:movie/presentation/movie/detail_page/movie_detail_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/lib/utils/state_enum.dart';
-import '../../../../test/dummy_data/dummy_objects.dart';
+import '../../dummy_data/dummy_objects.dart';
 import 'movie_detail_page_test.mocks.dart';
 
 @GenerateMocks([MovieDetailNotifier])

@@ -3,8 +3,8 @@ import 'package:core/utils/exception.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../../test/helpers/test_helper_core_movie.mocks.dart';
 import '../../helper/dummy_objects.dart';
+import '../../helper/test_helper_core_movie.mocks.dart';
 
 void main() {
   late TvLocalDataSourceImpl dataSource;

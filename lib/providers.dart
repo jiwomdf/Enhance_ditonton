@@ -12,7 +12,7 @@ import 'package:movie/presentation/bloc/movie_detail_notifier.dart';
 import 'package:movie/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:search/presentation/bloc/movie/search_bloc.dart';
-import 'package:search/presentation/bloc/tv/tv_search_notifier.dart';
+import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
 import 'package:tvs/presentation/bloc/tv_detail_notifier.dart';
 import 'package:tvs/presentation/bloc/tv_popular_notifier.dart';
 import 'package:tvs/presentation/bloc/tv_top_rated_notifier.dart';
@@ -25,10 +25,10 @@ var listPovider = [
   ChangeNotifierProvider(create: (_) => di.locator<WatchlistMovieNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TvDetailNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TvWatchlistNotifier>()),
-  ChangeNotifierProvider(create: (_) => di.locator<TvSearchNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TvPopularNotifier>()),
   BlocProvider(create: (_) => di.locator<SearchBloc>()),
+  BlocProvider(create: (_) => di.locator<TvSearchBloc>()),
   BlocProvider(create: (_) => di.locator<MovieListBloc>()),
   BlocProvider(create: (_) => di.locator<MoviePopularBloc>()),
   BlocProvider(create: (_) => di.locator<MovieTopRatedBloc>()),

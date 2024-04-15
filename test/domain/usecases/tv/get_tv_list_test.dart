@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tvs/domain/usecases/tv/get_tv_list.dart';
 
+import '../../../../core/test/helper/test_helper_core_tv.mocks.dart';
 import '../../../../search/test/dummy_data/dummy_objects.dart';
-import '../../../helpers/test_helper_core_movie.mocks.dart';
 
 void main() {
   late GetTvList usecase;

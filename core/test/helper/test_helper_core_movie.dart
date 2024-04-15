@@ -2,7 +2,6 @@ import 'package:core/data/datasources/db/database_helper.dart';
 import 'package:core/data/datasources/movie_local_data_source.dart';
 import 'package:core/data/datasources/movie_remote_data_source.dart';
 import 'package:core/domain/repositories/movie_repository.dart';
-import 'package:core/domain/repositories/tv_repository.dart';
 import 'package:core/domain/usecases/movie/get_now_playing_movies.dart';
 import 'package:core/domain/usecases/movie/get_popular_movies.dart';
 import 'package:core/domain/usecases/movie/get_top_rated_movies.dart';
@@ -14,7 +13,6 @@ import 'package:mockito/annotations.dart';
   MovieRemoteDataSource,
   MovieLocalDataSource,
   DatabaseHelper,
-  TvRepository,
   GetNowPlayingMovies,
   GetPopularMovies,
   GetTopRatedMovies,
