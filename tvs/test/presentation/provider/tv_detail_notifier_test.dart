@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tvs/presentation/bloc/tv_detail_notifier.dart';
 
-import '../../../../test/dummy_data/dummy_objects.dart';
+import '../../helpers/dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper_tv.mocks.dart';
 
 void main() {

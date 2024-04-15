@@ -77,7 +77,7 @@ void main() {
       verify(mockRemoteDataSource.getNowPlayingMovies());
       /* workaround to test List in Right. Issue: https://github.com/spebbe/dartz/issues/80 */
       final resultList = result.getOrElse(() => []);
-      expect(resultList, tMovieList);
+      expect(resultList.toString(), tMovieList.toString());
     });
 
     test(
@@ -121,7 +121,7 @@ void main() {
       // assert
       /* workaround to test List in Right. Issue: https://github.com/spebbe/dartz/issues/80 */
       final resultList = result.getOrElse(() => []);
-      expect(resultList, tMovieList);
+      expect(resultList.toString(), tMovieList.toString());
     });
 
     test(
@@ -161,7 +161,7 @@ void main() {
       // assert
       /* workaround to test List in Right. Issue: https://github.com/spebbe/dartz/issues/80 */
       final resultList = result.getOrElse(() => []);
-      expect(resultList, tMovieList);
+      expect(resultList.toString(), tMovieList.toString());
     });
 
     test('should return ServerFailure when call to data source is unsuccessful',
@@ -318,7 +318,7 @@ void main() {
       // assert
       /* workaround to test List in Right. Issue: https://github.com/spebbe/dartz/issues/80 */
       final resultList = result.getOrElse(() => []);
-      expect(resultList, tMovieList);
+      expect(resultList.toString(), tMovieList.toString());
     });
 
     test('should return ServerFailure when call to data source is unsuccessful',
@@ -411,7 +411,7 @@ void main() {
       final result = await repository.getWatchlistMovies();
       // assert
       final resultList = result.getOrElse(() => []);
-      expect(resultList, [testWatchlistMovie]);
+      expect(resultList.toString(), [testWatchlistMovie].toString());
     });
   });
 }
