@@ -11,6 +11,10 @@ import 'package:core/domain/entities/tv.dart';
 import 'package:core/domain/entities/tv_detail.dart';
 import 'package:core/domain/entities/tv_recommendation.dart';
 
+const String addedToWatchlist = 'Added to Watchlist';
+
+const String removedFromWatchlist = 'Removed from Watchlist';
+
 final testMovie = Movie(
   adult: false,
   backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
