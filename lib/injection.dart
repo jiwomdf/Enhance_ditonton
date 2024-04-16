@@ -27,7 +27,9 @@ import 'package:movie/domain/usecases/movie/get_watchlist_movies.dart';
 import 'package:movie/domain/usecases/movie/get_watchlist_status.dart';
 import 'package:movie/domain/usecases/movie/remove_watchlist.dart';
 import 'package:movie/domain/usecases/movie/save_watchlist.dart';
-import 'package:movie/presentation/bloc/movie_detail_notifier.dart';
+import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:movie/presentation/bloc/movie_recommendations/bloc/movie_recommendation_bloc.dart';
+import 'package:movie/presentation/bloc/movie_watchlist/movie_watchlist_bloc.dart';
 import 'package:movie/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:search/domain/usecases/movie/search_movies.dart';
 import 'package:search/domain/usecases/tv/search_tv.dart';
@@ -49,15 +51,6 @@ final locator = GetIt.instance;
 void init() {
   // provider
   locator.registerFactory(
-    () => MovieDetailNotifier(
-      getMovieDetail: locator(),
-      getMovieRecommendations: locator(),
-      getWatchListStatus: locator(),
-      saveWatchlist: locator(),
-      removeWatchlist: locator(),
-    ),
-  );
-  locator.registerFactory(
       () => WatchlistMovieNotifier(getWatchlistMovies: locator()));
   locator.registerFactory(
     () => TvDetailNotifier(
@@ -74,9 +67,19 @@ void init() {
   // bloc
   locator.registerFactory(() => SearchBloc(locator()));
   locator.registerFactory(() => TvSearchBloc(locator()));
+
   locator.registerFactory(() => MovieListBloc(locator()));
   locator.registerFactory(() => MoviePopularBloc(locator()));
   locator.registerFactory(() => MovieTopRatedBloc(locator()));
+  locator.registerFactory(() => MovieDetailBloc(locator()));
+  locator.registerFactory(() => MovieRecommendationBloc(locator()));
+  locator.registerFactory(() => MovieWatchlistBloc(
+        locator(),
+        locator(),
+        locator(),
+        locator(),
+      ));
+
   locator.registerFactory(() => TvAiringTodayBloc(locator()));
   locator.registerFactory(() => TvSeriesPopularBloc(locator()));
   locator.registerFactory(() => TvTopRatedBloc(locator()));

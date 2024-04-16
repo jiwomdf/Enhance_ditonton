@@ -1,5 +1,6 @@
 import 'package:core/data/datasources/db/database_helper.dart';
 import 'package:core/data/models/movie_table.dart';
+import 'package:core/utils/constants.dart';
 import 'package:core/utils/exception.dart';
 
 abstract class MovieLocalDataSource {
@@ -18,7 +19,7 @@ class MovieLocalDataSourceImpl implements MovieLocalDataSource {
   Future<String> insertWatchlist(MovieTable movie) async {
     try {
       await databaseHelper.insertWatchlist(movie);
-      return 'Added to Watchlist';
+      return addedToWatchlist;
     } catch (e) {
       throw DatabaseException(e.toString());
     }
@@ -28,7 +29,7 @@ class MovieLocalDataSourceImpl implements MovieLocalDataSource {
   Future<String> removeWatchlist(MovieTable movie) async {
     try {
       await databaseHelper.removeWatchlist(movie);
-      return 'Removed from Watchlist';
+      return removedFromWatchlist;
     } catch (e) {
       throw DatabaseException(e.toString());
     }
