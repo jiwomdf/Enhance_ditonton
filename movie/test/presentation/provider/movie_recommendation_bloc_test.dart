@@ -3,7 +3,7 @@ import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie/presentation/bloc/movie_recommendations/bloc/movie_recommendation_bloc.dart';
+import 'package:movie/presentation/bloc/movie_recommendations/movie_recommendation_bloc.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 import '../../helper/test_helper_movie.mocks.dart';
