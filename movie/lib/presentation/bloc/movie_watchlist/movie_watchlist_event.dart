@@ -8,12 +8,10 @@ sealed class MovieWatchlistEvent extends Equatable {
 }
 
 class GetMovieWatchlistEvent extends MovieWatchlistEvent {
-  final int id;
-
-  const GetMovieWatchlistEvent(this.id);
+  const GetMovieWatchlistEvent();
 
   @override
-  List<Object> get props => [id];
+  List<Object> get props => [];
 }
 
 class GetMovieWatchlistStatusEvent extends MovieWatchlistEvent {

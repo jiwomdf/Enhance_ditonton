@@ -42,7 +42,9 @@ class MovieWatchlistBloc
 
       var message = "";
       result.fold(
-        (failure) {},
+        (failure) {
+          emit(MovieWatchlistError(failure.message));
+        },
         (data) {
           message = data;
         },
@@ -58,7 +60,9 @@ class MovieWatchlistBloc
 
       var message = "";
       result.fold(
-        (failure) {},
+        (failure) {
+          emit(MovieWatchlistError(failure.message));
+        },
         (data) {
           message = data;
         },

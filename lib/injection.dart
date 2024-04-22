@@ -28,9 +28,8 @@ import 'package:movie/domain/usecases/movie/get_watchlist_status.dart';
 import 'package:movie/domain/usecases/movie/remove_watchlist.dart';
 import 'package:movie/domain/usecases/movie/save_watchlist.dart';
 import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
-import 'package:movie/presentation/bloc/movie_recommendations/bloc/movie_recommendation_bloc.dart';
+import 'package:movie/presentation/bloc/movie_recommendations/movie_recommendation_bloc.dart';
 import 'package:movie/presentation/bloc/movie_watchlist/movie_watchlist_bloc.dart';
-import 'package:movie/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:search/domain/usecases/movie/search_movies.dart';
 import 'package:search/domain/usecases/tv/search_tv.dart';
 import 'package:search/presentation/bloc/movie/search_bloc.dart';
@@ -50,8 +49,6 @@ final locator = GetIt.instance;
 
 void init() {
   // provider
-  locator.registerFactory(
-      () => WatchlistMovieNotifier(getWatchlistMovies: locator()));
   locator.registerFactory(
     () => TvDetailNotifier(
         getTvDetail: locator(),

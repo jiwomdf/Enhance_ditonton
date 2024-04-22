@@ -7,9 +7,8 @@ import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
-import 'package:movie/presentation/bloc/movie_recommendations/bloc/movie_recommendation_bloc.dart';
+import 'package:movie/presentation/bloc/movie_recommendations/movie_recommendation_bloc.dart';
 import 'package:movie/presentation/bloc/movie_watchlist/movie_watchlist_bloc.dart';
-import 'package:movie/presentation/bloc/watchlist_movie_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:search/presentation/bloc/movie/search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
@@ -19,7 +18,6 @@ import 'package:tvs/presentation/bloc/tv_top_rated_notifier.dart';
 import 'package:tvs/presentation/bloc/tv_watchlist_notifier.dart';
 
 var listPovider = [
-  ChangeNotifierProvider(create: (_) => di.locator<WatchlistMovieNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TvDetailNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TvWatchlistNotifier>()),
   ChangeNotifierProvider(create: (_) => di.locator<TopRatedTvNotifier>()),
