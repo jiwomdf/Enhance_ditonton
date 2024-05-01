@@ -1,19 +1,19 @@
-import 'package:core/presentation/pages/about_page.dart';
-import 'package:core/presentation/pages/home/home_movie_page.dart';
-import 'package:core/presentation/pages/sublist_page/popular_movies_page.dart';
-import 'package:core/presentation/pages/sublist_page/top_rated_movies_page.dart';
+import 'package:about/about_page.dart';
 import 'package:core/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie/presentation/movie/detail_page/movie_detail_page.dart';
-import 'package:movie/presentation/movie/watchlist_movies_page.dart';
+import 'package:movie/presentation/page/home/home_movie_page.dart';
+import 'package:movie/presentation/page/home/sublist_page/popular_movies_page.dart';
+import 'package:movie/presentation/page/home/sublist_page/top_rated_movies_page.dart';
+import 'package:movie/presentation/page/movie/detail_page/movie_detail_page.dart';
+import 'package:movie/presentation/page/movie/watchlist_movies_page.dart';
 import 'package:search/presentation/pages/movie/search_page.dart';
 import 'package:search/presentation/pages/tv/tv_search_page.dart';
-import 'package:tvs/presentation/pages/detail_page/tv_detail_page.dart';
-import 'package:tvs/presentation/pages/sublist_page/airing_today_tv_page.dart';
-import 'package:tvs/presentation/pages/sublist_page/popular_tv_page.dart';
-import 'package:tvs/presentation/pages/sublist_page/top_rated_tv_page.dart';
-import 'package:tvs/presentation/pages/watchlist_tv_page.dart';
+import 'package:tvs/presentation/pages/tvs/airing_today_tv_page.dart';
+import 'package:tvs/presentation/pages/tvs/popular_tv_page.dart';
+import 'package:tvs/presentation/pages/tvs/top_rated_tv_page.dart';
+import 'package:tvs/presentation/pages/tvs/tv_detail_page.dart';
+import 'package:tvs/presentation/pages/tvs/watchlist_tv_page.dart';
 
 PageRoute router(RouteSettings settings) {
   switch (settings.name) {
@@ -33,7 +33,7 @@ PageRoute router(RouteSettings settings) {
       return CupertinoPageRoute(builder: (_) => SearchPage());
     case Routes.movieWatchList:
       return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
-    case AboutPage.routeName:
+    case Routes.aboutPage:
       return MaterialPageRoute(builder: (_) => AboutPage());
     case Routes.tvDetail:
       final id = settings.arguments as int;

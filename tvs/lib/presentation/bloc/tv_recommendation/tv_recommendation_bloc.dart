@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:core/domain/entities/tv_recommendation.dart';
+import 'package:core/domain/usecases/tv/get_tv_recommendation.dart';
 import 'package:equatable/equatable.dart';
 import 'package:tvs/tvs.dart';
 

@@ -63,7 +63,7 @@ void main() {
   });
 
   group('Popular TV', () {
-    test('should return movie list when call to data source is success',
+    test('should return page list when call to data source is success',
         () async {
       when(mockRemoteDataSource.getTvPopular())
           .thenAnswer((_) async => [testTvSeriesPopularResult]);
@@ -96,7 +96,7 @@ void main() {
   });
 
   group('Top Rated TV', () {
-    test('should return movie list when call to data source is successful',
+    test('should return page list when call to data source is successful',
         () async {
       when(mockRemoteDataSource.getTvTopRated())
           .thenAnswer((_) async => [testTvTopRatedModelResult]);
@@ -184,7 +184,7 @@ void main() {
   group('Seach TV', () {
     const tQuery = 'spiderman';
 
-    test('should return movie list when call to data source is successful',
+    test('should return page list when call to data source is successful',
         () async {
       when(mockRemoteDataSource.searchTv(tQuery))
           .thenAnswer((_) async => [testTvSearchResult]);
@@ -254,7 +254,7 @@ void main() {
     });
   });
 
-  group('get watchlist tv', () {
+  group('get watchlist tvs', () {
     test('should return list of Movies', () async {
       when(mockLocalDataSource.getWatchlistTv())
           .thenAnswer((_) async => [testTvTable]);
@@ -267,7 +267,7 @@ void main() {
   group('get Recomendation TV', () {
     var id = 1;
 
-    test('should return movie list when call to data source is successful',
+    test('should return page list when call to data source is successful',
         () async {
       when(mockRemoteDataSource.getTvRecomendation(id))
           .thenAnswer((_) async => [testTvRecommendationResult]);
@@ -277,7 +277,7 @@ void main() {
       expect(resultList.toString(), [testTvRecommendation].toString());
     });
 
-    test('should return movie list when call to data source is successful',
+    test('should return page list when call to data source is successful',
         () async {
       when(mockRemoteDataSource.getTvTopRated())
           .thenAnswer((_) async => [testTvTopRatedModelResult]);

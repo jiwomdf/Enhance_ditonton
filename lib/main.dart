@@ -4,7 +4,6 @@ import 'package:core/presentation/bloc/movie_top_rated/movie_top_rated_bloc.dart
 import 'package:core/presentation/bloc/tv_airing_today/tv_airing_today_bloc.dart';
 import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.dart';
 import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
-import 'package:core/presentation/pages/home/home_movie_page.dart';
 import 'package:core/styles/colors.dart';
 import 'package:core/utils/utils.dart';
 import 'package:ditonton/injection.dart' as di;
@@ -14,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/movie_recommendations/movie_recommendation_bloc.dart';
 import 'package:movie/presentation/bloc/movie_watchlist/movie_watchlist_bloc.dart';
+import 'package:movie/presentation/page/home/home_movie_page.dart';
 import 'package:provider/provider.dart';
 import 'package:search/presentation/bloc/movie/search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';

@@ -15,7 +15,7 @@ void main() {
     usecase = SearchTv(mockMovieRepository);
   });
 
-  test('should save tv from the repository', () async {
+  test('should save tvs from the repository', () async {
     var input = "input";
     var listTv = [testTv];
 

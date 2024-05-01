@@ -148,7 +148,7 @@ class TvRecommendationResult {
 
 enum MediaType { tv }
 
-final mediaTypeValues = EnumValues({"tv": MediaType.tv});
+final mediaTypeValues = EnumValues({"tvs": MediaType.tv});
 
 class EnumValues<T> {
   Map<String, T> map;
