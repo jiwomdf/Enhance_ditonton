@@ -51,7 +51,7 @@ class TvRecommendationResult {
   final String? originalName;
   final String? overview;
   final String? posterPath;
-  final MediaType? mediaType;
+  final String? mediaType;
   final List<int>? genreIds;
   final double? popularity;
   final String? firstAirDate;
@@ -92,7 +92,7 @@ class TvRecommendationResult {
         originalName: json["original_name"],
         overview: json["overview"],
         posterPath: json["poster_path"],
-        mediaType: mediaTypeValues.map[json["media_type"]]!,
+        mediaType: json["media_type"],
         genreIds: json["genre_ids"] == null
             ? []
             : List<int>.from(json["genre_ids"]!.map((x) => x)),
@@ -114,7 +114,7 @@ class TvRecommendationResult {
         "original_name": originalName,
         "overview": overview,
         "poster_path": posterPath,
-        "media_type": mediaTypeValues.reverse[mediaType],
+        "media_type": mediaType,
         "genre_ids":
             genreIds == null ? [] : List<dynamic>.from(genreIds!.map((x) => x)),
         "popularity": popularity,
@@ -146,9 +146,6 @@ class TvRecommendationResult {
   }
 }
 
-enum MediaType { tv }
-
-final mediaTypeValues = EnumValues({"tvs": MediaType.tv});
 
 class EnumValues<T> {
   Map<String, T> map;

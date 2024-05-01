@@ -26,7 +26,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     final response =
-        await client.get(Uri.parse('$baseURL/page/now_playing?$apiKey'));
+        await client.get(Uri.parse('$baseURL/movie/now_playing?$apiKey'));
 
     if (response.statusCode == 200) {
       return MovieResponse.fromJson(json.decode(response.body)).movieList;
@@ -37,7 +37,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
 
   @override
   Future<MovieDetailResponse> getMovieDetail(int id) async {
-    final response = await client.get(Uri.parse('$baseURL/page/$id?$apiKey'));
+    final response = await client.get(Uri.parse('$baseURL/movie/$id?$apiKey'));
 
     if (response.statusCode == 200) {
       return MovieDetailResponse.fromJson(json.decode(response.body));
@@ -49,7 +49,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getMovieRecommendations(int id) async {
     final response = await client
-        .get(Uri.parse('$baseURL/page/$id/recommendations?$apiKey'));
+        .get(Uri.parse('$baseURL/movie/$id/recommendations?$apiKey'));
 
     if (response.statusCode == 200) {
       return MovieResponse.fromJson(json.decode(response.body)).movieList;
@@ -61,7 +61,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getPopularMovies() async {
     final response =
-        await client.get(Uri.parse('$baseURL/page/popular?$apiKey'));
+        await client.get(Uri.parse('$baseURL/movie/popular?$apiKey'));
 
     if (response.statusCode == 200) {
       return MovieResponse.fromJson(json.decode(response.body)).movieList;
@@ -73,7 +73,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
     final response =
-        await client.get(Uri.parse('$baseURL/page/top_rated?$apiKey'));
+        await client.get(Uri.parse('$baseURL/movie/top_rated?$apiKey'));
 
     if (response.statusCode == 200) {
       return MovieResponse.fromJson(json.decode(response.body)).movieList;
@@ -85,7 +85,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   @override
   Future<List<MovieModel>> searchMovies(String query) async {
     final response = await client
-        .get(Uri.parse('$baseURL/search/page?$apiKey&query=$query'));
+        .get(Uri.parse('$baseURL/search/movie?$apiKey&query=$query'));
 
     if (response.statusCode == 200) {
       return MovieResponse.fromJson(json.decode(response.body)).movieList;
