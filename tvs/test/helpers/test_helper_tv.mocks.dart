@@ -9,12 +9,14 @@ import 'package:core/domain/entities/tv.dart' as _i11;
 import 'package:core/domain/entities/tv_detail.dart' as _i7;
 import 'package:core/domain/entities/tv_recommendation.dart' as _i14;
 import 'package:core/domain/repositories/tv_repository.dart' as _i3;
+import 'package:core/domain/usecases/tv/get_tv_airing_today.dart' as _i17;
 import 'package:core/domain/usecases/tv/get_tv_popular.dart' as _i16;
 import 'package:core/domain/usecases/tv/get_tv_toprated.dart' as _i15;
 import 'package:core/utils/failure.dart' as _i6;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:tvs/domain/usecases/tv/get_tv_detail.dart' as _i4;
+import 'package:tvs/domain/usecases/tv/get_tv_list.dart' as _i18;
 import 'package:tvs/domain/usecases/tv/get_tv_recommendation.dart' as _i13;
 import 'package:tvs/domain/usecases/tv/get_tv_watchlist.dart' as _i10;
 import 'package:tvs/domain/usecases/tv/is_tv_in_watchlist.dart' as _i12;
@@ -453,6 +455,58 @@ class MockTvRepository extends _i1.Mock implements _i3.TvRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockGetTvPopular extends _i1.Mock implements _i16.GetTvPopular {
   MockGetTvPopular() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>> execute() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue: _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>>.value(
+            _FakeEither_0<_i6.Failure, List<_i11.TV>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>>);
+}
+
+/// A class which mocks [GetTvAiringToday].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetTvAiringToday extends _i1.Mock implements _i17.GetTvAiringToday {
+  MockGetTvAiringToday() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>> execute() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue: _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>>.value(
+            _FakeEither_0<_i6.Failure, List<_i11.TV>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>>);
+}
+
+/// A class which mocks [GetTvList].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetTvList extends _i1.Mock implements _i18.GetTvList {
+  MockGetTvList() {
     _i1.throwOnMissingStub(this);
   }
 
