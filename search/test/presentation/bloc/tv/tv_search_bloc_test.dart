@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
 
-import '../../dummy_data/dummy_objects.dart';
-import '../../test_helper.mocks.dart';
+import '../../../dummy_data/dummy_objects.dart';
+import '../../../test_helper.mocks.dart';
 
 void main() {
   late TvSearchBloc tvSearchBloc;
