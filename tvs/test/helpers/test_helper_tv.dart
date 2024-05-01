@@ -1,4 +1,6 @@
 import 'package:core/domain/repositories/tv_repository.dart';
+import 'package:core/domain/usecases/tv/get_tv_popular.dart';
+import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
 import 'package:mockito/annotations.dart';
 import 'package:tvs/domain/usecases/tv/get_tv_detail.dart';
 import 'package:tvs/domain/usecases/tv/get_tv_recommendation.dart';
@@ -14,6 +16,8 @@ import 'package:tvs/domain/usecases/tv/save_tv_watchlist.dart';
   GetTvWatchList,
   IsTvInWatchlist,
   GetTvRecomendation,
-  TvRepository
+  GetTvTopRated,
+  TvRepository,
+  GetTvPopular
 ])
 void main() {}

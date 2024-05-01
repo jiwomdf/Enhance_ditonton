@@ -29,11 +29,11 @@ class MovieWatchlistHasData extends MovieWatchlistState {
   List<Object> get props => [result];
 }
 
-class MovieWatchlistIsAddedWatchlist extends MovieWatchlistState {
+class MovieWatchlistIsAdded extends MovieWatchlistState {
   final bool isAddedToWatchlist;
   final String message;
 
-  MovieWatchlistIsAddedWatchlist(this.isAddedToWatchlist, this.message);
+  MovieWatchlistIsAdded(this.isAddedToWatchlist, this.message);
 
   @override
   List<Object> get props => [isAddedToWatchlist, message];

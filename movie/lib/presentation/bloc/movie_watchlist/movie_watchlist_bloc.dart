@@ -52,7 +52,7 @@ class MovieWatchlistBloc
 
       final resultStatus =
           await getWatchListStatus.execute(event.movieDetail.id);
-      emit(MovieWatchlistIsAddedWatchlist(resultStatus, message));
+      emit(MovieWatchlistIsAdded(resultStatus, message));
     });
 
     on<InsertMovieWatchlistEvent>((event, emit) async {
@@ -70,12 +70,12 @@ class MovieWatchlistBloc
 
       final resultStatus =
           await getWatchListStatus.execute(event.movieDetail.id);
-      emit(MovieWatchlistIsAddedWatchlist(resultStatus, message));
+      emit(MovieWatchlistIsAdded(resultStatus, message));
     });
 
     on<GetMovieWatchlistStatusEvent>((event, emit) async {
       final result = await getWatchListStatus.execute(event.id);
-      emit(MovieWatchlistIsAddedWatchlist(result, ""));
+      emit(MovieWatchlistIsAdded(result, ""));
     });
   }
 }

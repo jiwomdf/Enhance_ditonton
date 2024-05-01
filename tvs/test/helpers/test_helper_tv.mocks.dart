@@ -9,6 +9,8 @@ import 'package:core/domain/entities/tv.dart' as _i11;
 import 'package:core/domain/entities/tv_detail.dart' as _i7;
 import 'package:core/domain/entities/tv_recommendation.dart' as _i14;
 import 'package:core/domain/repositories/tv_repository.dart' as _i3;
+import 'package:core/domain/usecases/tv/get_tv_popular.dart' as _i16;
+import 'package:core/domain/usecases/tv/get_tv_toprated.dart' as _i15;
 import 'package:core/utils/failure.dart' as _i6;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -220,6 +222,32 @@ class MockGetTvRecomendation extends _i1.Mock
       ) as _i5.Future<_i2.Either<_i6.Failure, List<_i14.TvRecomemendation>>>);
 }
 
+/// A class which mocks [GetTvTopRated].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetTvTopRated extends _i1.Mock implements _i15.GetTvTopRated {
+  MockGetTvTopRated() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>> execute() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue: _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>>.value(
+            _FakeEither_0<_i6.Failure, List<_i11.TV>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>>);
+}
+
 /// A class which mocks [TvRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -418,4 +446,30 @@ class MockTvRepository extends _i1.Mock implements _i3.TvRepository {
           ),
         )),
       ) as _i5.Future<_i2.Either<_i6.Failure, List<_i14.TvRecomemendation>>>);
+}
+
+/// A class which mocks [GetTvPopular].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetTvPopular extends _i1.Mock implements _i16.GetTvPopular {
+  MockGetTvPopular() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>> execute() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue: _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>>.value(
+            _FakeEither_0<_i6.Failure, List<_i11.TV>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i2.Either<_i6.Failure, List<_i11.TV>>>);
 }

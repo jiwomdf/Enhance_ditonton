@@ -75,7 +75,7 @@ class DetailContent extends StatelessWidget {
           margin: const EdgeInsets.only(top: 48 + 8),
           child: BlocBuilder<MovieWatchlistBloc, MovieWatchlistState>(
               builder: (context, state) {
-            if (state is MovieWatchlistIsAddedWatchlist) {
+            if (state is MovieWatchlistIsAdded) {
               if (state.message == addedToWatchlist ||
                   state.message == removedFromWatchlist) {
                 Future(() {
@@ -123,7 +123,7 @@ class DetailContent extends StatelessWidget {
     }
   }
 
-  Widget draggableSheet(MovieWatchlistIsAddedWatchlist state) {
+  Widget draggableSheet(MovieWatchlistIsAdded state) {
     return DraggableScrollableSheet(
       builder: (context, scrollController) {
         return Container(

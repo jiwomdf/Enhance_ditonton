@@ -10,13 +10,12 @@ import '../../helper/test_helper_movie.mocks.dart';
 
 void main() {
   late MovieWatchlistBloc movieWatchlistBloc;
-
   late MockGetWatchlistMovies mockGetWatchlistMovies;
   late MockGetWatchListStatus mockGetWatchlistStatus;
   late MockSaveWatchlist mockSaveWatchlist;
   late MockRemoveWatchlist mockRemoveWatchlist;
 
-  const testId = 0;
+  final int testId = 1;
 
   setUp(() {
     mockGetWatchlistMovies = MockGetWatchlistMovies();
@@ -40,8 +39,7 @@ void main() {
             .thenAnswer((_) async => Right(testMovieList));
         return movieWatchlistBloc;
       },
-      act: (bloc) => bloc.add(GetMovieWatchlistEvent(testId)),
-      wait: const Duration(milliseconds: 500),
+      act: (bloc) => bloc.add(GetMovieWatchlistEvent()),
       expect: () => [
         MovieWatchlistLoading(),
         MovieWatchlistHasData(testMovieList),
@@ -58,8 +56,7 @@ void main() {
             .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return movieWatchlistBloc;
       },
-      act: (bloc) => bloc.add(GetMovieWatchlistEvent(testId)),
-      wait: const Duration(milliseconds: 500),
+      act: (bloc) => bloc.add(GetMovieWatchlistEvent()),
       expect: () => [
         MovieWatchlistLoading(),
         MovieWatchlistError('Server Failure'),
@@ -76,13 +73,13 @@ void main() {
       build: () {
         when(mockRemoveWatchlist.execute(testMovieDetail))
             .thenAnswer((_) async => Right(removedFromWatchlist));
+        when(mockGetWatchlistStatus.execute(testId))
+            .thenAnswer((_) async => true);
         return movieWatchlistBloc;
       },
-      act: (bloc) => bloc.add(GetMovieWatchlistEvent(testId)),
-      wait: const Duration(milliseconds: 500),
+      act: (bloc) => bloc.add(RemoveMovieWatchlistEvent(testMovieDetail)),
       expect: () => [
-        MovieWatchlistLoading(),
-        MovieWatchlistHasData(testMovieList),
+        MovieWatchlistIsAdded(true, removedFromWatchlist),
       ],
       verify: (bloc) {
         verify(mockRemoveWatchlist.execute(testMovieDetail));
@@ -90,17 +87,18 @@ void main() {
     );
 
     blocTest<MovieWatchlistBloc, MovieWatchlistState>(
-      'Should emit [Loading, HasData] when data is gotten successfully',
+      'Should emit [MovieWatchlistError] when data is gotten fail',
       build: () {
         when(mockRemoveWatchlist.execute(testMovieDetail))
-            .thenAnswer((_) async => Right(removedFromWatchlist));
+            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetWatchlistStatus.execute(testId))
+            .thenAnswer((_) async => false);
         return movieWatchlistBloc;
       },
       act: (bloc) => bloc.add(RemoveMovieWatchlistEvent(testMovieDetail)),
-      wait: const Duration(milliseconds: 500),
       expect: () => [
-        MovieWatchlistLoading(),
         MovieWatchlistError('Server Failure'),
+        MovieWatchlistIsAdded(false, ''),
       ],
       verify: (bloc) {
         verify(mockRemoveWatchlist.execute(testMovieDetail));
@@ -114,13 +112,13 @@ void main() {
       build: () {
         when(mockSaveWatchlist.execute(testMovieDetail))
             .thenAnswer((_) async => Right(addedToWatchlist));
+        when(mockGetWatchlistStatus.execute(testId))
+            .thenAnswer((_) async => true);
         return movieWatchlistBloc;
       },
       act: (bloc) => bloc.add(InsertMovieWatchlistEvent(testMovieDetail)),
-      wait: const Duration(milliseconds: 500),
       expect: () => [
-        MovieWatchlistLoading(),
-        MovieWatchlistHasData(testMovieList),
+        MovieWatchlistIsAdded(true, addedToWatchlist),
       ],
       verify: (bloc) {
         verify(mockSaveWatchlist.execute(testMovieDetail));
@@ -128,20 +126,21 @@ void main() {
     );
 
     blocTest<MovieWatchlistBloc, MovieWatchlistState>(
-      'Should emit [Loading, HasData] when data is gotten successfully',
+      'Should emit [MovieWatchlistError] when data is gotten fail',
       build: () {
         when(mockSaveWatchlist.execute(testMovieDetail))
-            .thenAnswer((_) async => Right(removedFromWatchlist));
+            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetWatchlistStatus.execute(testId))
+            .thenAnswer((_) async => false);
         return movieWatchlistBloc;
       },
       act: (bloc) => bloc.add(InsertMovieWatchlistEvent(testMovieDetail)),
-      wait: const Duration(milliseconds: 500),
       expect: () => [
-        MovieWatchlistLoading(),
         MovieWatchlistError('Server Failure'),
+        MovieWatchlistIsAdded(false, ''),
       ],
       verify: (bloc) {
-        verify(mockRemoveWatchlist.execute(testMovieDetail));
+        verify(mockSaveWatchlist.execute(testMovieDetail));
       },
     );
   });
