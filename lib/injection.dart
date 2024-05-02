@@ -45,7 +45,6 @@ import 'package:tvs/presentation/bloc/tv_detail/tv_detail_bloc.dart';
 import 'package:tvs/presentation/bloc/tv_popular/tv_popular_bloc.dart';
 import 'package:tvs/presentation/bloc/tv_recommendation/tv_recommendation_bloc.dart';
 import 'package:tvs/presentation/bloc/tv_watch_list/tv_watchlist_bloc.dart';
-import 'package:tvs/tvs.dart';
 
 final locator = GetIt.instance;
 

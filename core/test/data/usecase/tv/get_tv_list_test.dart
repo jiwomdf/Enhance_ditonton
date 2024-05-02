@@ -15,8 +15,6 @@ void main() {
     usecase = GetTvList(mockTvRepository);
   });
 
-  const tId = 1;
-
   test('should get TvDetail from the repository', () async {
     // arrange
     when(mockTvRepository.getTvList()).thenAnswer((_) async => Right([testTv]));
