@@ -38,6 +38,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetMovieRecommendations.execute(testId));
+        return GetMovieRecommendationEvent(testId).props;
       },
     );
 
@@ -56,6 +57,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetMovieRecommendations.execute(testId));
+        return GetMovieRecommendationEvent(testId).props;
       },
     );
   });

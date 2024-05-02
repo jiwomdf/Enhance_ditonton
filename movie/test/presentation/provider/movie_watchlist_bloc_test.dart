@@ -46,6 +46,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetWatchlistMovies.execute());
+        return GetMovieWatchlistEvent().props;
       },
     );
 
@@ -63,6 +64,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetWatchlistMovies.execute());
+        return GetMovieWatchlistEvent().props;
       },
     );
   });
@@ -83,6 +85,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockRemoveWatchlist.execute(testMovieDetail));
+        return RemoveMovieWatchlistEvent(testMovieDetail).props;
       },
     );
 
@@ -102,6 +105,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockRemoveWatchlist.execute(testMovieDetail));
+        return RemoveMovieWatchlistEvent(testMovieDetail).props;
       },
     );
   });
@@ -122,6 +126,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockSaveWatchlist.execute(testMovieDetail));
+        return InsertMovieWatchlistEvent(testMovieDetail).props;
       },
     );
 
@@ -141,6 +146,44 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockSaveWatchlist.execute(testMovieDetail));
+        return InsertMovieWatchlistEvent(testMovieDetail).props;
+      },
+    );
+  });
+
+
+  group('Get WatchList Status', () {
+    blocTest<MovieWatchlistBloc, MovieWatchlistState>(
+      'Should emit [Loading, HasData] when data is gotten successfully',
+      build: () {
+        when(mockGetWatchlistStatus.execute(testId))
+            .thenAnswer((_) async => true);
+        return movieWatchlistBloc;
+      },
+      act: (bloc) => bloc.add(GetMovieWatchlistStatusEvent(testId)),
+      expect: () => [
+        MovieWatchlistIsAdded(true, ''),
+      ],
+      verify: (bloc) {
+        verify(mockGetWatchlistStatus.execute(testId));
+        return GetMovieWatchlistStatusEvent(testId).props;
+      },
+    );
+
+    blocTest<MovieWatchlistBloc, MovieWatchlistState>(
+      'Should emit [MovieWatchlistError] when data is gotten fail',
+      build: () {
+        when(mockGetWatchlistStatus.execute(testId))
+            .thenAnswer((_) async => false);
+        return movieWatchlistBloc;
+      },
+      act: (bloc) => bloc.add(GetMovieWatchlistStatusEvent(testId)),
+      expect: () => [
+        MovieWatchlistIsAdded(true, ''),
+      ],
+      verify: (bloc) {
+        verify(mockGetWatchlistStatus.execute(testId));
+        return GetMovieWatchlistStatusEvent(testId).props;
       },
     );
   });
