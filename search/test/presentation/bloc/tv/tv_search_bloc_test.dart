@@ -34,6 +34,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockSearchTv.execute(tQuery));
+      return OnTvQueryChanged(tQuery).props;
     },
   );
 
@@ -52,6 +53,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockSearchTv.execute(tQuery));
+      return OnTvQueryChanged(tQuery).props;
     },
   );
 }

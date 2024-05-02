@@ -51,6 +51,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockSearchMovies.execute(tQuery));
+      return OnQueryChanged(tQuery).props;
     },
   );
 
@@ -69,6 +70,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockSearchMovies.execute(tQuery));
+      return OnQueryChanged(tQuery).props;
     },
   );
 }
