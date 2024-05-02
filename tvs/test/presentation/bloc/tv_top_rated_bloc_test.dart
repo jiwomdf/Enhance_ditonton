@@ -37,6 +37,7 @@ void main(){
       ],
       verify: (bloc) {
         verify(mockGetTvTopRated.execute());
+        return GetTvTopRatedEvent().props;
       },
     );
 
@@ -55,6 +56,7 @@ void main(){
       ],
       verify: (bloc) {
         verify(mockGetTvTopRated.execute());
+        return GetTvTopRatedEvent().props;
       },
     );
   });

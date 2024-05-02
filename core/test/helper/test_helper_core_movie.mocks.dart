@@ -614,8 +614,8 @@ class MockGetTopRatedMovies extends _i1.Mock implements _i20.GetTopRatedMovies {
 /// A class which mocks [Client].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHttpClient extends _i1.Mock implements _i5.Client {
-  MockHttpClient() {
+class MockHttpClientMovie extends _i1.Mock implements _i5.Client {
+  MockHttpClientMovie() {
     _i1.throwOnMissingStub(this);
   }
 

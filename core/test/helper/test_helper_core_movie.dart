@@ -17,6 +17,6 @@ import 'package:mockito/annotations.dart';
   GetPopularMovies,
   GetTopRatedMovies,
 ], customMocks: [
-  MockSpec<http.Client>(as: #MockHttpClient)
+  MockSpec<http.Client>(as: #MockHttpClientMovie)
 ])
 void main() {}

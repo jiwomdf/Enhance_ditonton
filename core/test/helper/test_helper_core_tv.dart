@@ -15,6 +15,6 @@ import 'package:mockito/annotations.dart';
   GetTvPopular,
   GetTvTopRated
 ], customMocks: [
-  MockSpec<http.Client>(as: #MockHttpClient)
+  MockSpec<http.Client>(as: #MockHttpClientTv)
 ])
 void main() {}

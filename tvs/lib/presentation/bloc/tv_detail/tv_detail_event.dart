@@ -3,8 +3,6 @@ part of 'tv_detail_bloc.dart';
 sealed class TvDetailEvent extends Equatable {
   const TvDetailEvent();
 
-  @override
-  List<Object> get props => [];
 }
 
 class GetTvDetailEvent extends TvDetailEvent {

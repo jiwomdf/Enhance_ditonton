@@ -11,6 +11,7 @@ import '../../helpers/test_helper_tv.mocks.dart';
 void main() {
   late TvDetailBloc tvDetailBloc;
   late MockGetTvDetail mockGetTvDetail;
+  final int testId = 1;
 
   setUp(() {
     mockGetTvDetail = MockGetTvDetail();
@@ -22,7 +23,7 @@ void main() {
     blocTest<TvDetailBloc, TvDetailState>(
       'Should emit [Loading, HasData] when data is gotten successfully',
       build: () {
-        when(mockGetTvDetail.execute(1))
+        when(mockGetTvDetail.execute(testId))
             .thenAnswer((_) async => Right(testTvDetail));
         return tvDetailBloc;
       },
@@ -34,6 +35,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetTvDetail.execute(1));
+        return GetTvDetailEvent(testId).props;
       },
     );
 
@@ -44,7 +46,7 @@ void main() {
             (_) async => const Left(ServerFailure('Server Failure')));
         return tvDetailBloc;
       },
-      act: (bloc) => bloc.add(const GetTvDetailEvent(1)),
+      act: (bloc) => bloc.add(GetTvDetailEvent(testId)),
       wait: const Duration(milliseconds: 500),
       expect: () => [
         TvDetailLoading(),
@@ -52,6 +54,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetTvDetail.execute(1));
+        return GetTvDetailEvent(testId).props;
       },
     );
 

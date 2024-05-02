@@ -34,6 +34,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetTvPopular.execute());
+        return GetTvPopularEvent().props;
       },
     );
 
@@ -52,6 +53,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetTvPopular.execute());
+        return GetTvPopularEvent().props;
       },
     );
   });

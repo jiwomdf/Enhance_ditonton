@@ -46,6 +46,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetTvWatchList.execute());
+        return GetTvWatchlistEvent().props;
       },
     );
 
@@ -63,6 +64,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetTvWatchList.execute());
+        return GetTvWatchlistEvent().props;
       },
     );
   });
@@ -83,6 +85,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockSaveTvWatchlist.execute(testTvDetail));
+        return SaveTvWatchlistEvent(testTvDetail).props;
       },
     );
 
@@ -101,6 +104,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockSaveTvWatchlist.execute(testTvDetail));
+        return SaveTvWatchlistEvent(testTvDetail).props;
       },
     );
   });
@@ -121,6 +125,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockRemoveTvWatchlist.execute(testId));
+        return RemoveTvWatchlistEvent(testId).props;
       },
     );
 
@@ -139,6 +144,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockRemoveTvWatchlist.execute(testId));
+        return RemoveTvWatchlistEvent(testId).props;
       },
     );
   });
@@ -157,6 +163,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockIsTvInWatchlist.execute(testId));
+        return IsTvInWatchlistEvent(testId).props;
       },
     );
 
@@ -173,6 +180,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockIsTvInWatchlist.execute(testId));
+        return IsTvInWatchlistEvent(testId).props;
       },
     );
   });

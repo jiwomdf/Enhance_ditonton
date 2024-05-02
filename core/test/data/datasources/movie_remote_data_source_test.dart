@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:core/data/datasources/movie_remote_data_source.dart';
 import 'package:core/data/models/movie_detail_model.dart';
@@ -9,17 +10,17 @@ import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 
 import '../../../../test/json_reader.dart';
-import '../../helper/test_helper_core_tv.mocks.dart';
+import '../../helper/test_helper_core_movie.mocks.dart';
 
 void main() {
   const apiKey = 'api_key=2174d146bb9c0eab47529b2e77d6b526';
   const baseUrl = 'https://api.themoviedb.org/3';
 
   late MovieRemoteDataSourceImpl dataSource;
-  late MockHttpClient mockHttpClient;
+  late MockHttpClientMovie mockHttpClient;
 
   setUp(() {
-    mockHttpClient = MockHttpClient();
+    mockHttpClient = MockHttpClientMovie();
     dataSource = MovieRemoteDataSourceImpl(client: mockHttpClient);
   });
 
@@ -63,7 +64,9 @@ void main() {
       // arrange
       when(mockHttpClient.get(Uri.parse('$baseUrl/page/popular?$apiKey')))
           .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/popular.json'), 200));
+              http.Response(readJson('dummy_data/popular.json'), 200, headers: {
+                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+              }));
       // act
       final result = await dataSource.getPopularMovies();
       // assert
@@ -92,7 +95,9 @@ void main() {
       // arrange
       when(mockHttpClient.get(Uri.parse('$baseUrl/page/top_rated?$apiKey')))
           .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/top_rated.json'), 200));
+              http.Response(readJson('dummy_data/top_rated.json'), 200, headers: {
+                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+              }));
       // act
       final result = await dataSource.getTopRatedMovies();
       // assert
@@ -120,7 +125,9 @@ void main() {
       // arrange
       when(mockHttpClient.get(Uri.parse('$baseUrl/page/$tId?$apiKey')))
           .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/movie_detail.json'), 200));
+              http.Response(readJson('dummy_data/movie_detail.json'), 200, headers: {
+                HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+              }));
       // act
       final result = await dataSource.getMovieDetail(tId);
       // assert
@@ -151,7 +158,9 @@ void main() {
       when(mockHttpClient
               .get(Uri.parse('$baseUrl/page/$tId/recommendations?$apiKey')))
           .thenAnswer((_) async => http.Response(
-              readJson('dummy_data/movie_recommendations.json'), 200));
+              readJson('dummy_data/movie_recommendations.json'), 200, headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+      }));
       // act
       final result = await dataSource.getMovieRecommendations(tId);
       // assert
@@ -182,7 +191,9 @@ void main() {
       when(mockHttpClient
               .get(Uri.parse('$baseUrl/search/page?$apiKey&query=$tQuery')))
           .thenAnswer((_) async => http.Response(
-              readJson('dummy_data/search_spiderman_movie.json'), 200));
+              readJson('dummy_data/search_spiderman_movie.json'), 200, headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+      }));
       // act
       final result = await dataSource.searchMovies(tQuery);
       // assert

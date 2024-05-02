@@ -11,6 +11,7 @@ import '../../helpers/test_helper_tv.mocks.dart';
 void main() {
   late TvRecommendationBloc tvRecommendationBloc;
   late MockGetTvRecomendation mockGetTvRecommendation;
+  final int testId = 1;
 
   setUp(() {
     mockGetTvRecommendation = MockGetTvRecomendation();
@@ -25,13 +26,14 @@ void main() {
             .thenAnswer((_) async => Right([testTvRecommendation]));
         return tvRecommendationBloc;
       },
-      act: (bloc) => bloc.add(const GetTvRecommendationEvent(1)),
+      act: (bloc) => bloc.add(GetTvRecommendationEvent(testId)),
       expect: () => [
         TvRecommendationLoading(),
         TvRecommendationHasData([testTvRecommendation]),
       ],
       verify: (bloc) {
         verify(mockGetTvRecommendation.execute(1));
+        return GetTvRecommendationEvent(testId).props;
       },
     );
 
@@ -49,6 +51,7 @@ void main() {
       ],
       verify: (bloc) {
         verify(mockGetTvRecommendation.execute(1));
+        return GetTvRecommendationEvent(testId).props;
       },
     );
   });

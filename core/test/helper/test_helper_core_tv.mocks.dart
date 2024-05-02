@@ -521,8 +521,8 @@ class MockGetTvTopRated extends _i1.Mock implements _i23.GetTvTopRated {
 /// A class which mocks [Client].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHttpClient extends _i1.Mock implements _i4.Client {
-  MockHttpClient() {
+class MockHttpClientTv extends _i1.Mock implements _i4.Client {
+  MockHttpClientTv() {
     _i1.throwOnMissingStub(this);
   }
 
