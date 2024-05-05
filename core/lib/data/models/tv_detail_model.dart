@@ -6,11 +6,6 @@ import 'dart:convert';
 
 import 'package:core/domain/entities/tv_detail.dart';
 
-TvDetailModel tvDetailModelFromJson(String str) =>
-    TvDetailModel.fromJson(json.decode(str));
-
-String tvDetailModelToJson(TvDetailModel data) => json.encode(data.toJson());
-
 class TvDetailModel {
   final bool? adult;
   final String? name;
@@ -108,43 +103,6 @@ class TvDetailModel {
         voteCount: json["vote_count"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "adult": adult,
-        "name": name,
-        "backdrop_path": backdropPath,
-        "belongs_to_collection": belongsToCollection,
-        "budget": budget,
-        "genres": genres == null
-            ? []
-            : List<dynamic>.from(genres!.map((x) => x.toJson())),
-        "homepage": homepage,
-        "id": id,
-        "imdb_id": imdbId,
-        "original_language": originalLanguage,
-        "original_title": originalTitle,
-        "overview": overview,
-        "popularity": popularity,
-        "poster_path": posterPath,
-        "production_companies": productionCompanies == null
-            ? []
-            : List<dynamic>.from(productionCompanies!.map((x) => x.toJson())),
-        "production_countries": productionCountries == null
-            ? []
-            : List<dynamic>.from(productionCountries!.map((x) => x.toJson())),
-        "release_date": releaseDate,
-        "revenue": revenue,
-        "runtime": runtime,
-        "spoken_languages": spokenLanguages == null
-            ? []
-            : List<dynamic>.from(spokenLanguages!.map((x) => x.toJson())),
-        "status": status,
-        "tagline": tagline,
-        "title": title,
-        "video": video,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-      };
-
   TvDetail toEntity() => TvDetail(
         adult: adult ?? false,
         backdropPath: backdropPath ?? '',
@@ -183,11 +141,6 @@ class Genre {
         id: json["id"],
         name: json["name"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-      };
 }
 
 class ProductionCompany {
@@ -210,13 +163,6 @@ class ProductionCompany {
         name: json["name"],
         originCountry: json["origin_country"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "logo_path": logoPath,
-        "name": name,
-        "origin_country": originCountry,
-      };
 }
 
 class ProductionCountry {
@@ -233,11 +179,6 @@ class ProductionCountry {
         iso31661: json["iso_3166_1"],
         name: json["name"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "iso_3166_1": iso31661,
-        "name": name,
-      };
 }
 
 class SpokenLanguage {
@@ -256,10 +197,4 @@ class SpokenLanguage {
         iso6391: json["iso_639_1"],
         name: json["name"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "english_name": englishName,
-        "iso_639_1": iso6391,
-        "name": name,
-      };
 }
