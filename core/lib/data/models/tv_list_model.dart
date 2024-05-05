@@ -6,11 +6,6 @@ import 'dart:convert';
 
 import 'package:core/domain/entities/tv.dart';
 
-ListTvModel listTvModelFromJson(String str) =>
-    ListTvModel.fromJson(json.decode(str));
-
-String listTvModelToJson(ListTvModel data) => json.encode(data.toJson());
-
 class ListTvModel {
   int page;
   List<TvModel> tvListModel;
@@ -31,13 +26,6 @@ class ListTvModel {
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "page": page,
-        "results": List<dynamic>.from(tvListModel.map((x) => x.toJson())),
-        "total_pages": totalPages,
-        "total_results": totalResults,
-      };
 }
 
 class TvModel {
@@ -89,23 +77,6 @@ class TvModel {
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "adult": adult,
-        "backdrop_path": backdropPath,
-        "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
-        "id": id,
-        "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
-        "original_language": originalLanguage,
-        "original_name": originalName,
-        "overview": overview,
-        "popularity": popularity,
-        "poster_path": posterPath,
-        "first_air_date": firstAirDate,
-        "name": name,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-      };
 
   TV toEntity() => TV(
         adult: adult,

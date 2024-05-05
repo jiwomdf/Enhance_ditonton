@@ -15,11 +15,6 @@ class TvRecommendationModel {
     this.totalResults,
   });
 
-  factory TvRecommendationModel.fromRawJson(String str) =>
-      TvRecommendationModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory TvRecommendationModel.fromJson(Map<String, dynamic> json) =>
       TvRecommendationModel(
         page: json["page"],
@@ -76,11 +71,6 @@ class TvRecommendationResult {
     this.voteCount,
     this.originCountry,
   });
-
-  factory TvRecommendationResult.fromRawJson(String str) =>
-      TvRecommendationResult.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory TvRecommendationResult.fromJson(Map<String, dynamic> json) =>
       TvRecommendationResult(
@@ -143,18 +133,5 @@ class TvRecommendationResult {
       voteCount: voteCount ?? 0,
       originCountry: originCountry,
     );
-  }
-}
-
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
   }
 }

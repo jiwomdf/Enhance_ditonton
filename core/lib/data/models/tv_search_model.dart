@@ -15,11 +15,6 @@ class TvSearchModel {
     this.totalResults,
   });
 
-  factory TvSearchModel.fromRawJson(String str) =>
-      TvSearchModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory TvSearchModel.fromJson(Map<String, dynamic> json) => TvSearchModel(
         page: json["page"],
         tvSearchResult: json["results"] == null
@@ -29,15 +24,6 @@ class TvSearchModel {
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "page": page,
-        "results": tvSearchResult == null
-            ? []
-            : List<dynamic>.from(tvSearchResult!.map((x) => x.toJson())),
-        "total_pages": totalPages,
-        "total_results": totalResults,
-      };
 }
 
 class TvSearchResult {
@@ -73,11 +59,6 @@ class TvSearchResult {
     this.voteCount,
   });
 
-  factory TvSearchResult.fromRawJson(String str) =>
-      TvSearchResult.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory TvSearchResult.fromJson(Map<String, dynamic> json) => TvSearchResult(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
@@ -98,26 +79,6 @@ class TvSearchResult {
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "adult": adult,
-        "backdrop_path": backdropPath,
-        "genre_ids":
-            genreIds == null ? [] : List<dynamic>.from(genreIds!.map((x) => x)),
-        "id": id,
-        "origin_country": originCountry == null
-            ? []
-            : List<dynamic>.from(originCountry!.map((x) => x)),
-        "original_language": originalLanguage,
-        "original_name": originalName,
-        "overview": overview,
-        "popularity": popularity,
-        "poster_path": posterPath,
-        "first_air_date": firstAirDate,
-        "name": name,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-      };
 
   TV toEntity() {
     return TV(

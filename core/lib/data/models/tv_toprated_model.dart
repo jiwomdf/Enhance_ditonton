@@ -15,11 +15,6 @@ class TvTopRatedModel {
     this.totalResults,
   });
 
-  factory TvTopRatedModel.fromRawJson(String str) =>
-      TvTopRatedModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory TvTopRatedModel.fromJson(Map<String, dynamic> json) =>
       TvTopRatedModel(
         page: json["page"],
@@ -30,15 +25,6 @@ class TvTopRatedModel {
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "page": page,
-        "results": tvTopRatedModelResult == null
-            ? []
-            : List<dynamic>.from(tvTopRatedModelResult!.map((x) => x.toJson())),
-        "total_pages": totalPages,
-        "total_results": totalResults,
-      };
 }
 
 class TvTopRatedModelResult {
@@ -74,11 +60,6 @@ class TvTopRatedModelResult {
     this.voteCount,
   });
 
-  factory TvTopRatedModelResult.fromRawJson(String str) =>
-      TvTopRatedModelResult.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory TvTopRatedModelResult.fromJson(Map<String, dynamic> json) =>
       TvTopRatedModelResult(
         adult: json["adult"],
@@ -101,26 +82,6 @@ class TvTopRatedModelResult {
         voteCount: json["vote_count"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "adult": adult,
-        "backdrop_path": backdropPath,
-        "genre_ids":
-            genreIds == null ? [] : List<dynamic>.from(genreIds!.map((x) => x)),
-        "id": id,
-        "origin_country": originCountry == null
-            ? []
-            : List<dynamic>.from(originCountry!.map((x) => x)),
-        "original_language": originalLanguage,
-        "original_name": originalName,
-        "overview": overview,
-        "popularity": popularity,
-        "poster_path": posterPath,
-        "first_air_date": firstAirDate,
-        "name": name,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-      };
-
   TV toEntity() {
     return TV(
       adult: adult ?? false,
@@ -138,17 +99,5 @@ class TvTopRatedModelResult {
       voteAverage: voteAverage ?? 0.0,
       voteCount: voteCount ?? 0,
     );
-  }
-}
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
   }
 }
