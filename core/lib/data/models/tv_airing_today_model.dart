@@ -15,31 +15,13 @@ class TvAiringTodayModel {
     this.totalResults,
   });
 
-  factory TvAiringTodayModel.fromRawJson(String str) =>
-      TvAiringTodayModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory TvAiringTodayModel.fromJson(Map<String, dynamic> json) =>
       TvAiringTodayModel(
         page: json["page"],
-        tvAiringTodayModelResult: json["results"] == null
-            ? []
-            : List<TvAiringTodayModelResult>.from(json["results"]!
-                .map((x) => TvAiringTodayModelResult.fromJson(x))),
+        tvAiringTodayModelResult: json["results"],
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "page": page,
-        "results": tvAiringTodayModelResult == null
-            ? []
-            : List<dynamic>.from(
-                tvAiringTodayModelResult!.map((x) => x.toJson())),
-        "total_pages": totalPages,
-        "total_results": totalResults,
-      };
 }
 
 class TvAiringTodayModelResult {
@@ -75,22 +57,13 @@ class TvAiringTodayModelResult {
     this.voteCount,
   });
 
-  factory TvAiringTodayModelResult.fromRawJson(String str) =>
-      TvAiringTodayModelResult.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory TvAiringTodayModelResult.fromJson(Map<String, dynamic> json) =>
       TvAiringTodayModelResult(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
-        genreIds: json["genre_ids"] == null
-            ? []
-            : List<int>.from(json["genre_ids"]!.map((x) => x)),
+        genreIds: json["genre_ids"],
         id: json["id"],
-        originCountry: json["origin_country"] == null
-            ? []
-            : List<String>.from(json["origin_country"]!.map((x) => x)),
+        originCountry: json["origin_country"],
         originalLanguage: json["original_language"],
         originalName: json["original_name"],
         overview: json["overview"],
@@ -101,26 +74,6 @@ class TvAiringTodayModelResult {
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "adult": adult,
-        "backdrop_path": backdropPath,
-        "genre_ids":
-            genreIds == null ? [] : List<dynamic>.from(genreIds!.map((x) => x)),
-        "id": id,
-        "origin_country": originCountry == null
-            ? []
-            : List<dynamic>.from(originCountry!.map((x) => x)),
-        "original_language": originalLanguage,
-        "original_name": originalName,
-        "overview": overview,
-        "popularity": popularity,
-        "poster_path": posterPath,
-        "first_air_date": firstAirDate,
-        "name": name,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-      };
 
   TV toEntity() {
     return TV(
