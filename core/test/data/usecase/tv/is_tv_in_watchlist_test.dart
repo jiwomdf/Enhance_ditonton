@@ -3,7 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../helper/test_helper_core_tv.mocks.dart';
+import '../../../helper/test_helper_core.mocks.dart';
+
 
 void main() {
   late IsTvInWatchlist usecase;

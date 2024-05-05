@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:core/domain/usecases/tv/get_tv_watchlist.dart';
 
 import '../../../helper/dummy_objects.dart';
-import '../../../helper/test_helper_core_tv.mocks.dart';
+import '../../../helper/test_helper_core.mocks.dart';
 
 
 void main() {

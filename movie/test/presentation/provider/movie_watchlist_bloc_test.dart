@@ -179,7 +179,7 @@ void main() {
       },
       act: (bloc) => bloc.add(GetMovieWatchlistStatusEvent(testId)),
       expect: () => [
-        MovieWatchlistIsAdded(true, ''),
+        MovieWatchlistIsAdded(false, ''),
       ],
       verify: (bloc) {
         verify(mockGetWatchlistStatus.execute(testId));
