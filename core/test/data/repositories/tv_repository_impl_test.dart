@@ -252,6 +252,14 @@ void main() {
       final result = await repository.isTvInWatchlist(tId);
       expect(result, const Right(false));
     });
+
+    test('should return database exception when failed get data', () async {
+      const tId = 1;
+      when(mockLocalDataSource.isTvInWatchlist(tId))
+          .thenThrow(DatabaseException('Failed to remove watchlist'));
+      final result = await repository.isTvInWatchlist(tId);
+      expect(result, const Left(DatabaseFailure('Failed to remove watchlist')));
+    });
   });
 
   group('get watchlist tvs', () {

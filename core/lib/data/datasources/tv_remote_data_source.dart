@@ -12,7 +12,6 @@ import 'package:http/http.dart' as http;
 import '../models/tv_list_model.dart';
 
 abstract class TvRemoteDataSource {
-  Future<List<TvModel>> getTvList();
   Future<TvDetailModel> getTvDetail(int id);
   Future<List<TvSearchResult>> searchTv(String query);
   Future<List<TvSeriesPopularResult>> getTvPopular();
@@ -28,18 +27,6 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
   final http.Client client;
 
   TvRemoteDataSourceImpl({required this.client});
-
-  @override
-  Future<List<TvModel>> getTvList() async {
-    final response =
-        await client.get(Uri.parse('$baseUrl/discover/tv?$apiKey'));
-
-    if (response.statusCode == 200) {
-      return ListTvModel.fromJson(json.decode(response.body)).tvListModel;
-    } else {
-      throw ServerException();
-    }
-  }
 
   @override
   Future<TvDetailModel> getTvDetail(int id) async {

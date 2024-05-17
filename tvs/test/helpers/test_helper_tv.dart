@@ -1,7 +1,6 @@
 import 'package:core/domain/repositories/tv_repository.dart';
 import 'package:core/domain/usecases/tv/get_tv_airing_today.dart';
 import 'package:core/domain/usecases/tv/get_tv_detail.dart';
-import 'package:core/domain/usecases/tv/get_tv_list.dart';
 import 'package:core/domain/usecases/tv/get_tv_popular.dart';
 import 'package:core/domain/usecases/tv/get_tv_recommendation.dart';
 import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
@@ -22,6 +21,5 @@ import 'package:mockito/annotations.dart';
   TvRepository,
   GetTvPopular,
   GetTvAiringToday,
-  GetTvList
 ])
 void main() {}

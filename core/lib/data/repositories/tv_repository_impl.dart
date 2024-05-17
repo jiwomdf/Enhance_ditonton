@@ -19,18 +19,6 @@ class TvRepositoryImpl extends TvRepository {
       {required this.remoteDataSource, required this.localDataSource});
 
   @override
-  Future<Either<Failure, List<TV>>> getTvList() async {
-    try {
-      final result = await remoteDataSource.getTvList();
-      return Right(result.map((model) => model.toEntity()).toList());
-    } on ServerException {
-      return const Left(ServerFailure(''));
-    } on SocketException {
-      return const Left(ConnectionFailure('Failed to connect to the network'));
-    }
-  }
-
-  @override
   Future<Either<Failure, TvDetail>> getTvDetail(int id) async {
     try {
       final result = await remoteDataSource.getTvDetail(id);

@@ -39,13 +39,4 @@ class TV {
     required this.posterPath,
     required this.name,
   });
-
-  TvTable mapToTvTable() {
-    return TvTable(
-      id: id ?? 0,
-      title: name,
-      posterPath: posterPath,
-      overview: overview,
-    );
-  }
 }

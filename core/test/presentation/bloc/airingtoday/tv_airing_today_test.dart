@@ -32,6 +32,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetTvAiringToday.execute());
+      return const GetTvAiringTodayEvent().props;
     },
   );
 
@@ -50,6 +51,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetTvAiringToday.execute());
+      return const GetTvAiringTodayEvent().props;
     },
   );
 }

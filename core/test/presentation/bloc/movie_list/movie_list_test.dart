@@ -32,6 +32,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetNowPlayingMovies.execute());
+      return const GetMovieListEvent().props;
     },
   );
 
@@ -50,6 +51,7 @@ void main() {
     ],
     verify: (bloc) {
       verify(mockGetNowPlayingMovies.execute());
+      return const GetMovieListEvent().props;
     },
   );
 }

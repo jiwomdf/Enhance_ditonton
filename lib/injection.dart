@@ -12,7 +12,6 @@ import 'package:core/domain/usecases/movie/get_popular_movies.dart';
 import 'package:core/domain/usecases/movie/get_top_rated_movies.dart';
 import 'package:core/domain/usecases/tv/get_tv_airing_today.dart';
 import 'package:core/domain/usecases/tv/get_tv_detail.dart';
-import 'package:core/domain/usecases/tv/get_tv_list.dart';
 import 'package:core/domain/usecases/tv/get_tv_popular.dart';
 import 'package:core/domain/usecases/tv/get_tv_recommendation.dart';
 import 'package:core/domain/usecases/tv/get_tv_toprated.dart';
@@ -93,7 +92,6 @@ void init() {
   locator.registerLazySingleton(() => GetTvTopRated(locator()));
   locator.registerLazySingleton(() => GetTvAiringToday(locator()));
   locator.registerLazySingleton(() => GetTvRecomendation(locator()));
-  locator.registerLazySingleton(() => GetTvList(locator()));
 
   // repository
   locator.registerLazySingleton<MovieRepository>(
