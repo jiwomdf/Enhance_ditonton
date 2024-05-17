@@ -6,11 +6,11 @@ class TvAiringTodayModel {
   final int? totalPages;
   final int? totalResults;
 
-  TvAiringTodayModel({
-    this.page,
-    this.tvAiringTodayModelResult,
-    this.totalPages,
-    this.totalResults,
+  const TvAiringTodayModel({
+    required this.page,
+    required this.tvAiringTodayModelResult,
+    required this.totalPages,
+    required this.totalResults,
   });
 
   factory TvAiringTodayModel.fromJson(Map<String, dynamic> json) =>
@@ -51,21 +51,21 @@ class TvAiringTodayModelResult {
   final double? voteAverage;
   final int? voteCount;
 
-  TvAiringTodayModelResult({
-    this.adult,
-    this.backdropPath,
-    this.genreIds,
-    this.id,
-    this.originCountry,
-    this.originalLanguage,
-    this.originalName,
-    this.overview,
-    this.popularity,
-    this.posterPath,
-    this.firstAirDate,
-    this.name,
-    this.voteAverage,
-    this.voteCount,
+  const TvAiringTodayModelResult({
+    required this.adult,
+    required this.backdropPath,
+    required this.genreIds,
+    required this.id,
+    required this.originCountry,
+    required this.originalLanguage,
+    required this.originalName,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.firstAirDate,
+    required this.name,
+    required this.voteAverage,
+    required this.voteCount,
   });
 
   factory TvAiringTodayModelResult.fromJson(Map<String, dynamic> json) =>
