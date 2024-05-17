@@ -114,7 +114,8 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
     if (response.statusCode == 200) {
       return TvRecommendationModel.fromJson(json.decode(response.body))
-              .tvRecommendationResult ?? [];
+              .tvRecommendationResult ??
+          [];
     } else {
       throw ServerException();
     }
