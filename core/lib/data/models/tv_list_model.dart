@@ -2,8 +2,6 @@
 //
 //     final listTvModel = listTvModelFromJson(jsonString);
 
-import 'dart:convert';
-
 import 'package:core/domain/entities/tv.dart';
 
 class ListTvModel {
