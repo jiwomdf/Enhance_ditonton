@@ -5,12 +5,12 @@
 import 'package:core/domain/entities/tv.dart';
 
 class ListTvModel {
-  int page;
-  List<TvModel> tvListModel;
-  int totalPages;
-  int totalResults;
+  final int page;
+  final List<TvModel> tvListModel;
+  final int totalPages;
+  final int totalResults;
 
-  ListTvModel({
+  const ListTvModel({
     required this.page,
     required this.tvListModel,
     required this.totalPages,
@@ -27,22 +27,22 @@ class ListTvModel {
 }
 
 class TvModel {
-  bool adult;
-  String? backdropPath;
-  List<int> genreIds;
-  int id;
-  List<String> originCountry;
-  String originalLanguage;
-  String originalName;
-  String overview;
-  double popularity;
-  String posterPath;
-  String firstAirDate;
-  String name;
-  double voteAverage;
-  int voteCount;
+  final bool adult;
+  final String? backdropPath;
+  final List<int> genreIds;
+  final int id;
+  final List<String> originCountry;
+  final String originalLanguage;
+  final String originalName;
+  final String overview;
+  final double popularity;
+  final String posterPath;
+  final String firstAirDate;
+  final String name;
+  final double voteAverage;
+  final int voteCount;
 
-  TvModel({
+  const TvModel({
     required this.adult,
     required this.backdropPath,
     required this.genreIds,

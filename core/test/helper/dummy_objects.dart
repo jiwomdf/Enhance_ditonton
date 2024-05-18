@@ -82,7 +82,7 @@ final testTv = TV(
   voteCount: 1,
 );
 
-final testTvSearchResult = TvSearchResult(
+const testTvSearchResult = TvSearchResult(
   adult: false,
   backdropPath: "",
   genreIds: [1],
@@ -99,7 +99,7 @@ final testTvSearchResult = TvSearchResult(
   voteCount: 1,
 );
 
-final testTvAiringTodayModelResult = TvAiringTodayModelResult(
+const testTvAiringTodayModelResult = TvAiringTodayModelResult(
   adult: false,
   backdropPath: "",
   genreIds: [1],

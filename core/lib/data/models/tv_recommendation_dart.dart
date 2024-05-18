@@ -6,7 +6,7 @@ class TvRecommendationModel {
   final int? totalPages;
   final int? totalResults;
 
-  TvRecommendationModel({
+  const TvRecommendationModel({
     this.page,
     this.tvRecommendationResult,
     this.totalPages,
@@ -52,7 +52,7 @@ class TvRecommendationResult {
   final int? voteCount;
   final List<String>? originCountry;
 
-  TvRecommendationResult({
+  const TvRecommendationResult({
     this.adult,
     this.backdropPath,
     this.id,

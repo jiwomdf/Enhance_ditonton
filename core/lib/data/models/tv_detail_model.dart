@@ -32,7 +32,7 @@ class TvDetailModel {
   final double? voteAverage;
   final int? voteCount;
 
-  TvDetailModel({
+  const TvDetailModel({
     this.adult,
     this.name,
     this.backdropPath,
@@ -130,7 +130,7 @@ class Genre {
   final int? id;
   final String? name;
 
-  Genre({
+  const Genre({
     this.id,
     this.name,
   });
@@ -147,7 +147,7 @@ class ProductionCompany {
   final String? name;
   final String? originCountry;
 
-  ProductionCompany({
+  const ProductionCompany({
     this.id,
     this.logoPath,
     this.name,
@@ -167,7 +167,7 @@ class ProductionCountry {
   final String? iso31661;
   final String? name;
 
-  ProductionCountry({
+  const ProductionCountry({
     this.iso31661,
     this.name,
   });
@@ -184,7 +184,7 @@ class SpokenLanguage {
   final String? iso6391;
   final String? name;
 
-  SpokenLanguage({
+  const SpokenLanguage({
     this.englishName,
     this.iso6391,
     this.name,

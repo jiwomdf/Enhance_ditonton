@@ -31,7 +31,6 @@ void main() {
       totalResults: 255,
   );
 
-
   group('fromJson', () {
     test('should return a valid model from JSON', () async {
       final Map<String, dynamic> jsonMap =
@@ -39,17 +38,7 @@ void main() {
       final result = TvAiringTodayModel.fromJson(jsonMap);
       expect(result.toString(), testTvAiringToday.toString());
     });
-  });
 
-  group('toJson', () {
-    test('should return a valid model from JSON', () async {
-      final Map<String, dynamic> jsonMap = json.decode(readJson('dummy_data/tv_airing_today.json'));
-      final result = testTvAiringToday.toJson();
-      expect(result.toString(), jsonMap.toString());
-    });
-  });
-
-  group('fromJson', () {
     test('should return a valid model from JSON', () async {
       final Map<String, dynamic> jsonMap =
       json.decode(readJson('dummy_data/tv_airing_today_result.json'));
@@ -59,6 +48,12 @@ void main() {
   });
 
   group('toJson', () {
+    test('should return a valid model from JSON', () async {
+      final Map<String, dynamic> jsonMap = json.decode(readJson('dummy_data/tv_airing_today.json'));
+      final result = testTvAiringToday.toJson();
+      expect(result.toString(), jsonMap.toString());
+    });
+
     test('should return a valid model from JSON', () async {
       final Map<String, dynamic> jsonMap = json.decode(readJson('dummy_data/tv_airing_today_result.json'));
       final result = testTvAiringTodayResult.toJson();

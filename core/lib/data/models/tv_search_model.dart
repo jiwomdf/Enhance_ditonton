@@ -6,7 +6,7 @@ class TvSearchModel {
   final int? totalPages;
   final int? totalResults;
 
-  TvSearchModel({
+  const TvSearchModel({
     this.page,
     this.tvSearchResult,
     this.totalPages,
@@ -40,7 +40,7 @@ class TvSearchResult {
   final double? voteAverage;
   final int? voteCount;
 
-  TvSearchResult({
+  const TvSearchResult({
     this.adult,
     this.backdropPath,
     this.genreIds,

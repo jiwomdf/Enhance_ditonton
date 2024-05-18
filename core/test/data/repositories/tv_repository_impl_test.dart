@@ -125,7 +125,7 @@ void main() {
 
   group('Get TV Detail', () {
     const tId = 1;
-    final testTvResponse = TvDetailModel(
+    const testTvResponse = TvDetailModel(
       adult: false,
       backdropPath: 'backdropPath',
       budget: 100,
