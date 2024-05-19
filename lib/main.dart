@@ -5,6 +5,7 @@ import 'package:core/presentation/bloc/tv_airing_today/tv_airing_today_bloc.dart
 import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.dart';
 import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:core/styles/colors.dart';
+import 'package:core/utils/sslpinning/http_ssl_pinning.dart';
 import 'package:core/utils/utils.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:ditonton/router.dart';
@@ -22,7 +23,9 @@ import 'package:tvs/presentation/bloc/tv_popular/tv_popular_bloc.dart';
 import 'package:tvs/presentation/bloc/tv_recommendation/tv_recommendation_bloc.dart';
 import 'package:tvs/presentation/bloc/tv_watch_list/tv_watchlist_bloc.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await HttpSSLPinning.init();
   di.init();
   runApp(MyApp());
 }

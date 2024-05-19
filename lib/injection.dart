@@ -25,6 +25,7 @@ import 'package:core/presentation/bloc/movie_top_rated/movie_top_rated_bloc.dart
 import 'package:core/presentation/bloc/tv_airing_today/tv_airing_today_bloc.dart';
 import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.dart';
 import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
+import 'package:core/utils/sslpinning/http_ssl_pinning.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
@@ -121,5 +122,6 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  //locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => HttpSSLPinning.client);
 }
