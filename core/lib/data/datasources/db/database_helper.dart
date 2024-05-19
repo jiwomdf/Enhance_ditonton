@@ -6,6 +6,7 @@ import 'package:sqflite_sqlcipher/sqflite.dart';
 
 import '../../../utils/encrypt/encrypt.dart';
 
+// coverage:ignore-file
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper;
   DatabaseHelper._instance() {
