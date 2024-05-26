@@ -1,5 +1,3 @@
-import 'package:core/data/models/tv_table.dart';
-
 class TV {
   bool? adult;
   String? backdropPath;

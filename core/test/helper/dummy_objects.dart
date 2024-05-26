@@ -181,7 +181,7 @@ const testTvTable = TvTable(
   overview: "overview",
 );
 
-final testTvRecommendationResult = TvRecommendationResult(
+const testTvRecommendationResult = TvRecommendationResult(
   adult: true,
   backdropPath: "",
   id: 123,

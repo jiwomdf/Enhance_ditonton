@@ -27,7 +27,6 @@ import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.
 import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:core/utils/sslpinning/http_ssl_pinning.dart';
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart' as http;
 import 'package:movie/domain/usecases/movie/get_movie_detail.dart';
 import 'package:movie/domain/usecases/movie/get_movie_recommendations.dart';
 import 'package:movie/domain/usecases/movie/get_watchlist_movies.dart';

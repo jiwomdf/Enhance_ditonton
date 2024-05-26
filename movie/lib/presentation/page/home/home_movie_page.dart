@@ -6,6 +6,7 @@ import 'package:core/presentation/bloc/tv_series_popular/tv_series_popular_bloc.
 import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:core/routes.dart';
 import 'package:core/styles/text_styles.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -184,6 +185,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           ],
         ),
         onPressed: () {
+          FirebaseCrashlytics.instance.crash();
           _showMyDialog();
         },
       ),

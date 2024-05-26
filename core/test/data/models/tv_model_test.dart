@@ -3,7 +3,7 @@ import 'package:core/domain/entities/tv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final testTvModel = TvModel(
+  const testTvModel = TvModel(
     adult: true,
     backdropPath: "backdropPath",
     genreIds: [1],
