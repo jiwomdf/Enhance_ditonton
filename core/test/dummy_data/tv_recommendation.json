@@ -1,0 +1,476 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/uvwSzRWNJLwJVRrci9z0ynBheoL.jpg",
+      "id": 64552,
+      "name": "Shomin Sample",
+      "original_language": "ja",
+      "original_name": "俺がお嬢様学校に「庶民サンプル」として拉致られた件",
+      "overview": "Kimito Kagurazaka is an ordinary high school boy who is kidnapped by an elite young lady's academy to be a \"sample of the common people.\" The school is full of sheltered girls who have never met male peers before.",
+      "poster_path": "/bUCMLqtoYVywYcLu1XlxGGlRot5.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "popularity": 39.118,
+      "first_air_date": "2015-10-07",
+      "vote_average": 8.4,
+      "vote_count": 156,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/71F0VYpgRjCO6R9VzqhUZiHZbT7.jpg",
+      "id": 32218,
+      "name": "Soy tu dueña",
+      "original_language": "es",
+      "original_name": "Soy tu dueña",
+      "overview": "Soy Tu Dueña is a Mexican telenovela produced by Nicandro Díaz González for Televisa. It starred Lucero, Gabriela Spanic, Fernando Colunga, David Zepeda, Sergio Goyri and Jacqueline Andere.",
+      "poster_path": "/6Ey5MIVKGDXPo4TMZy2FkB7FxUH.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        18
+      ],
+      "popularity": 468.154,
+      "first_air_date": "2010-06-15",
+      "vote_average": 7.708,
+      "vote_count": 535,
+      "origin_country": [
+        "MX"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": null,
+      "id": 69998,
+      "name": "Hugo Chávez, El Comandante",
+      "original_language": "es",
+      "original_name": "Hugo Chávez, El Comandante",
+      "overview": "The life of Hugo Chavez; from childhood, his arrival to power, confrontations, and loves to his last days as president.",
+      "poster_path": "/sEThDZHGrhD6UPDVnP7skTAa6mF.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        99,
+        18
+      ],
+      "popularity": 279.076,
+      "first_air_date": "2017-01-31",
+      "vote_average": 7.217,
+      "vote_count": 494,
+      "origin_country": [
+        "CO",
+        "VE",
+        "US"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jOYKCwg0jR0IEdUpaWYXAjEVfyn.jpg",
+      "id": 72426,
+      "name": "GAMERS!",
+      "original_language": "ja",
+      "original_name": "ゲーマーズ！",
+      "overview": "Keita Amano is a perfectly mediocre loner with no particular distinguishing features other than his love for games. One day, his school's prettiest girl and Gamer Club President Karen Tendo suddenly calls out to him. That moment changes Keita's life forever, as he now finds himself in the midst of a romcom with beautiful girl gamers... or, well, that's how it usually goes. Not with him, however.",
+      "poster_path": "/x5ztudyVybv0fG1UdCV8nXYTKpd.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "popularity": 56.416,
+      "first_air_date": "2017-07-13",
+      "vote_average": 8.039,
+      "vote_count": 154,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/j2oWA1fFCQy1SwqCK3ODsgy9yUt.jpg",
+      "id": 4057,
+      "name": "Criminal Minds",
+      "original_language": "en",
+      "original_name": "Criminal Minds",
+      "overview": "An elite team of FBI profilers analyze the country's most twisted criminal minds, anticipating their next moves before they strike again. The Behavioral Analysis Unit's most experienced agent is David Rossi, a founding member of the BAU who returns to help the team solve new cases.",
+      "poster_path": "/7TCwgX7oQKxcWYEhSPRmaHe6ULN.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        80,
+        18,
+        9648
+      ],
+      "popularity": 1175.876,
+      "first_air_date": "2005-09-22",
+      "vote_average": 8.322,
+      "vote_count": 3570,
+      "origin_country": [
+        "US"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/hqFaSNICeh0Y3Hp0gtEIzDBmUVo.jpg",
+      "id": 106600,
+      "name": "BTS In the SOOP",
+      "original_language": "ko",
+      "original_name": "In the SOOP BTS편",
+      "overview": "'In the SOOP BTS ver.' is a reality show, portraying BTS members' everyday life, relaxation, and everything in between, away from the city life. A time of freedom and healing in a place for BTS, and BTS only.",
+      "poster_path": "/snrfWsJvdmg433Fm2L27FYOq2Y3.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        10764
+      ],
+      "popularity": 146.111,
+      "first_air_date": "2020-08-19",
+      "vote_average": 8.5,
+      "vote_count": 396,
+      "origin_country": [
+        "KR"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/7BP3aJUCk8Iv20YFAqHcbXpTMwR.jpg",
+      "id": 93149,
+      "name": "Plunderer",
+      "original_language": "ja",
+      "original_name": "プランダラ",
+      "overview": "In a post-apocalyptic world dominated by the so-called \"Numbers,\" each human will have their identity branded with their own \"Count,\" which could define any number related to their life. May it be one's walked distance or amount of compliments given to them by others, this Count could lead them to the abyss when it has dropped to zero. In the year 305 of the Alcian calendar, Hina has inherited a mission from her Mother, whose Count has depreciated to zero, to search for the Legendary Red Baron. In her adventure, she meets a half-masked swordsman named Licht who tries to hide his identity, as he is known as a degenerate for having an incredibly low Count.",
+      "poster_path": "/A0XboGeodpGlj33QUtjPMMwrMkN.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        10759,
+        10765,
+        16
+      ],
+      "popularity": 90.342,
+      "first_air_date": "2020-01-09",
+      "vote_average": 8.32,
+      "vote_count": 718,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/d8bAI2EDM7L2q94wDZfjb82KRoh.jpg",
+      "id": 91801,
+      "name": "Welcome to Demon School! Iruma-kun",
+      "original_language": "ja",
+      "original_name": "魔入りました！入間くん",
+      "overview": "Fourteen-year-old Iruma Suzuki has just been abandoned and sold to a demon by his irresponsible parents! Surprisingly, the next thing he knows he's living with the demon who has adopted him as his new grandson and has been transferred into a school in the Netherworld where his new demon grandfather works as the principal. Thus begins the cowardly Iruma-kun's extraordinary school life among the otherworldly as he faces his true self, takes on challenges, and rises to become someone great.",
+      "poster_path": "/aed6I1EMR4Lbk8bdikWrndbn5Og.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        35,
+        10765
+      ],
+      "popularity": 108.032,
+      "first_air_date": "2019-10-05",
+      "vote_average": 8.4,
+      "vote_count": 244,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/4u64tHtUkna1y4OkJcrXLEhhLLy.jpg",
+      "id": 110070,
+      "name": "Horimiya",
+      "original_language": "ja",
+      "original_name": "ホリミヤ",
+      "overview": "A secret life is the one thing they have in common. At school, Hori is a prim and perfect social butterfly, but the truth is she's a brash homebody. Meanwhile, under a gloomy facade, Miyamura hides a gentle heart, along with piercings and tattoos. In a chance meeting, they both reveal a side they've never shown. Could this blossom into something new?",
+      "poster_path": "/iSOKGl5KIeOCAtigUDCfFZe2cOi.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        35,
+        18
+      ],
+      "popularity": 170.388,
+      "first_air_date": "2021-01-10",
+      "vote_average": 8.565,
+      "vote_count": 865,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/nejNkvLDRE3s6Q9sSnu3R2PsoHw.jpg",
+      "id": 77026,
+      "name": "Sen Anlat Karadeniz",
+      "original_language": "tr",
+      "original_name": "Sen Anlat Karadeniz",
+      "overview": "Nafes was forced to marry vedat who abused \u0026 tortured her,one day nefes takes her son \u0026 escapes in a car truck of one of her husband's partners who is called tahir,Tahir will protect them from vedat",
+      "poster_path": "/1KBw6dPRxS7fIl68YspojjATtWO.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        18
+      ],
+      "popularity": 64.189,
+      "first_air_date": "2018-01-24",
+      "vote_average": 8.1,
+      "vote_count": 80,
+      "origin_country": [
+        "TR"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/x7RriD6B7KBxvsPAICtbwKzh8TJ.jpg",
+      "id": 87476,
+      "name": "Mr. Nobunaga's Young Bride",
+      "original_language": "ja",
+      "original_name": "ノブナガ先生の幼な妻",
+      "overview": "\u003e One day, a girl who loves me will suddenly appear before me.\n\nMiddle school teacher Nobunaga has always been dreaming of such a gal game-like situation. However, the one who appeared before him was Kichou, a 14-year-old girl who proclaims herself as his wife. Appears to have arrived from the Sengoku era, she mistakes Nobunaga as Nobunaga Oda and urges him to conceive a child with her. Thus begins the age-difference love comedy between a gal game-loving teacher and a Sengoku era expert princess.",
+      "poster_path": "/8afDfK1TJeRV1jqEoahEAx6Tri9.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        35,
+        16
+      ],
+      "popularity": 18.665,
+      "first_air_date": "2019-04-06",
+      "vote_average": 8.063,
+      "vote_count": 80,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/4eVULuSLgNzUW7ZSQ7Awk384scu.jpg",
+      "id": 62640,
+      "name": "Nisekoi",
+      "original_language": "ja",
+      "original_name": "ニセコイ",
+      "overview": "Nisekoi follows high school students Raku Ichijo, the son of a leader in the yakuza faction Shuei-Gumi, and Chitoge Kirisaki, the daughter of a boss in a rival gang known as Beehive. They unexpectedly meet when Chitoge hops a wall and knees Raku in the face. After she runs off, Raku realizes he has lost his locket which was given to him by his childhood sweetheart with whom he made a secret promise. After discovering Chitoge is a new transfer student in his class, he forces her to help him look for the locket. During the search, they begin to dislike each other.[8]\n\nUpon returning home, Raku learns that the Shuei-Gumi and Beehive gangs have agreed to settle their feud by pairing their leaders' children. Raku learns that his girlfriend-to-be is none other than Chitoge. For the next three years, they must pretend to be in a relationship to maintain peace between the gangs. This turns out to be quite a challenging task, not only because of their hatred for one another, but also because Raku has a crush on another schoolmate, Kosaki Onodera, whom he secretly wishes was the girl who bears the key to his locket. Various developments complicate the situation, including Chitoge's over-protective bodyguard, a female hitman, a girl who claims to be Raku's fiancée, and the existence of multiple keys.",
+      "poster_path": "/x15LnCbRgRlZFnq2kQdbW9tlheZ.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "popularity": 94.385,
+      "first_air_date": "2014-01-11",
+      "vote_average": 8.304,
+      "vote_count": 294,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/udCwCPDlWTfKDxXIqMNqxXcibfu.jpg",
+      "id": 62568,
+      "name": "Yamada-kun and the Seven Witches",
+      "original_language": "ja",
+      "original_name": "山田くんと7人の魔女",
+      "overview": "One day, high-school boy Yamada bumps into the beautiful girl Shiraishi on the stairs (literally), and their lips touch as they fall. When they regain their wits, they realize that they have swapped bodies. As time progresses, the two realize that this is not the only mysterious happening in the school.",
+      "poster_path": "/y7j7cptjQvaMX2l12EkatqC54Q9.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        18,
+        16,
+        35
+      ],
+      "popularity": 62.069,
+      "first_air_date": "2015-04-12",
+      "vote_average": 8.394,
+      "vote_count": 212,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/qpf1mr6RU74iTP4RBh2c6AoRwWk.jpg",
+      "id": 68417,
+      "name": "AIKa R-16 Virgin Mission",
+      "original_language": "ja",
+      "original_name": "AIKa R-16 Virgin Mission",
+      "overview": "Aika is an intelligent and athletic high school girl. Competently she successfully passes the salvager's licence test, obtaining a C-class license. Yet, she is young and hot-headed, so much so that Gozo still treats her like a child. Due to this personality, no one is willing to hire her for salvaging jobs.\n\nEager to get started with salvaging, though, she decides to post an ad in her school to attract potential clients. She manages to get the attention of Eri, a daughter of a rich family and head of the school's treasure hunting club. She asks Aika to salvage something from the sea floor and Aika accepts the assignment.\n\nHowever, upon seeing the state-of-the-art submarine loaded onto Eri's private cruiser and discovering their destination, Aika realises the dangerous nature of this mission, culminating in a clash with a group of armed high school girls on the southern islands.",
+      "poster_path": "/cUdRWc50BpSfhyN57NpA90vPmMO.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16
+      ],
+      "popularity": 33.558,
+      "first_air_date": "2007-04-25",
+      "vote_average": 7.9,
+      "vote_count": 100,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jaAVxACOewZ58B9vRnLcci2rWDZ.jpg",
+      "id": 67048,
+      "name": "Barakamon",
+      "original_language": "ja",
+      "original_name": "ばらかもん",
+      "overview": "After punching a famous curator in the face for criticizing his work as \"textbook and lifeless,\" Handa Seishuu is sent to Gotō Island to calm his nerves and find new inspiration for his calligraphy. Growing up in the city all his life, though, Handa must adapt to country life while meeting an assortment of quirky people during his tenure.",
+      "poster_path": "/wH5500OtgEHVNs606APuvL5iZ5z.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "popularity": 75.706,
+      "first_air_date": "2014-07-05",
+      "vote_average": 8.05,
+      "vote_count": 121,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/tnGkk8SH68n6DbcFg3J4oVKA5Ml.jpg",
+      "id": 418,
+      "name": "A Pup Named Scooby-Doo",
+      "original_language": "en",
+      "original_name": "A Pup Named Scooby-Doo",
+      "overview": "The world's favorite chicken-hearted canine, as a puppy? That's right! And the old gang is back with him. Shaggy, Daphne, Velma, and Freddy are all here as gangly kids — goofing off, solving kid-size mysteries, and having run-ins with ghouls, ghosts, and goblins.",
+      "poster_path": "/h7Ejy5N9vsaLdwDt6Mz5sWgff0U.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        9648,
+        35,
+        10751,
+        10762
+      ],
+      "popularity": 248.152,
+      "first_air_date": "1988-09-10",
+      "vote_average": 7.565,
+      "vote_count": 262,
+      "origin_country": [
+        "US"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/gLusmJro8qMd4g10A7sqO4Em27O.jpg",
+      "id": 12965,
+      "name": "María la del Barrio",
+      "original_language": "es",
+      "original_name": "María la del Barrio",
+      "overview": "A brave, poor young girl is welcomed into a rich family and develops a romance with their misogynist youngest son, driving a woman already in love with him to go to great lengths to destroy their relationship.",
+      "poster_path": "/xGMquh71mh3w3QzUrl1AhCniHys.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "popularity": 481,
+      "first_air_date": "1995-08-14",
+      "vote_average": 7.3,
+      "vote_count": 540,
+      "origin_country": [
+        "MX"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/2Wm3NkGNCT08l95S0n6mowKyoao.jpg",
+      "id": 72296,
+      "name": "My First Girlfriend is a Gal",
+      "original_language": "ja",
+      "original_name": "はじめてのギャル",
+      "overview": "A new school term begins, as does the season of new encounters. As he surveys his class full of couples, Hashiba Jun'ichi's mind is filled with distress as he asks himself, \"Why am I still a virgin?!\" Having heard from his friends that the easiest way to fulfill his long-standing desire to graduate from the fellowship of virgins is to kowtow to a gal, Jun'ichi does exactly that and asks his classmate Yukana out. And unbelievably, she actually agrees to date him. What will become of Jun'ichi from now on?",
+      "poster_path": "/nq7uJqddMpGMCcIfL6qiCVHUMB6.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "popularity": 56.518,
+      "first_air_date": "2017-07-12",
+      "vote_average": 8.423,
+      "vote_count": 369,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jwAUfgwFEzMYUh3lUht8VBB1SU7.jpg",
+      "id": 77721,
+      "name": "Real Girl",
+      "original_language": "ja",
+      "original_name": "３Ｄ彼女　リアルガール",
+      "overview": "Tsutsui Hikari (a.k.a \"Tsuttsun\") is a high school student who is content with his virtual life of anime and video games. One day, he gets stuck cleaning the pool with Iroha, a real live girl who is stylish, sassy and known to be easy with boys ... and she aggressively approaches him! Tsuttsun, who has few friends and lives in his own world, finds himself smitten by the confident and wild Iroha ... and his whole world is turned upside down!! It's the awkward and pure love story of a boy who experiences relationship for the first time.",
+      "poster_path": "/3UmNynM1YXkYylyontGXPHncjOC.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        35,
+        18
+      ],
+      "popularity": 55.362,
+      "first_air_date": "2018-04-04",
+      "vote_average": 8.6,
+      "vote_count": 426,
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/uzgvxmEGIwgqyaEbc6OXy0YbSTN.jpg",
+      "id": 81211,
+      "name": "My Secret, Terrius",
+      "original_language": "ko",
+      "original_name": "내 뒤에 테리우스",
+      "overview": "A woman named Go Ae-Rin loses her husband. Along with her neighbour Kim Bon, who is a NIS agent, they discover the truth behind her husband's involvement in a huge conspiracy.",
+      "poster_path": "/9GIT4P7pVXTmVGWS90hGFCa1HDY.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        9648,
+        35,
+        10759
+      ],
+      "popularity": 58.072,
+      "first_air_date": "2018-09-27",
+      "vote_average": 8.202,
+      "vote_count": 121,
+      "origin_country": [
+        "KR"
+      ]
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/7JybN9jDT3EbV8BwaXQoxPOpNbz.jpg",
+      "id": 18350,
+      "name": "Atrévete a soñar",
+      "original_language": "es",
+      "original_name": "Atrévete a soñar",
+      "overview": "Danna Paola stars as Patito, Eleazar Gómez as Mateo, Violeta Isfel and Cynthia Klitbo, play antagonist roles as Antonella and Bianca. The telenovela features adult protagonists also, René Strickler and Vanessa Guzmán.\n\nIt first aired on Sunday, 8 March 2009, as the first telenovela to debut on a Sunday in Mexico. After a year of success, becoming a major hit in Mexico, especially among children, its final episode was also on a Sunday, 7 March 2010.",
+      "poster_path": "/5l9c4cjcauBpogEqaVbsITHA47K.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        18
+      ],
+      "popularity": 386.713,
+      "first_air_date": "2009-03-08",
+      "vote_average": 8.1,
+      "vote_count": 858,
+      "origin_country": [
+        "MX"
+      ]
+    }
+  ],
+  "total_pages": 2,
+  "total_results": 40
+}
