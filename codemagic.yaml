@@ -4,16 +4,23 @@ workflows:
       max_build_duration: 120
       instance_type: mac_mini_m1
       environment:
-          flutter: stable
+      vars:
+        PACKAGE_NAME: "com.dicoding.ditonton"
+      flutter: stable
   update-package:
-    name: Update Package
-    script: |
-        flutter packages pub get
+      name: Update Package
+      script: |
+          flutter packages pub get
   android-workflow-id:
-    name: Android Sample Workflow
-    script: | 
-      flutter build appbundle --debug
+      name: Android Sample Workflow
+      script: | 
+        flutter build appbundle --debug
   ios-workflow-id:
-    name: iOS Sample Workflow
-    script: | 
-      flutter build ios --debug --no-codesign
+      name: iOS Workflow
+      instance_type: mac_mini_m1
+      max_build_duration: 120
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      script: | 
+        flutter build ios --debug --no-codesign
