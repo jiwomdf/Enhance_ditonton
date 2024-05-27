@@ -1,51 +1,52 @@
-import 'package:ditonton/presentation/pages/about_page.dart';
-import 'package:ditonton/presentation/pages/detail_page/movie_detail_page.dart';
-import 'package:ditonton/presentation/pages/detail_page/tv_detail_page.dart';
-import 'package:ditonton/presentation/pages/home/home_movie_page.dart';
-import 'package:ditonton/presentation/pages/search_page.dart';
-import 'package:ditonton/presentation/pages/sublist_page/airing_today_tv_page.dart';
-import 'package:ditonton/presentation/pages/sublist_page/popular_movies_page.dart';
-import 'package:ditonton/presentation/pages/sublist_page/popular_tv_page.dart';
-import 'package:ditonton/presentation/pages/sublist_page/top_rated_movies_page.dart';
-import 'package:ditonton/presentation/pages/sublist_page/top_rated_tv_page.dart';
-import 'package:ditonton/presentation/pages/tv_search_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_tv_page.dart';
+import 'package:about/about_page.dart';
+import 'package:core/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie/presentation/page/home/home_movie_page.dart';
+import 'package:movie/presentation/page/home/sublist_page/popular_movies_page.dart';
+import 'package:movie/presentation/page/home/sublist_page/top_rated_movies_page.dart';
+import 'package:movie/presentation/page/movie/detail_page/movie_detail_page.dart';
+import 'package:movie/presentation/page/movie/watchlist_movies_page.dart';
+import 'package:search/presentation/pages/movie/search_page.dart';
+import 'package:search/presentation/pages/tv/tv_search_page.dart';
+import 'package:tvs/presentation/pages/tvs/airing_today_tv_page.dart';
+import 'package:tvs/presentation/pages/tvs/popular_tv_page.dart';
+import 'package:tvs/presentation/pages/tvs/top_rated_tv_page.dart';
+import 'package:tvs/presentation/pages/tvs/tv_detail_page.dart';
+import 'package:tvs/presentation/pages/tvs/watchlist_tv_page.dart';
 
 PageRoute router(RouteSettings settings) {
   switch (settings.name) {
     case '/home':
       return MaterialPageRoute(builder: (_) => HomeMoviePage());
-    case PopularMoviesPage.ROUTE_NAME:
+    case PopularMoviesPage.routeName:
       return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
-    case TopRatedMoviesPage.ROUTE_NAME:
+    case TopRatedMoviesPage.routeName:
       return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
-    case MovieDetailPage.ROUTE_NAME:
+    case Routes.movieDetail:
       final id = settings.arguments as int;
       return MaterialPageRoute(
         builder: (_) => MovieDetailPage(id: id),
         settings: settings,
       );
-    case SearchPage.ROUTE_NAME:
+    case Routes.searchPage:
       return CupertinoPageRoute(builder: (_) => SearchPage());
-    case WatchlistMoviesPage.ROUTE_NAME:
+    case Routes.movieWatchList:
       return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
-    case AboutPage.ROUTE_NAME:
+    case Routes.aboutPage:
       return MaterialPageRoute(builder: (_) => AboutPage());
-    case TvDetailPage.ROUTE_NAME:
+    case Routes.tvDetail:
       final id = settings.arguments as int;
       return MaterialPageRoute(builder: (_) => TvDetailPage(id: id));
-    case WatchlistTvPage.ROUTE_NAME:
+    case Routes.tvWatchList:
       return MaterialPageRoute(builder: (_) => WatchlistTvPage());
-    case TopRatedTVPage.ROUTE_NAME:
+    case Routes.tvTopRated:
       return MaterialPageRoute(builder: (_) => TopRatedTVPage());
-    case PopularTvPage.ROUTE_NAME:
+    case Routes.tvPopular:
       return MaterialPageRoute(builder: (_) => PopularTvPage());
-    case AiringTodayTVPage.ROUTE_NAME:
-      return MaterialPageRoute(builder: (_) => AiringTodayTVPage());
-    case TvSearchPage.ROUTE_NAME:
+    case Routes.tvAiringToday:
+      return MaterialPageRoute(builder: (_) => TvAiringTodayPage());
+    case Routes.tvSearch:
       return MaterialPageRoute(builder: (_) => TvSearchPage());
     default:
       return MaterialPageRoute(builder: (_) {

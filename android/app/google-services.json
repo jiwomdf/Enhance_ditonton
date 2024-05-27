@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "109854375968",
+    "project_id": "ditonton-flutter-1201f",
+    "storage_bucket": "ditonton-flutter-1201f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109854375968:android:584200076b465949687c45",
+        "android_client_info": {
+          "package_name": "com.dicoding.ditonton"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWt5tpcDuIZoqkiSc1wEiibC_luDvj9Is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
