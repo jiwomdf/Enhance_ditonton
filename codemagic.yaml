@@ -14,9 +14,12 @@ workflows:
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;
-      - name: Flutter analyze
+      - name: Android build
         script: |
-          flutter analyze
+          flutter build appbundle --debug
+      - name: ios Build
+        script: |
+          flutter build ios --debug --no-codesign
       - name: Flutter unit tests
         script: |
           flutter test
