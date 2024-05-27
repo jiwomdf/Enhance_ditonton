@@ -22,5 +22,5 @@ workflows:
       #     flutter build ios --debug --no-codesign
       - name: Flutter unit tests
         script: |
-          flutter test
+          cd core && flutter test
         ignore_failure: true
