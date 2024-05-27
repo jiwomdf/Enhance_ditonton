@@ -25,5 +25,6 @@ jobs:
         with:
           flutter-version: '1.7.8+hotfix.4'
       - run: flutter doctor
+      - run: flutter upgrade
       - run: flutter pub get
       - run: flutter test
