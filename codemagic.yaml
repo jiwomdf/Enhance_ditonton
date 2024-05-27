@@ -1,26 +1,48 @@
 workflows:
-  sample-workflow:
-      name: Codemagic Sample Workflow
-      max_build_duration: 120
-      instance_type: mac_mini_m1
-      environment:
-        vars:
-          PACKAGE_NAME: "com.dicoding.ditonton"
-        flutter: stable
-  update-package:
-      name: Update Package
-      script: |
-          flutter packages pub get
-  android-workflow-id:
-      name: Android Sample Workflow
-      script: | 
-        flutter build appbundle --debug
-  ios-workflow-id:
-      name: iOS Workflow
-      instance_type: mac_mini_m1
-      max_build_duration: 120
+  android-workflow:
+    name: Android Workflow
+    instance_type: mac_mini_m1
+    max_build_duration: 120
+    environment:
+      vars:
+        PACKAGE_NAME: "com.dicoding.ditonton" # <-- Put your package name here
       flutter: stable
-      xcode: latest
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      - name: Flutter analyze
+        script: |
+          flutter analyze
+      - name: Flutter unit tests
+        script: |
+          flutter test
+        ignore_failure: true
+  ios-workflow:
+    name: iOS Workflow
+    instance_type: mac_mini_m1
+    max_build_duration: 120
+    integrations:
+      app_store_connect: codemagic
+    environment:
+      flutter: stable
+      xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
       cocoapods: default
-      script: | 
-        flutter build ios --debug --no-codesign
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      - name: Install pods
+        script: |
+          find . -name "Podfile" -execdir pod install \;
+      - name: Flutter analyze
+        script: |
+          flutter analyze
+      - name: Flutter unit tests
+        script: |
+          flutter test
+        ignore_failure: true
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - flutter_drive.log
