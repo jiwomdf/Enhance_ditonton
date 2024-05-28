@@ -1,6 +1,17 @@
 workflows:
   android-ios-workflow:
     name: Android iOS Workflow
+    triggering:
+      events:                       # List the events that trigger builds
+        - push
+        - pull_request
+        - pull_request_labeled      #GitHub only
+        - tag
+      branch_patterns:              # Include or exclude watched branches
+        - pattern: 'main'
+          include: true
+          source: true
+      cancel_previous_builds: true  # Set to `true` to automatically cancel outdated webhook builds
     instance_type: mac_mini_m1
     max_build_duration: 120
     environment:
