@@ -5,22 +5,28 @@ workflows:
     max_build_duration: 120
     environment:
       vars:
-        PACKAGE_NAME: "com.dicoding.ditonton" # <-- Put your package name here
+        PACKAGE_NAME: "com.dicoding.ditonton"
       flutter: stable
     scripts:
       - name: Get Flutter packages
         script: |
           flutter packages pub get
-      # - name: Install pods
-      #   script: |
-      #     find . -name "Podfile" -execdir pod install \;
-      # - name: Android build
-      #   script: |
-      #     flutter build appbundle --debug
-      # - name: iOS Build
-      #   script: |
-      #     flutter build ios --debug --no-codesign
-      - name: Flutter unit tests
+      - name: Install pods
         script: |
-          cd core && flutter test
+          find . -name "Podfile" -execdir pod install \;
+      - name: Android build
+        script: |
+          flutter build appbundle --debug
+      - name: Flutter unit tests core
+        script: |
+          cd core && flutter test && cd ..
+      - name: Flutter unit tests movie
+        script: |
+          cd core && flutter test && cd ..
+      - name: Flutter unit tests search
+        script: |
+          cd search && flutter test && cd ..
+      - name: Flutter unit tests tvs
+        script: |
+          cd tvs && flutter test && cd ..
         ignore_failure: true
