@@ -1,36 +1,37 @@
-import 'package:core/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tvs/presentation/bloc/tv_popular/tv_popular_bloc.dart';
 
 import '../widgets/tv_card.dart';
 
-class TopRatedTVPage extends StatefulWidget {
-  const TopRatedTVPage({super.key});
+class PopularTvPage extends StatefulWidget {
+  const PopularTvPage({super.key});
 
   @override
-  _TopRatedTVPageState createState() => _TopRatedTVPageState();
+  _PopularTvPageState createState() => _PopularTvPageState();
 }
 
-class _TopRatedTVPageState extends State<TopRatedTVPage> {
+class _PopularTvPageState extends State<PopularTvPage> {
   @override
   void initState() {
     super.initState();
-    context.read<TvTopRatedBloc>().add(GetTvTopRatedEvent());
+
+    context.read<TvPopularBloc>().add(GetTvPopularEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Top Rated TV'),
+        title: const Text('Popular TV'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<TvTopRatedBloc, TvTopRatedState>(
+        child: BlocBuilder<TvPopularBloc, TvPopularState>(
           builder: (context, state) {
-            if (state is TvTopRatedLoading) {
+            if (state is TvPopularLoading) {
               return const Center(child: CircularProgressIndicator());
-            } else if (state is TvTopRatedHasData) {
+            } else if (state is TvPopularHasData) {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   final tv = state.result[index];
@@ -38,11 +39,9 @@ class _TopRatedTVPageState extends State<TopRatedTVPage> {
                 },
                 itemCount: state.result.length,
               );
-            } else if (state is TvTopRatedError) {
+            } else if (state is TvPopularError) {
               return Center(
-                key: const Key('error_message'),
-                child: Text(state.message),
-              );
+                  key: const Key('error_message'), child: Text(state.message));
             } else {
               return Center(child: Text("Something went wrong"));
             }
