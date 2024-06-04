@@ -1,10 +1,9 @@
-import 'package:core/domain/usecases/tv/is_tv_in_watchlist.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tvs/domain/usecase/tv/is_tv_in_watchlist.dart';
 
-import '../../../helper/test_helper_core.mocks.dart';
-
+import '../../../../../core/test/helper/test_helper_core.mocks.dart';
 
 void main() {
   late IsTvInWatchlist usecase;

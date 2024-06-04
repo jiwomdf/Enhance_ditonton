@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:core/domain/entities/tv.dart';
 import 'package:core/domain/entities/tv_detail.dart';
-import 'package:core/domain/usecases/tv/is_tv_in_watchlist.dart';
-import 'package:core/domain/usecases/tv/remove_tv_watchlist.dart';
-import 'package:core/domain/usecases/tv/save_tv_watchlist.dart';
 import 'package:equatable/equatable.dart';
-import 'package:core/domain/usecases/tv/get_tv_watchlist.dart';
+import 'package:tvs/domain/usecase/tv/get_tv_watchlist.dart';
+import 'package:tvs/domain/usecase/tv/is_tv_in_watchlist.dart';
+import 'package:tvs/domain/usecase/tv/remove_tv_watchlist.dart';
+import 'package:tvs/domain/usecase/tv/save_tv_watchlist.dart';
 
 part 'tv_watchlist_event.dart';
 part 'tv_watchlist_state.dart';

@@ -1,11 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:core/domain/usecases/tv/get_tv_watchlist.dart';
+import 'package:tvs/domain/usecase/tv/get_tv_watchlist.dart';
 
-import '../../../helper/dummy_objects.dart';
-import '../../../helper/test_helper_core.mocks.dart';
-
+import '../../../../../core/test/helper/dummy_objects.dart';
+import '../../../../../core/test/helper/test_helper_core.mocks.dart';
 
 void main() {
   late GetTvWatchList usecase;
